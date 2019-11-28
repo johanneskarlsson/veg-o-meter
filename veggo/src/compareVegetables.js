@@ -14,7 +14,7 @@ class CompareVegetables extends Component {
 					<thead>
 					<tr>
 						<th></th>
-						<th>Grönsaker</th>
+						<th>Namn</th>
 					</tr>
 					</thead>
 		
@@ -23,7 +23,7 @@ class CompareVegetables extends Component {
 						return (
 							<tr key={vegetable.name_swe}>
 								<td><img src={require('./images/'+vegetable.image)} alt={vegetable.name} className="col-md-6 col-10 p-0" /></td>
-								<td>{vegetable.name}</td>
+								<td>{vegetable.name_swe}</td>
 							</tr>
 						);
 					})}
