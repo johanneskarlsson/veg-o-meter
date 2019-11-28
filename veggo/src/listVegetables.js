@@ -17,6 +17,13 @@ class ListVegetables extends Component {
 		}
 	};
 
+	selectVegetable = event => {
+		const id = event.target.name;
+		console.log(id);
+		this.props.select_vegetable(id);
+	};
+
+
 
 	// Check if the vegetable is in the compare-list
 	ifChecked = (vegetable) => {
@@ -34,13 +41,13 @@ class ListVegetables extends Component {
 		console.log(this.props);
 		return (
 			<div className="list-vegetables">
-				<h2>List of vegetables</h2>
+				<h2>Grönsakslista</h2>
 				<table className="mx-auto">
 					<thead>
 						<tr>
 							<th></th>
-							<th>Vegetable</th>
-							<th>Compare</th>
+							<th>Namn</th>
+							<th>Jämför</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -48,8 +55,8 @@ class ListVegetables extends Component {
 						
 							return (
 								<tr key={vegetable.id}>
-								<td><img src={require('./images/'+vegetable.image)} alt={vegetable.name} className="col-8" /></td>
-									<td>{vegetable.name}</td>
+								<td><img name={vegetable.id} onClick={this.selectVegetable} src={require('./images/'+vegetable.image)} alt={vegetable.name} className="col-md-6 col-10 p-0" /></td>
+									<td>{vegetable.name_swe}</td>
 									<td>
 										<input
 											name={vegetable.id}
@@ -80,10 +87,12 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-	add_compare: vegetable =>
-		dispatch({ type: "ADD_COMPARE", payload: vegetable }),
-	remove_compare: vegetable =>
-		dispatch({ type: "REMOVE_COMPARE", payload: vegetable })
+	add_compare: id =>
+		dispatch({ type: "ADD_COMPARE", payload: id }),
+	remove_compare: id =>
+		dispatch({ type: "REMOVE_COMPARE", payload: id }),
+	select_vegetable: id =>
+		dispatch({ type: "SELECT_VEGETABLE", payload: id })
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListVegetables);

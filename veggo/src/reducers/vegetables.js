@@ -3,7 +3,8 @@ import data from "../data.json";
 const initState = {
 	vegetables: data.vegetables,
 	search: data.vegetables,
-	compare: []
+	compare: [],
+	detail: null
 };
 
 // Update state based on action
@@ -38,6 +39,11 @@ const vegetablesReducer = (state = initState, action) => {
 			console.log(index);
 			compareList.splice(index, 1);
 			return { ...state, compare: compareList };
+		case "SELECT_VEGETABLE":
+			var detail = vegetables.filter(vegetable => {
+				return vegetable.id.toString() === action.payload;
+			});
+			return { ...state, detail: detail[0] };
 		default:
 			return state;
 	}

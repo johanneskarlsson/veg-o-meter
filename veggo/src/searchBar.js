@@ -24,7 +24,7 @@ class SearchBar extends Component {
 	render() {
 		return (
 			<div className="searchbar">
-				<h2>Search bar</h2>
+				<h2>Sökruta</h2>
 				<form
 					onSubmit={this.handleSubmit}
 					className="form-inline d-flex justify-content-center"
@@ -33,14 +33,14 @@ class SearchBar extends Component {
 						<input
 							type="text"
 							onChange={this.handleChange}
-							placeholder="Vegetable..."
+							placeholder="Grönsak..."
 							name="search"
 							className="form-control"
 						/>
 					</div>
 					<div className="form-group m-2">
 						<button type="submit" className="btn btn-primary">
-							Search
+							Sök
 						</button>
 					</div>
 				</form>

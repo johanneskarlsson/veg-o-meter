@@ -1,22 +1,39 @@
+/* Free for personal use */
+@font-face {
+  font-family: 'School Book New';
+  src: url('./fonts/School Book New.ttf');
+}
+
+
+
+/* App */
 .App {
   text-align: center;
+  font-family: "School Book New";
+}
+
+/* Header */ 
+.header-bg {
+  background: url("./images/countryside.jpg");
+  background-size: cover;
+  background-position: 20% 70%;
+}
+
+header h1 {
+  color: white;
+  font-size: 3rem;
 }
 
 .App-logo {
   height: 40vmin;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.vh-20{
+  height: 20vh;
 }
 
-.App-link {
-  color: #09d3ac;
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 12px;
+  }
 }

@@ -9,20 +9,20 @@ class CompareVegetables extends Component {
 	render() {
 		return (
 			<div className="compare-vegetables">
-				<h2>Compare list</h2>
+				<h2>Jämför grönsaker</h2>
 				<table className="mx-auto">
 					<thead>
 					<tr>
 						<th></th>
-						<th>Vegetable</th>
+						<th>Grönsaker</th>
 					</tr>
 					</thead>
 		
 					<tbody>
 					{this.props.compare.map(vegetable => {
 						return (
-							<tr key={vegetable.name}>
-								<td><img src={require('./images/'+vegetable.image)} alt={vegetable.name} className="col-8" /></td>
+							<tr key={vegetable.name_swe}>
+								<td><img src={require('./images/'+vegetable.image)} alt={vegetable.name} className="col-md-6 col-10 p-0" /></td>
 								<td>{vegetable.name}</td>
 							</tr>
 						);
