@@ -39,7 +39,7 @@ const vegetablesReducer = (state = initState, action) => {
 			console.log(index);
 			compareList.splice(index, 1);
 			return { ...state, compare: compareList };
-		case "SELECT_VEGETABLE":
+		case "GET_DETAILS":
 			var detail = vegetables.filter(vegetable => {
 				return vegetable.id.toString() === action.payload;
 			});

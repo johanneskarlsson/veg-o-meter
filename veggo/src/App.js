@@ -1,42 +1,50 @@
-import React from "react";
 import "./App.css";
-import SearchBar from "./searchBar";
-import ListVegetables from "./listVegetables";
-import CompareVegetables from "./compareVegetables";
-import DetailVegetable from "./detailVegetable";
+import { withRouter, Switch, Route, Redirect } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-function App() {
+import Compare from "./components/compare";
+import Header from "./components/header";
+import DetailVegetable from "./components/detailVegetable";
+import AboutUs from "./components/aboutUs";
+import Home from "./components/home";
+
+import React, { Component } from 'react'
+
+class App extends Component {
+ render() {
 	return (
 		<div className="App">
-			<div className="container-fluid min-vh-100">
-				<div className="row vh-20 header-bg">
-					<header className="d-flex justify-content-center align-items-center vw-100">
-						<h1 className="text-center">Grönsakshjälpen</h1>
-					</header>
-				</div>
-				<div className="container">
-				<div className="row">
-					<div className="col-md-6">
-						<div className="col-12 pt-4">
-							<SearchBar />
-						</div>
-						<div className="col-12 pt-4">
-							<ListVegetables />
-						</div>
-					</div>
-					<div className="col-md-6 pt-4">
-						<div className="col-12 pt-4">
-							<CompareVegetables />
-						</div>
-						<div className="col-12 pt-4">
-							<DetailVegetable />
-						</div>
-					</div>
-				</div>
-				</div>
+			<div className="container-fluid min-vh-100 bg">
+				<Header />
+				<TransitionGroup className="transition-group">
+					<CSSTransition
+						key={this.props.location.pathname}
+						timeout={{ enter: 300, exit: 300 }}
+						classNames="fade"
+					>
+						<section className="route-section">
+							<Switch location={this.props.location}>
+								<Route
+									exact
+									path="/produkt/:productId/:productName?"
+									component={DetailVegetable}
+								/>
+								<Route exact path="/jämför" component={Compare} />
+								<Route exact path="/omoss" component={AboutUs} />
+								<Route exact path="/" component={Home} />
+								<Route
+									component={() => {
+										return <Redirect to="/" />;
+									}}
+								/>
+							</Switch>
+						</section>
+					</CSSTransition>
+				</TransitionGroup>
 			</div>
 		</div>
 	);
 }
+}
 
-export default App;
+export default withRouter(App);

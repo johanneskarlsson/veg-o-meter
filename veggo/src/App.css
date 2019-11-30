@@ -12,6 +12,40 @@
   font-family: "School Book New";
 }
 
+/* CSS Transition group */
+
+.fade-enter {
+	opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+	opacity: 1;
+	-webkit-transition: opacity 300ms ease-in;
+	transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+	opacity: 1;
+	-webkit-transition: opacity 300ms ease-in;
+	transition: opacity 300ms ease-in;
+}
+
+.fade-exit.fade-exit-active {
+	opacity: 0.01;
+	-webkit-transition: opacity 300ms ease-in;
+	transition: opacity 300ms ease-in;
+}
+
+div.transition-group {
+	position: relative;
+}
+section.route-section {
+	position: absolute;
+	width: 100%;
+	-webkit-transform: translate(0,0);
+	transform: translate(0,0);
+}
+
 /* Header */ 
 .header-bg {
   background: url("./images/countryside.jpg");
@@ -31,6 +65,32 @@ header h1 {
 .vh-20{
   height: 20vh;
 }
+
+.nav-links{
+  padding: 0;
+}
+
+.nav-links li{
+  display: inline;
+  padding: 10px;
+}
+
+.nav-links li a {
+  color: white;
+  transition: color 0.2s ease;
+}
+
+
+.nav-links li a:hover {
+  color: rgb(0, 223, 0);
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.vh-80{
+  height: 80vh;
+}
+
 
 @media only screen and (max-width: 600px) {
   html {

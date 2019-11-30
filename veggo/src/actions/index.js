@@ -20,9 +20,9 @@ export const remove_compare = (id) => {
     }
 }
 
-export const select_vegetable = (id) => {
+export const get_details = (id) => {
     return {
-        type: 'SELECT_VEGETABLE',
+        type: 'GET_DETAILS',
         payload: id
     }
 }
