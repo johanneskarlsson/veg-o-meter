@@ -4,7 +4,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import Compare from "./components/compare";
 import Header from "./components/header";
-import DetailVegetable from "./components/detailVegetable";
+import ProductDetails from "./components/productDetails";
 import AboutUs from "./components/aboutUs";
 import Home from "./components/home";
 
@@ -27,7 +27,7 @@ class App extends Component {
 								<Route
 									exact
 									path="/produkt/:productId/:productName?"
-									component={DetailVegetable}
+									component={ProductDetails}
 								/>
 								<Route exact path="/jämför" component={Compare} />
 								<Route exact path="/omoss" component={AboutUs} />
