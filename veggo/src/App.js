@@ -7,6 +7,7 @@ import Header from "./components/header";
 import ProductDetails from "./components/productDetails";
 import AboutUs from "./components/aboutUs";
 import Home from "./components/home";
+import Products from "./components/products";
 
 import React, { Component } from 'react'
 
@@ -29,6 +30,7 @@ class App extends Component {
 									path="/produkt/:productId/:productName?"
 									component={ProductDetails}
 								/>
+								<Route exact path="/produkter" component={Products} />
 								<Route exact path="/jämför" component={Compare} />
 								<Route exact path="/omoss" component={AboutUs} />
 								<Route exact path="/" component={Home} />

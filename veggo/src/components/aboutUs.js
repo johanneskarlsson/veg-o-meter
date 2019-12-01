@@ -32,7 +32,7 @@ export default class AboutUs extends Component {
 						</div>
 						<div className="col-12">
 							<p className="font-weight-bold m-0 mt-2">Johannes Karlsson</p>
-							<p className="m-0">Frontend/visualization</p>
+							<p className="m-0">Frontend/visualisering</p>
 							<a href="mailto:jkar5@kth.se">jkar5@kth.se</a>
 						</div>
 					</div>

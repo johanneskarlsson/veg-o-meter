@@ -30,14 +30,14 @@ class ProductDetails extends Component {
 								</div>
 							</div>
 							<div className="row pt-4">
-								<div className="col-6">
+								<div className="col-md-6">
 									<img
 										src={require("../images/" + this.props.detail.image)}
 										alt={this.props.detail.name}
 										className="img-fluid"
 									/>
 								</div>
-								<div className="col-6">
+								<div className="col-md-6 pt-md-0 pt-4">
 									<h3>{name_swe}</h3>
 									<p>{`Vattenavtryck: ${this.props.detail.water_footprint.value} ${this.props.detail.water_footprint.unit}`}</p>
 									<p>{`Utsläpp: ${this.props.detail.emissions.value} ${this.props.detail.emissions.unit}`}</p>

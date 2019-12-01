@@ -7,12 +7,12 @@ export default class Home extends Component {
             <div className="vh-80 d-flex justify-content-center align-items-center">
 			<div className="container pb-5">
 				<div className="row">
-					<div className="col-8 p-3 mx-auto">
+					<div className="col-md-8 p-3 mx-auto">
 						<h1>Välkommen till Grönsakshjälpen!</h1>
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-8 mx-auto">
+					<div className="col-md-8 mx-auto">
 						<h6>
 							Grönsakshjälpen är ett verktyg för att hjälpa dig ta mer hållbara
 							beslut kring köp av grönsaker. Du kan få information om såväl
