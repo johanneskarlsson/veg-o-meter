@@ -1,15 +1,13 @@
 /* Free for personal use */
 @font-face {
-  font-family: 'School Book New';
-  src: url('./fonts/School Book New.ttf');
+	font-family: "School Book New";
+	src: url("./fonts/School Book New.ttf");
 }
-
-
 
 /* App */
 .App {
-  text-align: center;
-  font-family: "School Book New";
+	text-align: center;
+	font-family: "School Book New";
 }
 
 /* CSS Transition group */
@@ -42,72 +40,65 @@ div.transition-group {
 section.route-section {
 	position: absolute;
 	width: 100%;
-	-webkit-transform: translate(0,0);
-	transform: translate(0,0);
+	-webkit-transform: translate(0, 0);
+	transform: translate(0, 0);
 }
 
-/* Header */ 
+/* Header */
 .header-bg {
-  background: url("./images/countryside.jpg");
-  background-size: cover;
-  background-position: 20% 70%;
+	background: url("./images/countryside.jpg");
+	background-size: cover;
+	background-position: 20% 70%;
 }
 
 header h1 {
-  color: white;
-  font-size: 3rem;
+	color: white;
+	font-size: 3rem;
 }
 
-.product-info{
-  background: rgba(0, 0, 0, 0.3);
+.product-info {
+	background: rgba(0, 0, 0, 0.3);
 }
 
-.product-bg{
-    /* Add the blur effect */
-    background: url("./images/countryside_2.jpg");
-    background-size: cover;
-    background-position: 20% 70%;
-   width: 100vw;
-   min-height: 80vh;
-  
+.product-bg {
+	/* Add the blur effect */
+	background: url("./images/countryside_2.jpg");
+	background-size: cover;
+	background-position: 20% 70%;
+	width: 100vw;
+	min-height: 80vh;
 }
 
-
-
-
-
-.vh-20{
-  height: 20vh;
+.vh-20 {
+	height: 20vh;
 }
 
-.nav-links{
-  padding: 0;
+.nav-links {
+	padding: 0;
 }
 
-.nav-links li{
-  display: inline;
-  padding: 10px;
+.nav-links li {
+	display: inline;
+	padding: 10px;
 }
 
 .nav-links li a {
-  color: white;
-  transition: color 0.2s ease;
+	color: white;
+	transition: color 0.2s ease;
 }
-
 
 .nav-links li a:hover {
-  color: rgb(0, 223, 0);
-  transition: color 0.2s ease;
-  text-decoration: none;
+	color: rgb(0, 223, 0);
+	transition: color 0.2s ease;
+	text-decoration: none;
 }
 
-.vh-80{
-  height: 80vh;
+.vh-80 {
+	height: 80vh;
 }
-
 
 @media only screen and (max-width: 600px) {
-  html {
-    font-size: 12px;
-  }
+	html {
+		font-size: 12px;
+	}
 }
