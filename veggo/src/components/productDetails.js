@@ -14,6 +14,7 @@ class ProductDetails extends Component {
 		const { match } = this.props;
 		const productId = match.params.productId;
 		console.log(productId);
+		window.scrollTo(0, 0);
 		this.props.get_details(productId);
 		this.setState({ dataLoading: false });
 	};
