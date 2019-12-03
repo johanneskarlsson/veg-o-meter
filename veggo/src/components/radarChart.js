@@ -21,14 +21,6 @@ export default class RadarChart extends Component {
 	};
 
 	DrawChart = () => {
-		var margin = { top: 100, right: 130, bottom: 130, left: 130 },
-			width =
-				Math.min(550, window.innerWidth - 10) - margin.left - margin.right,
-			height = Math.min(
-				width,
-				window.innerHeight - margin.top - margin.bottom - 20
-			);
-
 		//////////////////////////////////////////////////////////////
 		////////////////////////// Data //////////////////////////////
 		//////////////////////////////////////////////////////////////
@@ -67,15 +59,49 @@ export default class RadarChart extends Component {
 		//////////////////////////////////////////////////////////////
 		var color = d3.scaleOrdinal().range(["red", "green", "yellow", "blue"]);
 
-		var radarChartOptions = {
-			w: width,
-			h: height,
-			margin: margin,
-			maxValue: 21,
-			levels: 7,
-			roundStrokes: true,
-			color: color
-		};
+		var radarChartOptions;
+		var margin;
+		var width;
+		var height;
+
+		if (window.innerWidth < 576) {
+			margin = { top: 50, right: 80, bottom: 70, left: 80 };
+			width = Math.min(600, window.innerWidth-20) - margin.left - margin.right;
+			height = Math.min(
+				width,
+				window.innerHeight - margin.top - margin.bottom - 20
+			);
+
+			radarChartOptions = {
+				w: width,
+				h: height,
+				labelFactor: 1.4,
+				margin: margin,
+				maxValue: 21,
+				levels: 7,
+				roundStrokes: true,
+				color: color
+			};
+		} else {
+			margin = { top: 100, right: 130, bottom: 130, left: 130 };
+			width = Math.min(600, window.innerWidth-50) - margin.left - margin.right;
+			height = Math.min(
+				width,
+				window.innerHeight - margin.top - margin.bottom - 20
+			);
+
+			radarChartOptions = {
+				w: width,
+				h: height,
+				labelFactor: 1.4,
+				margin: margin,
+				maxValue: 21,
+				levels: 7,
+				roundStrokes: true,
+				color: color
+			};
+		}
+
 		//Call function to draw the Radar chart
 		if (data.length > 0) {
 			this.RadarChart(".radarChart", data, radarChartOptions);
@@ -83,6 +109,8 @@ export default class RadarChart extends Component {
 			d3.select(".radarChart")
 				.select("svg")
 				.remove();
+
+			d3.select(".legendList").html("");
 		}
 	};
 
@@ -93,8 +121,8 @@ export default class RadarChart extends Component {
 			margin: { top: 20, right: 20, bottom: 20, left: 20 }, //The margins of the SVG
 			levels: 10, //How many levels or inner circles should there be drawn
 			maxValue: 21, //What is the value that the biggest circle will represent
-			labelFactor: 1.5, //How much farther than the radius of the outer circle should the labels be placed
-			wrapWidth: 60, //The number of pixels after which a label needs to be given a new line
+			labelFactor: 1.2, //How much farther than the radius of the outer circle should the labels be placed
+			wrapWidth: 150, //The number of pixels after which a label needs to be given a new line
 			opacityArea: 0.3, //The opacity of the area of the blob
 			dotRadius: 4, //The size of the colored circles of each blog
 			opacityCircles: 0.1, //The opacity of the circles of each blob
@@ -240,7 +268,7 @@ export default class RadarChart extends Component {
 		axis
 			.append("text")
 			.attr("class", "legend")
-			.style("font-size", "11px")
+			.style("font-size", "0.7rem")
 			.attr("text-anchor", "middle")
 			.attr("dy", "0.35em")
 			.attr("x", function(d, i) {
@@ -457,18 +485,26 @@ export default class RadarChart extends Component {
 		console.log(this.props.data.length);
 		if (this.props.data.length > 1) {
 			d3.select(".legendList").html("");
-			d3.select(".legendList")
+			var legendDiv = d3
+				.select(".legendList")
 				.append("div")
-				.attr("class", "row")
+				.attr("class", "row col-md-8 mx-auto")
 				.selectAll("div")
 				.data(this.props.data)
 				.enter()
 				.append("div")
-				.attr("class", "legendItem col-md-4 col-6")
+				.attr("class", "legendItem row mx-auto");
+
+			legendDiv
+				.append("div")
+				.attr("class", "legendColor col-1 p-2")
 				.style("background", function(d, i) {
 					return color(i);
-				})
+				});
+
+			legendDiv
 				.append("p")
+				.attr("class", "col")
 				.text(function(d) {
 					return d.name_swe;
 				});

@@ -26,3 +26,16 @@ export const get_details = (id) => {
         payload: id
     }
 }
+
+export const reset_comparelist = () => {
+    return {
+        type: "RESET_COMPARELIST"
+    }
+}
+
+export const update_comparelist = (list) => {
+    return {
+        type: "UPDATE_COMPARELIST",
+        payload: list
+    }
+}

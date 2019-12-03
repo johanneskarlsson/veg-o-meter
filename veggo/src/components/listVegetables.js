@@ -16,6 +16,10 @@ class ListVegetables extends Component {
 		}
 	};
 
+	resetCompareList = () => {
+		this.props.resetCompareList();
+	}
+
 	// Check if the vegetable is in the compare-list
 	ifChecked = vegetable => {
 		var checkedVegetable = this.props.compare.filter(compareVegetable => {
@@ -25,6 +29,7 @@ class ListVegetables extends Component {
 			console.log(checkedVegetable[0]);
 			return true;
 		} else {
+
 			return false;
 		}
 	};
@@ -33,7 +38,7 @@ class ListVegetables extends Component {
 		console.log(this.props);
 		return (
 			<div className="list-vegetables">
-				<h2>Grönsakslista</h2>
+				<h2>Grönsakslista</h2><button onClick={this.resetCompareList} className="btn btn-danger">Återställ</button>
 				<table className="mx-auto">
 					<thead>
 						<tr>
@@ -44,6 +49,7 @@ class ListVegetables extends Component {
 					</thead>
 					<tbody>
 						{this.props.search.map(vegetable => {
+					
 							return (
 								<tr key={vegetable.id}>
 									<td>
@@ -62,7 +68,7 @@ class ListVegetables extends Component {
 											name={vegetable.id}
 											type="checkbox"
 											onChange={this.handleCheck}
-											defaultChecked={this.ifChecked(vegetable)}
+											checked={this.ifChecked(vegetable)}
 										/>
 									</td>
 								</tr>
@@ -88,6 +94,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
 	add_compare: id => dispatch({ type: "ADD_COMPARE", payload: id }),
 	remove_compare: id => dispatch({ type: "REMOVE_COMPARE", payload: id }),
+	resetCompareList: () => dispatch({ type: "RESET_COMPARELIST" }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListVegetables);
