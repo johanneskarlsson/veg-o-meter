@@ -4,6 +4,7 @@ const initState = {
 	vegetables: data.vegetables,
 	search: data.vegetables,
 	compare: [],
+	radarChart: [],
 	detail: null
 };
 
@@ -50,7 +51,7 @@ const vegetablesReducer = (state = initState, action) => {
 			});
 			if (detail.length === 0) {
 				return { ...state, detail: null };
-			} else return { ...state, detail: detail[0] };
+			} else return { ...state, detail: detail[0], radarChart: detail };
 		default:
 			return state;
 	}

@@ -15,7 +15,7 @@ class App extends Component {
  render() {
 	return (
 		<div className="App">
-			<div className="container-fluid min-vh-100 bg">
+			<div className="container-fluid min-vh-100 bg p-0">
 				<Header />
 				<TransitionGroup className="transition-group">
 					<CSSTransition

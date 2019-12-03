@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import RadarChart from "./radarChart";
 
 class ListCompare extends Component {
 	render() {
@@ -15,7 +16,7 @@ class ListCompare extends Component {
 					</thead>
 
 					<tbody>
-						{this.props.compare.map(vegetable => {
+						{/* this.props.compare.map(vegetable => {
 							return (
 								<tr key={vegetable.name_swe}>
 									<td>
@@ -28,9 +29,14 @@ class ListCompare extends Component {
 									<td>{vegetable.name_swe}</td>
 								</tr>
 							);
-						})}
+							})*/}
 					</tbody>
 				</table>
+				<div className="row">
+					<div className="col-12">
+						<RadarChart data={this.props.compare} />
+					</div>
+				</div>
 			</div>
 		);
 	}
