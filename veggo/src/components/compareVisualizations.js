@@ -5,9 +5,10 @@ import RadarChart from "./radarChart";
 class CompareVisualizations extends Component {
 	render() {
 		return (
-			
-					<RadarChart data={this.props.compare} />
-			
+			<div>
+				<h3>Ranking</h3>
+				<RadarChart data={this.props.compare} />
+			</div>
 		);
 	}
 }

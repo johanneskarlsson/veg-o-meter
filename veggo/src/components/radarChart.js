@@ -21,9 +21,8 @@ export default class RadarChart extends Component {
 	};
 
 	DrawChart = () => {
-		//////////////////////////////////////////////////////////////
-		////////////////////////// Data //////////////////////////////
-		//////////////////////////////////////////////////////////////
+	
+		// Data
 		var data = this.props.data.map(vegetable => {
 			return [
 				{ axis: "Energiförbrukning", value: vegetable.energy.ranking },
@@ -54,19 +53,46 @@ export default class RadarChart extends Component {
 			];
 		});
 
-		//////////////////////////////////////////////////////////////
-		//////////////////// Draw the Chart //////////////////////////
-		//////////////////////////////////////////////////////////////
-		var color = d3.scaleOrdinal().range(["red", "green", "yellow", "blue"]);
+		
+		// Color list
+		var colorList = [
+			"red",
+			"green",
+			"yellow",
+			"blue",
+			"purple",
+			"lightblue",
+			"pink",
+			"brown",
+			"grey",
+			"magenta",
+			"teal",
+			"navy",
+			"olive",
+			"beige",
+			"darkgoldenrod",
+			"darksalmon",
+			"ghostwhite",
+			"indigo",
+			"lavenderbrush",
+			"lightseagreen",
+			"sandybrown"
+		];
 
+		// Create color range
+		var color = d3.scaleOrdinal().range(colorList);
+
+		// Init chart options
 		var radarChartOptions;
 		var margin;
 		var width;
 		var height;
 
+		// Settings on mobile and desktop
 		if (window.innerWidth < 576) {
 			margin = { top: 50, right: 80, bottom: 70, left: 80 };
-			width = Math.min(600, window.innerWidth-20) - margin.left - margin.right;
+			width =
+				Math.min(600, window.innerWidth - 20) - margin.left - margin.right;
 			height = Math.min(
 				width,
 				window.innerHeight - margin.top - margin.bottom - 20
@@ -83,8 +109,9 @@ export default class RadarChart extends Component {
 				color: color
 			};
 		} else {
-			margin = { top: 100, right: 130, bottom: 130, left: 130 };
-			width = Math.min(600, window.innerWidth-50) - margin.left - margin.right;
+			margin = { top: 80, right: 130, bottom: 100, left: 130 };
+			width =
+				Math.min(500, window.innerWidth - 50) - margin.left - margin.right;
 			height = Math.min(
 				width,
 				window.innerHeight - margin.top - margin.bottom - 20
@@ -93,7 +120,7 @@ export default class RadarChart extends Component {
 			radarChartOptions = {
 				w: width,
 				h: height,
-				labelFactor: 1.4,
+				labelFactor: 1.5,
 				margin: margin,
 				maxValue: 21,
 				levels: 7,
@@ -102,9 +129,9 @@ export default class RadarChart extends Component {
 			};
 		}
 
-		//Call function to draw the Radar chart
+		// Call function to draw the radar chart 
 		if (data.length > 0) {
-			this.RadarChart(".radarChart", data, radarChartOptions);
+			this.RadarChart(".radarChart", data, radarChartOptions, color);
 		} else if (data.length === 0) {
 			d3.select(".radarChart")
 				.select("svg")
@@ -114,7 +141,8 @@ export default class RadarChart extends Component {
 		}
 	};
 
-	RadarChart = (id, data, options) => {
+	// Radar chart function
+	RadarChart = (id, data, options, color) => {
 		var cfg = {
 			w: 100, //Width of the circle
 			h: 100, //Height of the circle
@@ -131,7 +159,8 @@ export default class RadarChart extends Component {
 			color: d3.scaleOrdinal(d3.schemeCategory10) //Color function
 		};
 
-		this.updateLegend();
+		// Update legend with colors
+		this.updateLegend(color);
 
 		//Put all of the options into a variable called cfg
 		if ("undefined" !== typeof options) {
@@ -154,6 +183,7 @@ export default class RadarChart extends Component {
 			})
 		);
 
+		// Seetings for axises
 		var allAxis = data[0].map(function(i, j) {
 				return i.axis;
 			}), //Names of each axis
@@ -168,9 +198,7 @@ export default class RadarChart extends Component {
 			.range([0, radius])
 			.domain([0, maxValue]);
 
-		/////////////////////////////////////////////////////////
-		//////////// Create the container SVG and g /////////////
-		/////////////////////////////////////////////////////////
+		/* Create svg and g */
 
 		//Remove whatever chart with the same id/class was present before
 		d3.select(id)
@@ -198,9 +226,8 @@ export default class RadarChart extends Component {
 					")"
 			);
 
-		/////////////////////////////////////////////////////////
-		/////////////// Draw the Circular grid //////////////////
-		/////////////////////////////////////////////////////////
+
+		/* Draw grid */
 
 		//Wrapper for the grid & axes
 		var axisGrid = g.append("g").attr("class", "axisWrapper");
@@ -237,9 +264,7 @@ export default class RadarChart extends Component {
 				return Format((maxValue * d) / cfg.levels);
 			});
 
-		/////////////////////////////////////////////////////////
-		//////////////////// Draw the axes //////////////////////
-		/////////////////////////////////////////////////////////
+		/* Draw axis */
 
 		//Create the straight lines radiating outward from the center
 		var axis = axisGrid
@@ -288,9 +313,7 @@ export default class RadarChart extends Component {
 			})
 			.call(wrap, cfg.wrapWidth);
 
-		/////////////////////////////////////////////////////////
-		///////////// Draw the radar chart blobs ////////////////
-		/////////////////////////////////////////////////////////
+		/* Draw radar chart blobs */
 
 		//The radial line function
 		var radarLine = d3
@@ -379,9 +402,7 @@ export default class RadarChart extends Component {
 			})
 			.style("fill-opacity", 0.8);
 
-		/////////////////////////////////////////////////////////
-		//////// Append invisible circles for tooltip ///////////
-		/////////////////////////////////////////////////////////
+		/* Append invisible circles for tooltip */
 
 		//Wrapper for the invisible circles on top
 		var blobCircleWrapper = g
@@ -434,9 +455,7 @@ export default class RadarChart extends Component {
 			.attr("class", "tooltip")
 			.style("opacity", 0);
 
-		/////////////////////////////////////////////////////////
-		/////////////////// Helper Function /////////////////////
-		/////////////////////////////////////////////////////////
+		/* Help functions */
 
 		//Taken from http://bl.ocks.org/mbostock/7555321
 		//Wraps SVG text
@@ -480,8 +499,8 @@ export default class RadarChart extends Component {
 		} //wrap
 	}; //RadarChart
 
-	updateLegend = () => {
-		var color = d3.scaleOrdinal().range(["red", "green", "yellow", "blue"]);
+	// Update legend function
+	updateLegend = color => {
 		console.log(this.props.data.length);
 		if (this.props.data.length > 1) {
 			d3.select(".legendList").html("");
@@ -493,7 +512,9 @@ export default class RadarChart extends Component {
 				.data(this.props.data)
 				.enter()
 				.append("div")
-				.attr("class", "legendItem row mx-auto");
+				.attr("class", "legendItem col-md-3 col-4 py-1")
+				.append("div")
+				.attr("class", "row");
 
 			legendDiv
 				.append("div")
@@ -504,10 +525,11 @@ export default class RadarChart extends Component {
 
 			legendDiv
 				.append("p")
-				.attr("class", "col")
+				.attr("class", "legendText col")
 				.text(function(d) {
 					return d.name_swe;
-				});
+				})
+				.style("font-size", "0.7rem");
 		} else {
 			d3.select(".legendList").html("");
 		}

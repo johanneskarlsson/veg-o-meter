@@ -57,19 +57,20 @@ class ProductDetails extends Component {
 										</div>
 									</div>
 									<div className="row p-2">
-											<p style={{backgroundColor: this.colorRanking(this.props.detail.water_footprint.ranking)}} className="col-lg-4 col-6">{`Vattenfotavtryck: ${this.props.detail.water_footprint.value} ${this.props.detail.water_footprint.unit}`}</p>
-											<p style={{backgroundColor: this.colorRanking(this.props.detail.emissions.ranking)}} className="col-lg-4 col-6">{`Växthusgasutsläpp: ${this.props.detail.emissions.value} ${this.props.detail.emissions.unit}`}</p>
-											<p style={{backgroundColor: this.colorRanking(this.props.detail.land_use.ranking)}} className="col-lg-4 col-6">{`Markanvändning: ${this.props.detail.land_use.value} ${this.props.detail.land_use.unit}`}</p>
-											<p style={{backgroundColor: this.colorRanking(this.props.detail.energy.ranking)}} className="col-lg-4 col-6">{`Energiförbrukning: ${this.props.detail.energy.value} ${this.props.detail.energy.unit}`}</p>
-											<p style={{backgroundColor: this.colorRanking(this.props.detail.freshwater_toxicity.ranking)}} className="col-lg-4 col-6">{`Sötvattenförgiftning: ${this.props.detail.freshwater_toxicity.value} ${this.props.detail.freshwater_toxicity.unit}`}</p>
-											<p style={{backgroundColor: this.colorRanking(this.props.detail.fossil_depletion.ranking)}} className="col-lg-4 col-6">{`Fossil utarmning: ${this.props.detail.fossil_depletion.value} ${this.props.detail.fossil_depletion.unit}`}</p>
-											<p style={{backgroundColor: this.colorRanking(this.props.detail.freshwater_eutrophication.ranking)}} className="col-lg-4 col-6">{`Sötvattenförsurning: ${this.props.detail.freshwater_eutrophication.value} ${this.props.detail.freshwater_eutrophication.unit}`}</p>
-											<p style={{backgroundColor: this.colorRanking(this.props.detail.marine_eutrophication.ranking)}} className="col-lg-4 col-6">{`Marinförsurning: ${this.props.detail.marine_eutrophication.value} ${this.props.detail.marine_eutrophication.unit}`}</p>
-											<p style={{backgroundColor: this.colorRanking(this.props.detail.terrestrial_acidification.ranking)}} className="col-lg-4 col-6">{`Markförsurning: ${this.props.detail.terrestrial_acidification.value} ${this.props.detail.terrestrial_acidification.unit}`}</p>
-											<p style={{backgroundColor: this.colorRanking(this.props.detail.terrestrial_toxicity.ranking)}} className="col-lg-4 col-6">{`Markförgiftning: ${this.props.detail.terrestrial_toxicity.value} ${this.props.detail.terrestrial_toxicity.unit}`}</p>
+									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(this.props.detail.water_footprint.ranking)}} className="m-0">{`Vattenfotavtryck: ${this.props.detail.water_footprint.value} ${this.props.detail.water_footprint.unit}`}</p></div>
+									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(this.props.detail.emissions.ranking)}} className="m-0">{`Växthusgasutsläpp: ${this.props.detail.emissions.value} ${this.props.detail.emissions.unit}`}</p></div>
+									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(this.props.detail.land_use.ranking)}} className="m-0">{`Markanvändning: ${this.props.detail.land_use.value} ${this.props.detail.land_use.unit}`}</p></div>
+									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(this.props.detail.energy.ranking)}} className="m-0">{`Energiförbrukning: ${this.props.detail.energy.value} ${this.props.detail.energy.unit}`}</p></div>
+									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(this.props.detail.freshwater_toxicity.ranking)}} className="m-0">{`Sötvattenförgiftning: ${this.props.detail.freshwater_toxicity.value} ${this.props.detail.freshwater_toxicity.unit}`}</p></div>
+									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(this.props.detail.fossil_depletion.ranking)}} className="m-0">{`Fossil utarmning: ${this.props.detail.fossil_depletion.value} ${this.props.detail.fossil_depletion.unit}`}</p></div>
+									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(this.props.detail.freshwater_eutrophication.ranking)}} className="m-0">{`Sötvattenförsurning: ${this.props.detail.freshwater_eutrophication.value} ${this.props.detail.freshwater_eutrophication.unit}`}</p></div>
+									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(this.props.detail.marine_eutrophication.ranking)}} className="m-0">{`Marinförsurning: ${this.props.detail.marine_eutrophication.value} ${this.props.detail.marine_eutrophication.unit}`}</p></div>
+									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(this.props.detail.terrestrial_acidification.ranking)}} className="m-0">{`Markförsurning: ${this.props.detail.terrestrial_acidification.value} ${this.props.detail.terrestrial_acidification.unit}`}</p></div>
+									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(this.props.detail.terrestrial_toxicity.ranking)}} className="m-0">{`Markförgiftning: ${this.props.detail.terrestrial_toxicity.value} ${this.props.detail.terrestrial_toxicity.unit}`}</p></div>
 										</div>									
 									</div>
 									<div className="col-md-6 pt-md-0 pt-4">
+									<h3>Ranking</h3>
 										<div className="row">
 												<div className="col-12 p-0">
 													<RadarChart data={this.props.radarChart} />
