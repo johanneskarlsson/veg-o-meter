@@ -82,6 +82,9 @@ export default class RadarChart extends Component {
 		// Create color range
 		var color = d3.scaleOrdinal().range(colorList);
 
+		// Max value
+		var maxValue = this.props.vegetables.length;
+
 		// Init chart options
 		var radarChartOptions;
 		var margin;
@@ -103,7 +106,7 @@ export default class RadarChart extends Component {
 				h: height,
 				labelFactor: 1.4,
 				margin: margin,
-				maxValue: 21,
+				maxValue: maxValue,
 				levels: 7,
 				roundStrokes: true,
 				color: color
@@ -122,7 +125,7 @@ export default class RadarChart extends Component {
 				h: height,
 				labelFactor: 1.5,
 				margin: margin,
-				maxValue: 21,
+				maxValue: maxValue,
 				levels: 7,
 				roundStrokes: true,
 				color: color

@@ -20,9 +20,11 @@ class ProductDetails extends Component {
 	};
 
 	colorRanking = (ranking) => {
+		var length = this.props.vegetables.length;
+		var middlePoint = Math.round(length/2);
 
 		var i = d3.scaleLinear()
-                .domain([1, 11, 21])
+                .domain([1, middlePoint, length])
                 .range(['#1a9850', '#fee08b', '#d73027']) // Green, yellow, red
                 .interpolate(d3.interpolateHcl);
 
@@ -55,6 +57,9 @@ class ProductDetails extends Component {
 												className="img-fluid"
 											/>
 										</div>
+										<div className="col-12">
+											<h4>{`Pris: ${this.props.detail.price.value} ${this.props.detail.price.unit}`}</h4>
+										</div>
 									</div>
 									<div className="row p-2">
 									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(this.props.detail.water_footprint.ranking)}} className="m-0">{`Vattenfotavtryck: ${this.props.detail.water_footprint.value} ${this.props.detail.water_footprint.unit}`}</p></div>
@@ -73,7 +78,7 @@ class ProductDetails extends Component {
 									<h3>Ranking</h3>
 										<div className="row">
 												<div className="col-12 p-0">
-													<RadarChart data={this.props.radarChart} />
+													<RadarChart data={this.props.radarChart} vegetables={this.props.vegetables} />
 												</div>
 										</div>
 									</div>
@@ -91,6 +96,7 @@ class ProductDetails extends Component {
 const mapStateToProps = state => {
 	console.log(state);
 	return {
+		vegetables: state.vegetables.vegetables,
 		detail: state.vegetables.detail,
 		radarChart: state.vegetables.radarChart
 	};
