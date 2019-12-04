@@ -87,7 +87,7 @@ header h1 {
 }
 
 .product-bg {
-	/* Add the blur effect */
+
 	background: url("./images/countryside_2.jpg");
 	background-size: cover;
 	background-position: 20% 70%;
@@ -95,9 +95,14 @@ header h1 {
 	min-height: 80vh;
 }
 
-.vh-20 {
-	height: 20vh;
+.vh-15 {
+	height: 15vh;
 }
+
+.vh-85 {
+	height: 90vh;
+}
+
 
 .nav-links {
 	padding: 0;
@@ -117,10 +122,6 @@ header h1 {
 	color: rgb(0, 223, 0);
 	transition: color 0.2s ease;
 	text-decoration: none;
-}
-
-.vh-80 {
-	height: 80vh;
 }
 
 @media only screen and (max-width: 600px) {

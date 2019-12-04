@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import RadarChart from "./radarChart";
+import CompareRadarChart from "./compareRadarChart";
 
 class CompareVisualizations extends Component {
 	render() {
 		return (
 			<div>
 				<h3>Ranking</h3>
-				<RadarChart data={this.props.compare} vegetables={this.props.vegetables} />
+				<CompareRadarChart data={this.props.compare} vegetables={this.props.vegetables} />
 			</div>
 		);
 	}

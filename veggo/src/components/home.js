@@ -5,7 +5,7 @@ export default class Home extends Component {
 	render() {
 		return (
             <div className="home">
-            <div className="vh-80 d-flex justify-content-center align-items-center">
+            <div className="vh-85 d-flex justify-content-center align-items-center">
 				{/*<video className="bg-video" playsInline="playsinline" autoPlay="autoplay" muted="muted" loop="loop"><source src={bg_video} type="video/mp4" /></video>*/}
 			<div className="container pb-5">
 				<div className="row">

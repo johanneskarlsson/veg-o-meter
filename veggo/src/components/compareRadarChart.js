@@ -3,7 +3,7 @@ import * as d3 from "d3";
 
 // D3-code from Nadieh Bremer at http://bl.ocks.org/nbremer/21746a9668ffdf6d8242
 
-export default class RadarChart extends Component {
+export default class CompareRadarChart extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { legend: null };
@@ -22,6 +22,8 @@ export default class RadarChart extends Component {
 
 	DrawChart = () => {
 	
+		console.log("CHART DATA")
+		console.log(this.props.data)
 		// Data
 		var data = this.props.data.map(vegetable => {
 			return [
@@ -134,9 +136,9 @@ export default class RadarChart extends Component {
 
 		// Call function to draw the radar chart 
 		if (data.length > 0) {
-			this.RadarChart(".radarChart", data, radarChartOptions, color);
+			this.RadarChart(".compareRadarChart", data, radarChartOptions, color);
 		} else if (data.length === 0) {
-			d3.select(".radarChart")
+			d3.select(".compareRadarChart")
 				.select("svg")
 				.remove();
 
@@ -541,7 +543,7 @@ export default class RadarChart extends Component {
 	render() {
 		return (
 			<div>
-				<div className="radarChart" />
+				<div className="compareRadarChart" />
 				<div className="legendList"></div>
 			</div>
 		);
