@@ -54,31 +54,36 @@ class Modal extends Component {
 				return (
                     
 <div className="modal fade bd-example-modal-lg" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div className="modal-dialog modal-lg">
-    <div className="modal-content">
-    <div className="compare-vegetables">
-						<div className="container p-4">
-							<div className="row">
-								<div className="col-12">
-									<h2 className="text-center">Produktdetaljer</h2>
-								</div>
+  	<div className="modal-dialog modal-lg">
+    	<div className="modal-content">
+    		<div className="compare-vegetables">
+
+
+
+							
+
+
+					<div className="modal-body">
+						<div className="row">
+
+							<div className="col-12 p-3">
+								<h2 className="text-center">{data.name_swe}</h2>
 							</div>
-							<div className="row pt-4">
-								<div className="col-md-5">
-									<h3>{data.name_swe}</h3>
-									<div className="row p-md-2">
-										<div className="col-md-12 mx-auto">
-											<img
-												src={require("../images/" + data.image)}
-												alt={data.name}
-												className="img-fluid"
-											/>
-										</div>
-										<div className="col-12">
-											<h4>{`Pris: ${data.price.value} ${data.price.unit}`}</h4>
-										</div>
-									</div>
-									<div className="row p-2">
+
+							<div className="veg-image col-12">
+								<img
+									src={require("../images/" + data.image)}
+									alt={data.name}
+									className="img-fluid"
+								/>
+							</div>
+							
+							<div className="col-12">
+								<h4>{`Pris: ${data.price.value} ${data.price.unit}`}</h4>
+							</div>
+
+							<div className="col-12">
+								<div className="row p-2">
 									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(data.water_footprint.ranking)}} className="m-0">{`Vattenfotavtryck: ${data.water_footprint.value} ${data.water_footprint.unit}`}</p></div>
 									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(data.emissions.ranking)}} className="m-0">{`Växthusgasutsläpp: ${data.emissions.value} ${data.emissions.unit}`}</p></div>
 									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(data.land_use.ranking)}} className="m-0">{`Markanvändning: ${data.land_use.value} ${data.land_use.unit}`}</p></div>
@@ -89,21 +94,23 @@ class Modal extends Component {
 									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(data.marine_eutrophication.ranking)}} className="m-0">{`Marinförsurning: ${data.marine_eutrophication.value} ${data.marine_eutrophication.unit}`}</p></div>
 									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(data.terrestrial_acidification.ranking)}} className="m-0">{`Markförsurning: ${data.terrestrial_acidification.value} ${data.terrestrial_acidification.unit}`}</p></div>
 									<div className="col-lg-4 col-6 p-1 pb-0"><p style={{backgroundColor: this.colorRanking(data.terrestrial_toxicity.ranking)}} className="m-0">{`Markförgiftning: ${data.terrestrial_toxicity.value} ${data.terrestrial_toxicity.unit}`}</p></div>
-										</div>									
-									</div>
-									<div className="col-md-7 pt-md-0 pt-4">
-									<h3>Ranking</h3>
-										<div className="row">
-												<div className="col-12 p-0">
-													<DetailRadarChart data={this.props.radarChart} vegetables={this.props.vegetables} />
-												</div>
-										</div>
+								</div>									
+							</div>
+
+							<div className="col-12">
+								<div className="row">
+									<div className="col-12 p-0">
+										<DetailRadarChart data={this.props.radarChart} vegetables={this.props.vegetables} />
 									</div>
 								</div>
 							</div>
+
 						</div>
-    </div>
-  </div>
+					</div>
+
+			</div>
+    	</div>
+  	</div>
 </div>
 
                     

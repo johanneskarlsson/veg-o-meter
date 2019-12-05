@@ -151,3 +151,43 @@ section.route-section {
 		font-size: 12px;
 	}
 }
+
+/* Products */
+.hover .hover--on,
+.hover:hover .hover--off {
+  display: none;
+}
+
+.hover:hover .hover--on {
+  display: inline;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.vegetable_name {
+  color:white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.blur {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  opacity: 1;
+}
+
+/* Modal */
+.veg-image {
+	height: 40vh;
+	overflow: hidden;
+}
+
