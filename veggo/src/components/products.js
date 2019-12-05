@@ -8,33 +8,46 @@ class Products extends Component {
 
     updateModal = event => {
         var productId = event.target.name;
-        console.log(productId)
+        console.log("this is a " + productId)
         this.props.get_details(productId);
     }
 
 	render() {
+
+
 		return (
-			<div className="container p-4">
+			<div className="container-fluid">
 				<div className="row">
 					<div className="col-12">
 						<div className="products">
-							<h2>Produkter</h2>
+							<div className="row justify-content-center ">
+								<h2>Produkter</h2>
+							</div>
 							<div className="row pt-4">
 								{this.props.vegetables.map(vegetable => {
 									return (
-										<div key={vegetable.id} className="col-md-2 col-sm-4 col-6" >
-											
+										<div key={vegetable.id} className="hover d-flex flex-fill col-md-3 col-sm-4 col-6 p-0 m-0">										
+										  
+										  	<img
+												src={require("../images/" + vegetable.image)}
+												alt={vegetable.name}
+												className="img-fluid p-0"
+											/>
+
+											<span className='hover--on'>
 												<img
-                                                    onClick={this.updateModal}
-                                                    data-toggle="modal" data-target=".bd-example-modal-lg"
-                                                    name={vegetable.id}
 													src={require("../images/" + vegetable.image)}
 													alt={vegetable.name}
-													className="img-fluid p-0"
+													className="blur img-fluid p-0"
+													name={vegetable.id}											
+													onClick={this.updateModal} 
+													data-toggle="modal" 
+													data-target=".bd-example-modal-lg"
+			                                        name={vegetable.id}
 												/>
-											
+												<h3 className="vegetable_name">{vegetable.name_swe}</h3>
+											</span>
 
-											<p>{vegetable.name_swe}</p>
 										</div>
 									);
 								})}
@@ -62,5 +75,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
 	get_details: id => dispatch({ type: "GET_DETAILS", payload: id })
 });
+
+    
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

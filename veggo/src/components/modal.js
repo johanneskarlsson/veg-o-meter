@@ -53,19 +53,21 @@ class Modal extends Component {
         const {data} = this.state;
 				return (
                     
-<div class="modal fade bd-example-modal-lg" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+<div className="modal fade bd-example-modal-lg" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div className="modal-dialog modal-lg">
+    <div className="modal-content">
     <div className="compare-vegetables">
-						<div className="container p-4">
+    				<div className="modal-header">
+																		<img
+												src={require("../images/" + data.image)}
+												alt={data.name}
+												className="img-fluid"
+											/>
+									<h2 className="text-center">{data.name_swe}</h2>
+					</div>
+					<div className="modal-body">
 							<div className="row">
-								<div className="col-12">
-									<h2 className="text-center">Produktdetaljer</h2>
-								</div>
-							</div>
-							<div className="row pt-4">
 								<div className="col-md-5">
-									<h3>{data.name_swe}</h3>
 									<div className="row p-md-2">
 										<div className="col-md-12 mx-auto">
 											<img
@@ -92,7 +94,6 @@ class Modal extends Component {
 										</div>									
 									</div>
 									<div className="col-md-7 pt-md-0 pt-4">
-									<h3>Ranking</h3>
 										<div className="row">
 												<div className="col-12 p-0">
 													<DetailRadarChart data={this.props.radarChart} vegetables={this.props.vegetables} />
@@ -101,6 +102,7 @@ class Modal extends Component {
 									</div>
 								</div>
 							</div>
+
 						</div>
     </div>
   </div>
