@@ -1,0 +1,1264 @@
+{
+	"vegetables": [
+		{
+			"id": 1,
+			"image": "asparagus.jpg",
+			"name": "Asparagus",
+			"name_swe": "Sparris",
+			"nutrition": {
+				"energy": {
+					"kcal": { "value": 270, "unit": "kcal/kg" },
+					"kj": { "value": 1130, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 24, "unit": "g/kg" },
+				"fat": { "value": 2, "unit": "g/kg" },
+				"protein": { "value": 31, "unit": "g/kg" },
+				"fiber": { "value": 15, "unit": "g/kg" },
+				"sugars": { "value": 12, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.5, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 1.1, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 330, "unit": "mg/kg" },
+				"folate": { "value": 1190, "unit": "μg/kg" },
+				"iron": { "value": 7, "unit": "mg/kg" }
+			},
+			"price": { "value": 147.6, "unit": "kr/kg" },
+			"energy": { "value": 64.7, "unit": "MJ/kg", "ranking": 21 },
+			"fossil_depletion": {
+				"value": 1.4,
+				"unit": "kg oil eq./kg",
+				"ranking": 21
+			},
+			"water_volume": { "value": 746, "unit": "L/kg" },
+			"water_footprint": { "value": 525, "unit": "Leq./kg", "ranking": 21 },
+			"emissions": { "value": 5.3, "unit": "kg CO2 eq./kg", "ranking": 21 },
+			"land_use": { "value": 4.1, "unit": "m2 a/kg", "ranking": 21 },
+			"freshwater_toxicity": {
+				"value": 99,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 15
+			},
+			"terrestrial_toxicity": {
+				"value": 22.5,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 21
+			},
+			"freshwater_eutrophication": {
+				"value": 0.6,
+				"unit": "g P eq./kg",
+				"ranking": 20
+			},
+			"marine_eutrophication": {
+				"value": 15.9,
+				"unit": "g N eq./kg",
+				"ranking": 21
+			},
+			"terrestrial_acidification": {
+				"value": 27.1,
+				"unit": "g SO2 eq./kg",
+				"ranking": 21
+			}
+		},
+		{
+			"id": 2,
+			"image": "aubergine.jpg",
+			"name": "Aubergine",
+            "name_swe": "Aubergine",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 190, "unit": "kcal/kg" },
+					"kj": { "value": 790, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 22, "unit": "g/kg" },
+				"fat": { "value": 1, "unit": "g/kg" },
+				"protein": { "value": 11.3, "unit": "g/kg" },
+				"fiber": { "value": 23.5, "unit": "g/kg" },
+				"sugars": { "value": 26, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.2, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0.1, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0.4, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 33, "unit": "mg/kg" },
+				"folate": { "value": 213, "unit": "μg/kg" },
+				"iron": { "value": 2.1, "unit": "mg/kg" }
+			},
+			"price": { "value": 44.07, "unit": "kr/kg" },
+			"energy": { "value": 46.0, "unit": "MJ/kg", "ranking": 20 },
+			"fossil_depletion": {
+				"value": 0.9,
+				"unit": "kg oil eq./kg",
+				"ranking": 20
+			},
+			"water_volume": { "value": 41, "unit": "L/kg" },
+			"water_footprint": { "value": 19, "unit": "Leq./kg", "ranking": 7 },
+			"emissions": { "value": 3.1, "unit": "kg CO2 eq./kg", "ranking": 20 },
+			"land_use": { "value": 0.2, "unit": "m2 a/kg", "ranking": 4 },
+			"freshwater_toxicity": {
+				"value": 230,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 20
+			},
+			"terrestrial_toxicity": {
+				"value": 3.6,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 11
+			},
+			"freshwater_eutrophication": {
+				"value": 0.4,
+				"unit": "g P eq./kg",
+				"ranking": 14
+			},
+			"marine_eutrophication": {
+				"value": 2.9,
+				"unit": "g N eq./kg",
+				"ranking": 10
+			},
+			"terrestrial_acidification": {
+				"value": 10.4,
+				"unit": "g SO2 eq./kg",
+				"ranking": 16
+			}
+		},
+		{
+			"id": 3,
+			"image": "brussels-sprouts.jpg",
+			"name": "Brussels sprouts",
+            "name_swe": "Brysselkål",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 440, "unit": "kcal/kg" },
+					"kj": { "value": 1820, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 47, "unit": "g/kg" },
+				"fat": { "value": 3, "unit": "g/kg" },
+				"protein": { "value": 34, "unit": "g/kg" },
+				"fiber": { "value": 42, "unit": "g/kg" },
+				"sugars": { "value": 26, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.5, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0.1, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 1.8, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 850, "unit": "mg/kg" },
+				"folate": { "value": 1590, "unit": "μg/kg" },
+				"iron": { "value": 14, "unit": "mg/kg" }
+			},
+			"price": { "value": 29.8, "unit": "kr/kg" },
+			"energy": { "value": 14.5, "unit": "MJ/kg", "ranking": 4 },
+			"fossil_depletion": {
+				"value": 0.2,
+				"unit": "kg oil eq./kg",
+				"ranking": 4
+			},
+			"water_volume": { "value": 39, "unit": "L/kg" },
+			"water_footprint": { "value": 19, "unit": "Leq./kg", "ranking": 7 },
+			"emissions": { "value": 1.0, "unit": "kg CO2 eq./kg", "ranking": 4 },
+			"land_use": { "value": 0.2, "unit": "m2 a/kg", "ranking": 3 },
+			"freshwater_toxicity": {
+				"value": 23,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 1
+			},
+			"terrestrial_toxicity": {
+				"value": 2.3,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 4
+			},
+			"freshwater_eutrophication": {
+				"value": 0.2,
+				"unit": "g P eq./kg",
+				"ranking": 4
+			},
+			"marine_eutrophication": {
+				"value": 2.3,
+				"unit": "g N eq./kg",
+				"ranking": 3
+			},
+			"terrestrial_acidification": {
+				"value": 3.3,
+				"unit": "g SO2 eq./kg",
+				"ranking": 1
+			}
+		},
+		{
+			"id": 4,
+			"image": "cabbage.jpg",
+			"name": "Cabbage",
+            "name_swe": "Vitkål",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 300, "unit": "kcal/kg" },
+					"kj": { "value": 1230, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 47, "unit": "g/kg" },
+				"fat": { "value": 1, "unit": "g/kg" },
+				"protein": { "value": 11.3, "unit": "g/kg" },
+				"fiber": { "value": 25.8, "unit": "g/kg" },
+				"sugars": { "value": 57, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.2, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0.6, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 462, "unit": "mg/kg" },
+				"folate": { "value": 191, "unit": "μg/kg" },
+				"iron": { "value": 2.1, "unit": "mg/kg" }
+			},
+			"price": { "value": 8.9, "unit": "kr/kg" },
+			"energy": { "value": 11.9, "unit": "MJ/kg", "ranking": 1 },
+			"fossil_depletion": {
+				"value": 0.2,
+				"unit": "kg oil eq./kg",
+				"ranking": 1
+			},
+			"water_volume": { "value": 20, "unit": "L/kg" },
+			"water_footprint": { "value": 8, "unit": "Leq./kg", "ranking": 4 },
+			"emissions": { "value": 0.9, "unit": "kg CO2 eq./kg", "ranking": 1 },
+			"land_use": { "value": 0.2, "unit": "m2 a/kg", "ranking": 5 },
+			"freshwater_toxicity": {
+				"value": 30,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 4
+			},
+			"terrestrial_toxicity": {
+				"value": 1.8,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 1
+			},
+			"freshwater_eutrophication": {
+				"value": 0.2,
+				"unit": "g P eq./kg",
+				"ranking": 3
+			},
+			"marine_eutrophication": {
+				"value": 2.5,
+				"unit": "g N eq./kg",
+				"ranking": 3
+			},
+			"terrestrial_acidification": {
+				"value": 3.3,
+				"unit": "g SO2 eq./kg",
+				"ranking": 1
+			}
+		},
+		{
+			"id": 5,
+			"image": "carrots.jpg",
+			"name": "Carrots",
+            "name_swe": "Morötter",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 360, "unit": "kcal/kg" },
+					"kj": { "value": 1520, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 66, "unit": "g/kg" },
+				"fat": { "value": 2.4, "unit": "g/kg" },
+				"protein": { "value": 6.9, "unit": "g/kg" },
+				"fiber": { "value": 24.2, "unit": "g/kg" },
+				"sugars": { "value": 62, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.5, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 1.4, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 49, "unit": "mg/kg" },
+				"folate": { "value": 222, "unit": "μg/kg" },
+				"iron": { "value": 1.9, "unit": "mg/kg" }
+			},
+			"price": { "value": 9.9, "unit": "kr/kg" },
+			"energy": { "value": 18.4, "unit": "MJ/kg", "ranking": 7 },
+			"fossil_depletion": {
+				"value": 0.3,
+				"unit": "kg oil eq./kg",
+				"ranking": 6
+			},
+			"water_volume": { "value": 17, "unit": "L/kg" },
+			"water_footprint": { "value": 7, "unit": "Leq./kg", "ranking": 2 },
+			"emissions": { "value": 1.3, "unit": "kg CO2 eq./kg", "ranking": 9 },
+			"land_use": { "value": 0.4, "unit": "m2 a/kg", "ranking": 14 },
+			"freshwater_toxicity": {
+				"value": 99,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 15
+			},
+			"terrestrial_toxicity": {
+				"value": 2.6,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 5
+			},
+			"freshwater_eutrophication": {
+				"value": 0.3,
+				"unit": "g P eq./kg",
+				"ranking": 12
+			},
+			"marine_eutrophication": {
+				"value": 2.8,
+				"unit": "g N eq./kg",
+				"ranking": 10
+			},
+			"terrestrial_acidification": {
+				"value": 4.6,
+				"unit": "g SO2 eq./kg",
+				"ranking": 6
+			}
+		},
+		{
+			"id": 6,
+			"image": "cauliflower.jpg",
+			"name": "Cauliflower",
+            "name_swe": "Blomkål",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 240, "unit": "kcal/kg" },
+					"kj": { "value": 1020, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 26, "unit": "g/kg" },
+				"fat": { "value": 1.7, "unit": "g/kg" },
+				"protein": { "value": 19.4, "unit": "g/kg" },
+				"fiber": { "value": 23.3, "unit": "g/kg" },
+				"sugars": { "value": 27, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.4, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0.1, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0.8, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 791, "unit": "mg/kg" },
+				"folate": { "value": 884, "unit": "μg/kg" },
+				"iron": { "value": 3.4, "unit": "mg/kg" }
+			},
+			"price": { "value": 32.9, "unit": "kr/kg" },
+			"energy": { "value": 17.4, "unit": "MJ/kg", "ranking": 7 },
+			"fossil_depletion": {
+				"value": 0.2,
+				"unit": "kg oil eq./kg",
+				"ranking": 4
+			},
+			"water_volume": { "value": 46, "unit": "L/kg" },
+			"water_footprint": { "value": 26, "unit": "Leq./kg", "ranking": 11 },
+			"emissions": { "value": 1.1, "unit": "kg CO2 eq./kg", "ranking": 4 },
+			"land_use": { "value": 0.2, "unit": "m2 a/kg", "ranking": 5 },
+			"freshwater_toxicity": {
+				"value": 28,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 2
+			},
+			"terrestrial_toxicity": {
+				"value": 1.9,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 2
+			},
+			"freshwater_eutrophication": {
+				"value": 0.2,
+				"unit": "g P eq./kg",
+				"ranking": 5
+			},
+			"marine_eutrophication": {
+				"value": 4.7,
+				"unit": "g N eq./kg",
+				"ranking": 15
+			},
+			"terrestrial_acidification": {
+				"value": 4.3,
+				"unit": "g SO2 eq./kg",
+				"ranking": 5
+			}
+		},
+		{
+			"id": 7,
+			"image": "cucumber.jpg",
+			"name": "Cucumber",
+            "name_swe": "Gurka",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 130, "unit": "kcal/kg" },
+					"kj": { "value": 550, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 23, "unit": "g/kg" },
+				"fat": { "value": 0.5, "unit": "g/kg" },
+				"protein": { "value": 8.1, "unit": "g/kg" },
+				"fiber": { "value": 0, "unit": "g/kg" },
+				"sugars": { "value": 17, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.2, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0.2, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 101, "unit": "mg/kg" },
+				"folate": { "value": 104, "unit": "μg/kg" },
+				"iron": { "value": 2.7, "unit": "mg/kg" }
+			},
+			"price": { "value": 29.73, "unit": "kr/kg" },
+			"energy": { "value": 30.0, "unit": "MJ/kg", "ranking": 15 },
+			"fossil_depletion": {
+				"value": 0.6,
+				"unit": "kg oil eq./kg",
+				"ranking": 15
+			},
+			"water_volume": { "value": 16, "unit": "L/kg" },
+			"water_footprint": { "value": 7, "unit": "Leq./kg", "ranking": 2 },
+			"emissions": { "value": 2.1, "unit": "kg CO2 eq./kg", "ranking": 13 },
+			"land_use": { "value": 0.1, "unit": "m2 a/kg", "ranking": 1 },
+			"freshwater_toxicity": {
+				"value": 104,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 15
+			},
+			"terrestrial_toxicity": {
+				"value": 2.7,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 5
+			},
+			"freshwater_eutrophication": {
+				"value": 0.2,
+				"unit": "g P eq./kg",
+				"ranking": 5
+			},
+			"marine_eutrophication": {
+				"value": 1.2,
+				"unit": "g N eq./kg",
+				"ranking": 1
+			},
+			"terrestrial_acidification": {
+				"value": 6.4,
+				"unit": "g SO2 eq./kg",
+				"ranking": 12
+			}
+		},
+		{
+			"id": 8,
+			"image": "lettuce.jpg",
+			"name": "Lettuce",
+            "name_swe": "Salladskål",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 206, "unit": "kcal/kg" },
+					"kj": { "value": 860, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 26.8, "unit": "g/kg" },
+				"fat": { "value": 1.4, "unit": "g/kg" },
+				"protein": { "value": 13.1, "unit": "g/kg" },
+				"fiber": { "value": 16.2, "unit": "g/kg" },
+				"sugars": { "value": 25, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.3, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0.2, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0.6, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 390, "unit": "mg/kg" },
+				"folate": { "value": 1500, "unit": "μg/kg" },
+				"iron": { "value": 3.4, "unit": "mg/kg" }
+			},
+			"price": { "value": 32.9, "unit": "kr/kg" },
+			"energy": { "value": 22.5, "unit": "MJ/kg", "ranking": 10 },
+			"fossil_depletion": {
+				"value": 0.4,
+				"unit": "kg oil eq./kg",
+				"ranking": 10
+			},
+			"water_volume": { "value": 46, "unit": "L/kg" },
+			"water_footprint": { "value": 27, "unit": "Leq./kg", "ranking": 11 },
+			"emissions": { "value": 1.8, "unit": "kg CO2 eq./kg", "ranking": 11 },
+			"land_use": { "value": 0.1, "unit": "m2 a/kg", "ranking": 2 },
+			"freshwater_toxicity": {
+				"value": 42,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 7
+			},
+			"terrestrial_toxicity": {
+				"value": 3.0,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 8
+			},
+			"freshwater_eutrophication": {
+				"value": 0.3,
+				"unit": "g P eq./kg",
+				"ranking": 9
+			},
+			"marine_eutrophication": {
+				"value": 2.3,
+				"unit": "g N eq./kg",
+				"ranking": 3
+			},
+			"terrestrial_acidification": {
+				"value": 5.0,
+				"unit": "g SO2 eq./kg",
+				"ranking": 6
+			}
+		},
+		{
+			"id": 9,
+			"image": "onion.jpg",
+			"name": "Onion",
+            "name_swe": "Lök",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 390, "unit": "kcal/kg" },
+					"kj": { "value": 1630, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 73, "unit": "g/kg" },
+				"fat": { "value": 1, "unit": "g/kg" },
+				"protein": { "value": 11.9, "unit": "g/kg" },
+				"fiber": { "value": 18.8, "unit": "g/kg" },
+				"sugars": { "value": 45, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.3, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0.1, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0.4, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 78, "unit": "mg/kg" },
+				"folate": { "value": 204, "unit": "μg/kg" },
+				"iron": { "value": 2.1, "unit": "mg/kg" }
+			},
+			"price": { "value": 9.9, "unit": "kr/kg" },
+			"energy": { "value": 16.0, "unit": "MJ/kg", "ranking": 5 },
+			"fossil_depletion": {
+				"value": 0.3,
+				"unit": "kg oil eq./kg",
+				"ranking": 6
+			},
+			"water_volume": { "value": 61, "unit": "L/kg" },
+			"water_footprint": { "value": 27, "unit": "Leq./kg", "ranking": 11 },
+			"emissions": { "value": 1.2, "unit": "kg CO2 eq./kg", "ranking": 6 },
+			"land_use": { "value": 0.3, "unit": "m2 a/kg", "ranking": 13 },
+			"freshwater_toxicity": {
+				"value": 39,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 7
+			},
+			"terrestrial_toxicity": {
+				"value": 2.5,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 5
+			},
+			"freshwater_eutrophication": {
+				"value": 0.2,
+				"unit": "g P eq./kg",
+				"ranking": 8
+			},
+			"marine_eutrophication": {
+				"value": 3.3,
+				"unit": "g N eq./kg",
+				"ranking": 14
+			},
+			"terrestrial_acidification": {
+				"value": 5.5,
+				"unit": "g SO2 eq./kg",
+				"ranking": 10
+			}
+		},
+		{
+			"id": 10,
+			"image": "peas.jpg",
+			"name": "Peas",
+            "name_swe": "Ärter",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 690, "unit": "kcal/kg" },
+					"kj": { "value": 2900, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 89, "unit": "g/kg" },
+				"fat": { "value": 4, "unit": "g/kg" },
+				"protein": { "value": 51.9, "unit": "g/kg" },
+				"fiber": { "value": 44.3, "unit": "g/kg" },
+				"sugars": { "value": 50, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.8, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0.3, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 2.2, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 229, "unit": "mg/kg" },
+				"folate": { "value": 831, "unit": "μg/kg" },
+				"iron": { "value": 12.6, "unit": "mg/kg" }
+			},
+			"price": { "value": 24.83, "unit": "kr/kg" },
+			"energy": { "value": 33.2, "unit": "MJ/kg", "ranking": 16 },
+			"fossil_depletion": {
+				"value": 0.6,
+				"unit": "kg oil eq./kg",
+				"ranking": 15
+			},
+			"water_volume": { "value": 58, "unit": "L/kg" },
+			"water_footprint": { "value": 24, "unit": "Leq./kg", "ranking": 11 },
+			"emissions": { "value": 2.7, "unit": "kg CO2 eq./kg", "ranking": 18 },
+			"land_use": { "value": 3.3, "unit": "m2 a/kg", "ranking": 20 },
+			"freshwater_toxicity": {
+				"value": 70,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 13
+			},
+			"terrestrial_toxicity": {
+				"value": 4.0,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 15
+			},
+			"freshwater_eutrophication": {
+				"value": 0.6,
+				"unit": "g P eq./kg",
+				"ranking": 20
+			},
+			"marine_eutrophication": {
+				"value": 11.2,
+				"unit": "g N eq./kg",
+				"ranking": 20
+			},
+			"terrestrial_acidification": {
+				"value": 10.5,
+				"unit": "g SO2 eq./kg",
+				"ranking": 16
+			}
+		},
+		{
+			"id": 11,
+			"image": "pepper.jpg",
+			"name": "Pepper",
+            "name_swe": "Grön peppar",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 200, "unit": "kcal/kg" },
+					"kj": { "value": 840, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 46, "unit": "g/kg" },
+				"fat": { "value": 1.7, "unit": "g/kg" },
+				"protein": { "value": 8.6, "unit": "g/kg" },
+				"fiber": { "value": 17, "unit": "g/kg" },
+				"sugars": { "value": 24, "unit": "g/kg" },
+				"saturated_fat": { "value": 1, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 1, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 804, "unit": "mg/kg" },
+				"folate": { "value": 100, "unit": "μg/kg" },
+				"iron": { "value": 3, "unit": "mg/kg" }
+			},
+			"price": { "value": 79.9, "unit": "kr/kg" },
+			"energy": { "value": 32.2, "unit": "MJ/kg", "ranking": 16 },
+			"fossil_depletion": {
+				"value": 0.6,
+				"unit": "kg oil eq./kg",
+				"ranking": 15
+			},
+			"water_volume": { "value": 8, "unit": "L/kg" },
+			"water_footprint": { "value": 4, "unit": "Leq./kg", "ranking": 1 },
+			"emissions": { "value": 2.2, "unit": "kg CO2 eq./kg", "ranking": 15 },
+			"land_use": { "value": 0.2, "unit": "m2 a/kg", "ranking": 5 },
+			"freshwater_toxicity": {
+				"value": 223,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 20
+			},
+			"terrestrial_toxicity": {
+				"value": 3.0,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 8
+			},
+			"freshwater_eutrophication": {
+				"value": 0.3,
+				"unit": "g P eq./kg",
+				"ranking": 12
+			},
+			"marine_eutrophication": {
+				"value": 1.9,
+				"unit": "g N eq./kg",
+				"ranking": 2
+			},
+			"terrestrial_acidification": {
+				"value": 8.1,
+				"unit": "g SO2 eq./kg",
+				"ranking": 14
+			}
+		},
+		{
+			"id": 12,
+			"image": "spinach.jpg",
+			"name": "Spinach",
+            "name_swe": "Spenat",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 240, "unit": "kcal/kg" },
+					"kj": { "value": 1010, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 8, "unit": "g/kg" },
+				"fat": { "value": 3.9, "unit": "g/kg" },
+				"protein": { "value": 33.1, "unit": "g/kg" },
+				"fiber": { "value": 20.7, "unit": "g/kg" },
+				"sugars": { "value": 3, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.6, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0.3, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 3.1, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 367, "unit": "mg/kg" },
+				"folate": { "value": 2020, "unit": "μg/kg" },
+				"iron": { "value": 20.8, "unit": "mg/kg" }
+			},
+			"price": { "value": 99.6, "unit": "kr/kg" },
+			"energy": { "value": 21.7, "unit": "MJ/kg", "ranking": 10 },
+			"fossil_depletion": {
+				"value": 0.4,
+				"unit": "kg oil eq./kg",
+				"ranking": 12
+			},
+			"water_volume": { "value": 81, "unit": "L/kg" },
+			"water_footprint": { "value": 51, "unit": "Leq./kg", "ranking": 17 },
+			"emissions": { "value": 1.7, "unit": "kg CO2 eq./kg", "ranking": 10 },
+			"land_use": { "value": 0.2, "unit": "m2 a/kg", "ranking": 5 },
+			"freshwater_toxicity": {
+				"value": 41,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 7
+			},
+			"terrestrial_toxicity": {
+				"value": 4.2,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 15
+			},
+			"freshwater_eutrophication": {
+				"value": 0.4,
+				"unit": "g P eq./kg",
+				"ranking": 15
+			},
+			"marine_eutrophication": {
+				"value": 2.6,
+				"unit": "g N eq./kg",
+				"ranking": 3
+			},
+			"terrestrial_acidification": {
+				"value": 5.9,
+				"unit": "g SO2 eq./kg",
+				"ranking": 11
+			}
+		},
+		{
+			"id": 13,
+			"image": "squash.jpg",
+			"name": "Squash",
+            "name_swe": "Squash",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 140, "unit": "kcal/kg" },
+					"kj": { "value": 610, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 25, "unit": "g/kg" },
+				"fat": { "value": 1, "unit": "g/kg" },
+				"protein": { "value": 0, "unit": "g/kg" },
+				"fiber": { "value": 18, "unit": "g/kg" },
+				"sugars": { "value": 30, "unit": "g/kg" },
+				"saturated_fat": { "value": 0, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 239, "unit": "mg/kg" },
+				"folate": { "value": 304, "unit": "μg/kg" },
+				"iron": { "value": 2.8, "unit": "mg/kg" }
+			},
+			"price": { "value": 41.74, "unit": "kr/kg" },
+			"energy": { "value": 16.4, "unit": "MJ/kg", "ranking": 5 },
+			"fossil_depletion": {
+				"value": 0.3,
+				"unit": "kg oil eq./kg",
+				"ranking": 5
+			},
+			"water_volume": { "value": 38, "unit": "L/kg", "ranking": 6 },
+			"water_footprint": { "value": 21, "unit": "Leq./kg", "ranking": 10 },
+			"emissions": { "value": 1.2, "unit": "kg CO2 eq./kg", "ranking": 6 },
+			"land_use": { "value": 0.2, "unit": "m2 a/kg", "ranking": 5 },
+			"freshwater_toxicity": {
+				"value": 27,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 2
+			},
+			"terrestrial_toxicity": {
+				"value": 2.0,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 2
+			},
+			"freshwater_eutrophication": {
+				"value": 0.2,
+				"unit": "g P eq./kg",
+				"ranking": 7
+			},
+			"marine_eutrophication": {
+				"value": 2.3,
+				"unit": "g N eq./kg",
+				"ranking": 3
+			},
+			"terrestrial_acidification": {
+				"value": 4.8,
+				"unit": "g SO2 eq./kg",
+				"ranking": 6
+			}
+		},
+		{
+			"id": 14,
+			"image": "sweetcorn.jpg",
+			"name": "Sweetcorn",
+            "name_swe": "Majs",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 990, "unit": "kcal/kg" },
+					"kj": { "value": 4140, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 156, "unit": "g/kg" },
+				"fat": { "value": 15, "unit": "g/kg" },
+				"protein": { "value": 30.5, "unit": "g/kg" },
+				"fiber": { "value": 52, "unit": "g/kg" },
+				"sugars": { "value": 36, "unit": "g/kg" },
+				"saturated_fat": { "value": 6.5, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 3.1, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 3.3, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 57, "unit": "mg/kg" },
+				"folate": { "value": 683, "unit": "μg/kg" },
+				"iron": { "value": 3.6, "unit": "mg/kg" }
+			},
+			"price": { "value": 33.11, "unit": "kr/kg" },
+			"energy": { "value": 26.9, "unit": "MJ/kg", "ranking": 14 },
+			"fossil_depletion": {
+				"value": 0.5,
+				"unit": "kg oil eq./kg",
+				"ranking": 13
+			},
+			"water_volume": { "value": 97, "unit": "L/kg" },
+			"water_footprint": { "value": 25, "unit": "Leq./kg", "ranking": 11 },
+			"emissions": { "value": 2.2, "unit": "kg CO2 eq./kg", "ranking": 15 },
+			"land_use": { "value": 0.6, "unit": "m2 a/kg", "ranking": 17 },
+			"freshwater_toxicity": {
+				"value": 74,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 14
+			},
+			"terrestrial_toxicity": {
+				"value": 18.2,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 20
+			},
+			"freshwater_eutrophication": {
+				"value": 0.5,
+				"unit": "g P eq./kg",
+				"ranking": 17
+			},
+			"marine_eutrophication": {
+				"value": 8.3,
+				"unit": "g N eq./kg",
+				"ranking": 19
+			},
+			"terrestrial_acidification": {
+				"value": 14.3,
+				"unit": "g SO2 eq./kg",
+				"ranking": 20
+			}
+		},
+		{
+			"id": 15,
+			"image": "tomatoes.jpg",
+			"name": "Tomatoes",
+            "name_swe": "Tomater",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 180, "unit": "kcal/kg" },
+					"kj": { "value": 730, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 26, "unit": "g/kg" },
+				"fat": { "value": 1.3, "unit": "g/kg" },
+				"protein": { "value": 8.1, "unit": "g/kg" },
+				"fiber": { "value": 13, "unit": "g/kg" },
+				"sugars": { "value": 28, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.2, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0.2, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0.6, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 148, "unit": "mg/kg" },
+				"folate": { "value": 166, "unit": "μg/kg" },
+				"iron": { "value": 1.9, "unit": "mg/kg" }
+			},
+			"price": { "value": 26.9, "unit": "kr/kg" },
+			"energy": { "value": 35.8, "unit": "MJ/kg", "ranking": 19 },
+			"fossil_depletion": {
+				"value": 0.7,
+				"unit": "kg oil eq./kg",
+				"ranking": 19
+			},
+			"water_volume": { "value": 95, "unit": "L/kg" },
+			"water_footprint": { "value": 40, "unit": "Leq./kg", "ranking": 16 },
+			"emissions": { "value": 2.4, "unit": "kg CO2 eq./kg", "ranking": 17 },
+			"land_use": { "value": 0.5, "unit": "m2 a/kg", "ranking": 16 },
+			"freshwater_toxicity": {
+				"value": 99,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 15
+			},
+			"terrestrial_toxicity": {
+				"value": 4.2,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 15
+			},
+			"freshwater_eutrophication": {
+				"value": 0.4,
+				"unit": "g P eq./kg",
+				"ranking": 15
+			},
+			"marine_eutrophication": {
+				"value": 2.4,
+				"unit": "g N eq./kg",
+				"ranking": 3
+			},
+			"terrestrial_acidification": {
+				"value": 9.7,
+				"unit": "g SO2 eq./kg",
+				"ranking": 15
+			}
+		},
+		{
+			"id": 16,
+			"image": "courgettes.jpg",
+			"name": "Courgettes",
+            "name_swe": "Zucchini",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 140, "unit": "kcal/kg" },
+					"kj": { "value": 610, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 25, "unit": "g/kg" },
+				"fat": { "value": 1, "unit": "g/kg" },
+				"protein": { "value": 0, "unit": "g/kg" },
+				"fiber": { "value": 18, "unit": "g/kg" },
+				"sugars": { "value": 30, "unit": "g/kg" },
+				"saturated_fat": { "value": 0, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 239, "unit": "mg/kg" },
+				"folate": { "value": 304, "unit": "μg/kg" },
+				"iron": { "value": 2.8, "unit": "mg/kg" }
+			},
+			"price": { "value": 41.74, "unit": "kr/kg" },
+			"energy": { "value": 11.8, "unit": "MJ/kg", "ranking": 1 },
+			"fossil_depletion": {
+				"value": 0.2,
+				"unit": "kg oil eq./kg",
+				"ranking": 2
+			},
+			"water_volume": { "value": 27, "unit": "L/kg" },
+			"water_footprint": { "value": 18, "unit": "Leq./kg", "ranking": 6 },
+			"emissions": { "value": 0.9, "unit": "kg CO2 eq./kg", "ranking": 1 },
+			"land_use": { "value": 0.2, "unit": "m2 a/kg", "ranking": 5 },
+			"freshwater_toxicity": {
+				"value": 29,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 4
+			},
+			"terrestrial_toxicity": {
+				"value": 3.6,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 11
+			},
+			"freshwater_eutrophication": {
+				"value": 0.1,
+				"unit": "g P eq./kg",
+				"ranking": 1
+			},
+			"marine_eutrophication": {
+				"value": 2.2,
+				"unit": "g N eq./kg",
+				"ranking": 3
+			},
+			"terrestrial_acidification": {
+				"value": 3.9,
+				"unit": "g SO2 eq./kg",
+				"ranking": 3
+			}
+		},
+		{
+			"id": 17,
+			"image": "beans.jpg",
+			"name": "Beans",
+            "name_swe": "Bönor",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 300, "unit": "kcal/kg" },
+					"kj": { "value": 1250, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 35, "unit": "g/kg" },
+				"fat": { "value": 1, "unit": "g/kg" },
+				"protein": { "value": 18, "unit": "g/kg" },
+				"fiber": { "value": 39, "unit": "g/kg" },
+				"sugars": { "value": 17, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.3, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0.5, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 160, "unit": "mg/kg" },
+				"folate": { "value": 360, "unit": "μg/kg" },
+				"iron": { "value": 10, "unit": "mg/kg" }
+			},
+			"price": { "value": 15.16, "unit": "kr/kg" },
+			"energy": { "value": 32.7, "unit": "MJ/kg", "ranking": 16 },
+			"fossil_depletion": {
+				"value": 0.7,
+				"unit": "kg oil eq./kg",
+				"ranking": 18
+			},
+			"water_volume": { "value": 221, "unit": "L/kg" },
+			"water_footprint": { "value": 65, "unit": "Leq./kg", "ranking": 20 },
+			"emissions": { "value": 2.8, "unit": "kg CO2 eq./kg", "ranking": 18 },
+			"land_use": { "value": 1.7, "unit": "m2 a/kg", "ranking": 19 },
+			"freshwater_toxicity": {
+				"value": 53,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 11
+			},
+			"terrestrial_toxicity": {
+				"value": 3.5,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 11
+			},
+			"freshwater_eutrophication": {
+				"value": 0.5,
+				"unit": "g P eq./kg",
+				"ranking": 17
+			},
+			"marine_eutrophication": {
+				"value": 6.7,
+				"unit": "g N eq./kg",
+				"ranking": 18
+			},
+			"terrestrial_acidification": {
+				"value": 11.5,
+				"unit": "g SO2 eq./kg",
+				"ranking": 18
+			}
+		},
+		{
+			"id": 18,
+			"image": "broccoli.jpg",
+			"name": "Broccoli",
+            "name_swe": "Broccoli",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 350, "unit": "kcal/kg" },
+					"kj": { "value": 1470, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 31.2, "unit": "g/kg" },
+				"fat": { "value": 2.7, "unit": "g/kg" },
+				"protein": { "value": 35, "unit": "g/kg" },
+				"fiber": { "value": 31, "unit": "g/kg" },
+				"sugars": { "value": 18, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.4, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0.1, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0.9, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 830, "unit": "mg/kg" },
+				"folate": { "value": 1750, "unit": "μg/kg" },
+				"iron": { "value": 6.6, "unit": "mg/kg" }
+			},
+			"price": { "value": 59.6, "unit": "kr/kg" },
+			"energy": { "value": 23.3, "unit": "MJ/kg", "ranking": 10 },
+			"fossil_depletion": {
+				"value": 0.4,
+				"unit": "kg oil eq./kg",
+				"ranking": 10
+			},
+			"water_volume": { "value": 92, "unit": "L/kg" },
+			"water_footprint": { "value": 56, "unit": "Leq./kg", "ranking": 18 },
+			"emissions": { "value": 1.8, "unit": "kg CO2 eq./kg", "ranking": 11 },
+			"land_use": { "value": 0.2, "unit": "m2 a/kg", "ranking": 5 },
+			"freshwater_toxicity": {
+				"value": 40,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 7
+			},
+			"terrestrial_toxicity": {
+				"value": 3.5,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 11
+			},
+			"freshwater_eutrophication": {
+				"value": 0.3,
+				"unit": "g P eq./kg",
+				"ranking": 10
+			},
+			"marine_eutrophication": {
+				"value": 5.3,
+				"unit": "g N eq./kg",
+				"ranking": 16
+			},
+			"terrestrial_acidification": {
+				"value": 6.3,
+				"unit": "g SO2 eq./kg",
+				"ranking": 12
+			}
+		},
+		{
+			"id": 19,
+			"image": "potatoes.jpg",
+			"name": "Potatoes",
+            "name_swe": "Potatis",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 790, "unit": "kcal/kg" },
+					"kj": { "value": 3290, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 164, "unit": "g/kg" },
+				"fat": { "value": 1, "unit": "g/kg" },
+				"protein": { "value": 17.4, "unit": "g/kg" },
+				"fiber": { "value": 20.9, "unit": "g/kg" },
+				"sugars": { "value": 8, "unit": "g/kg" },
+				"saturated_fat": { "value": 0, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 236, "unit": "mg/kg" },
+				"folate": { "value": 191, "unit": "μg/kg" },
+				"iron": { "value": 4, "unit": "mg/kg" }
+			},
+			"price": { "value": 9.9, "unit": "kr/kg" },
+			"energy": { "value": 24.6, "unit": "MJ/kg", "ranking": 13 },
+			"fossil_depletion": {
+				"value": 0.5,
+				"unit": "kg oil eq./kg",
+				"ranking": 13
+			},
+			"water_volume": { "value": 47, "unit": "L/kg" },
+			"water_footprint": { "value": 19, "unit": "Leq./kg", "ranking": 7 },
+			"emissions": { "value": 2.0, "unit": "kg CO2 eq./kg", "ranking": 13 },
+			"land_use": { "value": 1.0, "unit": "m2 a/kg", "ranking": 18 },
+			"freshwater_toxicity": {
+				"value": 54,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 11
+			},
+			"terrestrial_toxicity": {
+				"value": 11.8,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 19
+			},
+			"freshwater_eutrophication": {
+				"value": 0.6,
+				"unit": "g P eq./kg",
+				"ranking": 19
+			},
+			"marine_eutrophication": {
+				"value": 5.8,
+				"unit": "g N eq./kg",
+				"ranking": 17
+			},
+			"terrestrial_acidification": {
+				"value": 12.5,
+				"unit": "g SO2 eq./kg",
+				"ranking": 19
+			}
+		},
+		{
+			"id": 20,
+			"image": "celery.jpg",
+			"name": "Celery",
+            "name_swe": "Selleri",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 130, "unit": "kcal/kg" },
+					"kj": { "value": 560, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 15, "unit": "g/kg" },
+				"fat": { "value": 1, "unit": "g/kg" },
+				"protein": { "value": 7, "unit": "g/kg" },
+				"fiber": { "value": 18, "unit": "g/kg" },
+				"sugars": { "value": 12, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.2, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0.2, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0.4, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 70, "unit": "mg/kg" },
+				"folate": { "value": 90, "unit": "μg/kg" },
+				"iron": { "value": 4, "unit": "mg/kg" }
+			},
+			"price": { "value": 42.25, "unit": "kr/kg" },
+			"energy": { "value": 11.8, "unit": "MJ/kg", "ranking": 1 },
+			"fossil_depletion": {
+				"value": 0.2,
+				"unit": "kg oil eq./kg",
+				"ranking": 2
+			},
+			"water_volume": { "value": 77, "unit": "L/kg" },
+			"water_footprint": { "value": 54, "unit": "Leq./kg", "ranking": 18 },
+			"emissions": { "value": 0.8, "unit": "kg CO2 eq./kg", "ranking": 1 },
+			"land_use": { "value": 0.2, "unit": "m2 a/kg", "ranking": 5 },
+			"freshwater_toxicity": {
+				"value": 32,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 6
+			},
+			"terrestrial_toxicity": {
+				"value": 4.6,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 18
+			},
+			"freshwater_eutrophication": {
+				"value": 0.1,
+				"unit": "g P eq./kg",
+				"ranking": 1
+			},
+			"marine_eutrophication": {
+				"value": 3.1,
+				"unit": "g N eq./kg",
+				"ranking": 13
+			},
+			"terrestrial_acidification": {
+				"value": 3.8,
+				"unit": "g SO2 eq./kg",
+				"ranking": 3
+			}
+		},
+		{
+			"id": 21,
+			"image": "beetroot.jpg",
+			"name": "Beetroot",
+            "name_swe": "Rödbetor",
+            "nutrition": {
+				"energy": {
+					"kcal": { "value": 510, "unit": "kcal/kg" },
+					"kj": { "value": 2120, "unit": "kJ/kg" }
+				},
+				"carbohydrates": { "value": 98, "unit": "g/kg" },
+				"fat": { "value": 1, "unit": "g/kg" },
+				"protein": { "value": 11.9, "unit": "g/kg" },
+				"fiber": { "value": 26.4, "unit": "g/kg" },
+				"sugars": { "value": 94, "unit": "g/kg" },
+				"saturated_fat": { "value": 0.1, "unit": "g/kg" },
+				"monounsaturated_fat": { "value": 0.1, "unit": "g/kg" },
+				"polyunsaturated_fat": { "value": 0.3, "unit": "g/kg" },
+				"vitamin_d": { "value": 0, "unit": "μg/kg" },
+				"vitamin_c": { "value": 33, "unit": "mg/kg" },
+				"folate": { "value": 693, "unit": "μg/kg" },
+				"iron": { "value": 3.1, "unit": "mg/kg" }
+			},
+			"price": { "value": 9.9, "unit": "kr/kg" },
+			"energy": { "value": 18.1, "unit": "MJ/kg", "ranking": 7 },
+			"fossil_depletion": {
+				"value": 0.3,
+				"unit": "kg oil eq./kg",
+				"ranking": 6
+			},
+			"water_volume": { "value": 32, "unit": "L/kg" },
+			"water_footprint": { "value": 14, "unit": "Leq./kg", "ranking": 5 },
+			"emissions": { "value": 1.2, "unit": "kg CO2 eq./kg", "ranking": 6 },
+			"land_use": { "value": 0.4, "unit": "m2 a/kg", "ranking": 15 },
+			"freshwater_toxicity": {
+				"value": 108,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 15
+			},
+			"terrestrial_toxicity": {
+				"value": 3.1,
+				"unit": "g 1,4-DB eq./kg",
+				"ranking": 8
+			},
+			"freshwater_eutrophication": {
+				"value": 0.3,
+				"unit": "g P eq./kg",
+				"ranking": 10
+			},
+			"marine_eutrophication": {
+				"value": 2.9,
+				"unit": "g N eq./kg",
+				"ranking": 10
+			},
+			"terrestrial_acidification": {
+				"value": 5.0,
+				"unit": "g SO2 eq./kg",
+				"ranking": 6
+			}
+		}
+	]
+}

@@ -1,22 +1,193 @@
+/* Free for personal use */
+@font-face {
+	font-family: "School Book New";
+	src: url("./fonts/School Book New.ttf");
+}
+
+/* App */
 .App {
-  text-align: center;
+	text-align: center;
+	font-family: "School Book New";
 }
 
-.App-logo {
-  height: 40vmin;
+/* CSS Transition group */
+
+.fade-enter {
+	opacity: 0.01;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.fade-enter.fade-enter-active {
+	opacity: 1;
+	-webkit-transition: opacity 300ms ease-in;
+	transition: opacity 300ms ease-in;
 }
 
-.App-link {
-  color: #09d3ac;
+.fade-exit {
+	opacity: 1;
+	-webkit-transition: opacity 300ms ease-in;
+	transition: opacity 300ms ease-in;
 }
+
+.fade-exit.fade-exit-active {
+	opacity: 0.01;
+	-webkit-transition: opacity 300ms ease-in;
+	transition: opacity 300ms ease-in;
+}
+
+div.transition-group {
+	position: relative;
+}
+section.route-section {
+	position: absolute;
+	width: 100%;
+	-webkit-transform: translate(0, 0);
+	transform: translate(0, 0);
+}
+
+/* Home */
+.image-bg {
+	background: url("./images/countryside.jpg");
+	background-size: cover;
+}
+
+.bg-video {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: 0;
+	-ms-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.bg-video video {
+	width: 3840px;
+}
+
+/* Header */
+.header-bg {
+	background: url("./images/countryside.jpg");
+	background-size: cover;
+	background-position: 20% 70%;
+}
+
+.title {
+	color: white;
+	font-size: 2.7rem;
+}
+
+.subtitle{
+	color: white;
+	font-size: 1.4rem;
+}
+
+/* Introduction */
+.introduction-bg{
+	background-color: antiquewhite;
+}
+
+.introduction-subtitle{
+	font-size: 1.4rem;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Compare */
+.compare-bg{
+	background-color: rgb(245, 245, 245);
+}
+
+
+/* Video background */
+.video-bg {
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.video-bg video {
+	z-index: -1;
+	position: absolute;
+	width: auto;
+	height: auto;
+	min-width: 100%;
+	min-height: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* Header */
+.nav-links {
+	padding: 0;
+}
+
+.nav-links li {
+	display: inline;
+	padding: 10px;
+}
+
+.nav-links li a {
+	color: white;
+	transition: color 0.2s ease;
+}
+
+.nav-links li a:hover {
+	color: rgb(0, 223, 0);
+	transition: color 0.2s ease;
+	text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+	html {
+		font-size: 12px;
+	}
+}
+
+/* Products */
+.hover .hover--on,
+.hover:hover .hover--off {
+  display: none;
+}
+
+.hover:hover .hover--on {
+  display: inline;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.vegetable_name {
+  color:white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.blur {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  opacity: 1;
+}
+
+/* Modal */
+.veg-image {
+	height: 40vh;
+	overflow: hidden;
+}
+
