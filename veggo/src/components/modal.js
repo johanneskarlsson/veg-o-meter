@@ -53,9 +53,9 @@ class Modal extends Component {
         const {data} = this.state;
 				return (
                     
-<div class="modal fade bd-example-modal-lg" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+<div className="modal fade bd-example-modal-lg" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div className="modal-dialog modal-lg">
+    <div className="modal-content">
     <div className="compare-vegetables">
 						<div className="container p-4">
 							<div className="row">
