@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as d3 from "d3";
-import RadarChart from "./radarChart";
+import DetailRadarChart from "./detailRadarChart";
 
 class ProductDetails extends Component {
 	constructor(props) {
@@ -78,7 +78,7 @@ class ProductDetails extends Component {
 									<h3>Ranking</h3>
 										<div className="row">
 												<div className="col-12 p-0">
-													<RadarChart data={this.props.radarChart} vegetables={this.props.vegetables} />
+													<DetailRadarChart data={this.props.radarChart} vegetables={this.props.vegetables} />
 												</div>
 										</div>
 									</div>
