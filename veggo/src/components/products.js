@@ -26,7 +26,7 @@ class Products extends Component {
 							<div className="row pt-4">
 								{this.props.vegetables.map(vegetable => {
 									return (
-										<div key={vegetable.id} className="hover d-flex flex-fill col-md-3 col-sm-4 col-6 p-0 m-0">										
+										<div key={vegetable.id} className="hover d-flex flex-fill col-md-3 col-sm-4 col-6 border border-light p-0 m-0">										
 										  
 										  	<img
 												src={require("../images/" + vegetable.image)}

@@ -164,11 +164,8 @@ header h1 {
 }
 
 /* Modal */
-.text-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.veg-image {
+	height: 40vh;
+	overflow: hidden;
 }
-
 
