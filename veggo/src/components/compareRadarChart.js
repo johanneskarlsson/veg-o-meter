@@ -507,7 +507,7 @@ export default class CompareRadarChart extends Component {
 	// Update legend function
 	updateLegend = color => {
 		console.log(this.props.data.length);
-		if (this.props.data.length > 1) {
+		if (this.props.data.length > 0) {
 			d3.select(".legendList").html("");
 			var legendDiv = d3
 				.select(".legendList")
