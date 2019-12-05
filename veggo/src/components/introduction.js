@@ -5,7 +5,7 @@ export default class Introduction extends Component {
 	render() {
 		return (
 			<div className="introduction">
-				<div className="vh-100 w-100 d-flex justify-content-center align-items-center light-bg">
+				<div className="vh-100 w-100 d-flex justify-content-center align-items-center introduction-bg">
 					<div className="container">
 						<div className="row">
 							<div className="col-md-12 pb-4 mx-auto">

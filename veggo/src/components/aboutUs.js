@@ -8,7 +8,7 @@ export default class AboutUs extends Component {
 			<div className="container p-4">
 				<h2>Om oss</h2>
 				<div className="row mx-auto justify-content-center">
-					<div className="col-lg-3 col-md-4  col-10 p-2 mb-3">
+					<div className="col-lg-3 col-md-4 col-10 p-2 mb-3">
 						<div className="col-12">
 							<img
 								className="rounded mx-auto d-block img-fluid"

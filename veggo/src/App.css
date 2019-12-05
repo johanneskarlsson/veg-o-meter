@@ -87,7 +87,7 @@ section.route-section {
 }
 
 /* Introduction */
-.light-bg{
+.introduction-bg{
 	background-color: antiquewhite;
 }
 
@@ -96,27 +96,13 @@ section.route-section {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-/* Products */
-.product-info {
-	background: rgba(0, 0, 0, 0.3);
+/* Compare */
+.compare-bg{
+	background-color: rgb(245, 245, 245);
 }
 
-.product-bg {
-	background: url("./images/countryside_2.jpg");
-	background-size: cover;
-	background-position: 20% 70%;
-	width: 100vw;
-	min-height: 80vh;
-}
 
-.vh-15 {
-	height: 15vh;
-}
-
-.vh-85 {
-	height: 90vh;
-}
-
+/* Video background */
 .video-bg {
 	position: relative;
 	height: 100vh;
@@ -139,6 +125,7 @@ section.route-section {
 	transform: translate(-50%, -50%);
 }
 
+/* Header */
 .nav-links {
 	padding: 0;
 }

@@ -6,8 +6,8 @@ import DropdownSelect from "./dropdownSelect";
 export default class Compare extends Component {
 	render() {
 		return (
-			<div className="container p-4">
-				<div className="compare-vegetables vh-100">
+			<div className="compare-bg">
+				<div className="container pt-4 vh-100 w-100 compare-bg">
 					<div className="row">
 						<div className="col-md-4">
 							<div className="col-12">
