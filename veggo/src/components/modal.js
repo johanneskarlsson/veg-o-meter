@@ -127,8 +127,8 @@ class Modal extends Component {
 									<div className="col-12">
 										<div className="row">
 											<div className="col-md-5 pl-md-4 col-11 mx-auto p-0">
-												<table class="table nutrition p-0 m-0">
-													<thead class="thead-dark">
+												<table className="table nutrition p-0 m-0">
+													<thead className="thead-dark">
 														<tr>
 															<th scope="col-6">Näringsämne</th>
 															<th scope="col-6">Värde</th>
@@ -163,13 +163,6 @@ class Modal extends Component {
 															<td>
 																{data.nutrition.fat.value}{" "}
 																{data.nutrition.fat.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Protein</th>
-															<td>
-																{data.nutrition.protein.value}{" "}
-																{data.nutrition.protein.unit}
 															</td>
 														</tr>
 														<tr>

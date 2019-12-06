@@ -76,6 +76,7 @@ export default class DetailDonutChart extends Component {
     var donutTip = d3.select(id).append("div")
         .attr("class", "donut-tip")
         .style("opacity", 0);
+        donutTip.html("Placeholder")
     
     var path = svg.selectAll('path')
         .data(pie(data))
@@ -94,8 +95,8 @@ export default class DetailDonutChart extends Component {
             donutTip.transition()
                 .duration(300)
                 .style("opacity", 1);
-            let num = (Math.round((d.value / d.data.all) * 100)).toString() + '%';
-            let value = d.value.toString() + " grams " + '(' + num + ")";
+            let num = (Math.round((parseFloat(d.value) / parseFloat(d.data.all)) * 100 * 10)/10).toString() + '%';
+            let value = d.value.toString() + " gram " + '(' + num + ")";
             donutTip.html(value)
                 .style("left", (d3.event.pageX + 10) + "px")
                 .style("top", (d3.event.pageY + 105) + "px");
@@ -119,15 +120,15 @@ export default class DetailDonutChart extends Component {
         .attr('transform', function (d, i) {
             var height = legendRectSize + legendSpacing;
             var offset = height * color.domain().length / 2;
-            var horz = -2 * legendRectSize - 22;
-            var vert = i * height - offset;
+            var horz = -2 * legendRectSize - 15;
+            var vert = i * height - offset + 8;
             return 'translate(' + horz + ',' + vert + ')';
         });
     
     legend.append('rect')
         .style('fill', color)
         .style('stroke', color)
-        .attr('x', "-10px")
+        .attr('x', "-4px")
         .attr('y', "-6px")
         .attr('width', '15px')
         .attr('height', '15px');
@@ -137,7 +138,8 @@ export default class DetailDonutChart extends Component {
         .attr('y', legendRectSize - legendSpacing)
         .text(function (d) {
             return d;
-        });
+        })
+        .style("font-size", "14px")
     }
 
     
