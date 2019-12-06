@@ -4,7 +4,8 @@ const initState = {
 	vegetables: data.vegetables,
 	search: data.vegetables,
 	compare: [],
-	detail: []
+	detail: [],
+	filter: []
 };
 
 // Update state based on action
@@ -55,6 +56,8 @@ const vegetablesReducer = (state = initState, action) => {
 				return { ...state, compare: [] };
 		case "UPDATE_COMPARELIST":
 				return { ...state, compare: action.payload };
+		case "UPDATE_FILTER_VARIABLE":
+				return { ...state, filter: [action.payload] };
 		default:
 			return state;
 	}

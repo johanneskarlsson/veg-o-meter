@@ -21,9 +21,11 @@ export default class CompareRadarChart extends Component {
 	};
 
 	DrawChart = () => {
-		console.log("props " + this.props.sortVariable);
-		console.log("CHART DATA")
-		console.log(this.props.data)
+		if (this.props.filter.length === 1) {
+			console.log("FILTER: " + this.props.filter[0].label);
+		}
+		console.log("CHART DATA");
+		console.log(this.props.data);
 		// Data
 		var data = this.props.data.map(vegetable => {
 			return [
@@ -55,7 +57,6 @@ export default class CompareRadarChart extends Component {
 			];
 		});
 
-		
 		// Color list
 		var colorList = [
 			"red",
@@ -134,7 +135,7 @@ export default class CompareRadarChart extends Component {
 			};
 		}
 
-		// Call function to draw the radar chart 
+		// Call function to draw the radar chart
 		if (data.length > 0) {
 			this.RadarChart(".compareRadarChart", data, radarChartOptions, color);
 		} else if (data.length === 0) {
@@ -230,7 +231,6 @@ export default class CompareRadarChart extends Component {
 					(cfg.h / 2 + cfg.margin.top) +
 					")"
 			);
-
 
 		/* Draw grid */
 

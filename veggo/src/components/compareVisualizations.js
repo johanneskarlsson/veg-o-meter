@@ -8,7 +8,7 @@ class CompareVisualizations extends Component {
 		return (
 			<div>
 				<h2>Ranking</h2>
-				<CompareRadarChart data={this.props.compare} vegetables={this.props.vegetables} />
+				<CompareRadarChart data={this.props.compare} vegetables={this.props.vegetables} filter={this.props.filter} />
 				<CompareBarChart data={this.props.compare} vegetables={this.props.vegetables} filter={this.props.filter}/>
 			</div>
 		);

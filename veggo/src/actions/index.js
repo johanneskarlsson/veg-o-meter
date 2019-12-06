@@ -32,10 +32,18 @@ export const reset_comparelist = () => {
         type: "RESET_COMPARELIST"
     }
 }
+UPDATE_FILTER_VARIABLE
 
 export const update_comparelist = (list) => {
     return {
         type: "UPDATE_COMPARELIST",
         payload: list
+    }
+}
+
+export const update_filter = (variable) => {
+    return {
+        type: "UPDATE_FILTER_VARIABLE",
+        payload: variable
     }
 }

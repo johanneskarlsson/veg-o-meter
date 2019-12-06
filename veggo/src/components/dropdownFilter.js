@@ -30,7 +30,7 @@ class DropdownFilter extends Component {
 
 	handleChange = selectedOption => {
 		console.log(`Option selected:`, selectedOption);
-		this.props.updatefilter(selectedOption);
+		this.props.update_filter(selectedOption);
 		this.setState({ selectedOption: selectedOption });
 	};
 
@@ -61,8 +61,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-	updatefilter: variabel =>
-		dispatch({ type: "UPDATE_SORT_VARIABLE", payload: variabel })
+	update_filter: variabel =>
+		dispatch({ type: "UPDATE_FILTER_VARIABLE", payload: variabel })
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DropdownFilter);
