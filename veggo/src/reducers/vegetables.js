@@ -56,8 +56,8 @@ const vegetablesReducer = (state = initState, action) => {
 				return { ...state, compare: [] };
 		case "UPDATE_COMPARELIST":
 				return { ...state, compare: action.payload };
-		case "UPDATE_COMPARELIST":
-				return { ...state, sort: action.payload };
+		case "UPDATE_SORT_VARIABLE":
+				return { ...state, sortVariable: action.payload };
 		default:
 			return state;
 	}

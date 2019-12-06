@@ -52,11 +52,11 @@ class DropdownSort extends Component {
 }
 
 const mapStateToProps = state => {
-	console.log(state.vegetables.sort);
+	console.log(state.vegetables.sortVariable);
 	return {
 		vegetables: state.vegetables.vegetables,
 		compare: state.vegetables.compare,
-		sort: state.vegetables.sort
+		sortVariable: state.vegetables.sortVariable
 	};
 };
 
