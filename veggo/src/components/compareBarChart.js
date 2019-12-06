@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
 
-// D3-code from Nadieh Bremer at http://bl.ocks.org/nbremer/21746a9668ffdf6d8242
+// https://medium.com/front-end-weekly/simplest-way-to-build-responsive-d3-chart-in-react-d63d3b78b691
 
 export default class CompareBarChart extends Component {
 	constructor(props) {
@@ -21,6 +21,7 @@ export default class CompareBarChart extends Component {
 		// If the component receives new props
 		if (this.props.data !== prevProps.data) {
 			this.DrawChart();
+
 		}
 	}
 
@@ -31,7 +32,7 @@ export default class CompareBarChart extends Component {
 	DrawChart = () => {
 		console.log("BAR DATA")
 		console.log(this.props.data)
-
+		console.log("props " + this.props.sortVariable);
 		// Data
 		var data = this.props.data.map(vegetable => {
 			console.log(Object.keys(vegetable));

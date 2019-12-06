@@ -21,7 +21,7 @@ export default class CompareRadarChart extends Component {
 	};
 
 	DrawChart = () => {
-	
+		console.log("props " + this.props.sortVariable);
 		console.log("CHART DATA")
 		console.log(this.props.data)
 		// Data

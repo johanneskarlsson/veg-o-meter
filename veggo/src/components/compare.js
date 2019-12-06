@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import CompareVisualizations from "./compareVisualizations";
 import DropdownSelect from "./dropdownSelect";
-import DropdownData from "./dropdownData";
+import DropdownSort from "./dropdownSort";
 
 export default class Compare extends Component {
 	render() {
@@ -16,7 +16,7 @@ export default class Compare extends Component {
 							</div>
 							<div className="col-12 pt-3">
 								<DropdownSelect />
-								<DropdownData />
+								<DropdownSort />
 							</div>
 						</div>
 						<div className="col-md-8 p-0">
