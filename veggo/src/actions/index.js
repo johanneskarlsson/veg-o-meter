@@ -40,9 +40,9 @@ export const update_comparelist = (list) => {
     }
 }
 
-export const update_sort_variable = (variable) => {
+export const update_filter = (variable) => {
     return {
-        type: "UPDATE_SORT_VARIABLE",
+        type: "UPDATE_FILTER_VARIABLE",
         payload: variable
     }
 }

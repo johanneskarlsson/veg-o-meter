@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Select from "react-select";
 import { connect } from "react-redux";
 
-class DropdownSort extends Component {
+class DropdownFilter extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -30,7 +30,7 @@ class DropdownSort extends Component {
 
 	handleChange = selectedOption => {
 		console.log(`Option selected:`, selectedOption);
-		this.props.updateSortVariabel(selectedOption);
+		this.props.update_filter(selectedOption);
 		this.setState({ selectedOption: selectedOption });
 	};
 
@@ -42,7 +42,7 @@ class DropdownSort extends Component {
 				value={selectedOption}
 				onChange={this.handleChange}
 				options={this.state.key}
-				placeholder={"Välj sorteringsvariabel..."}
+				placeholder={"Välj filter..."}
 				noOptionsMessage={() => {
 					return "Ingen träff";
 				}}
@@ -52,17 +52,17 @@ class DropdownSort extends Component {
 }
 
 const mapStateToProps = state => {
-	console.log(state.vegetables.sortVariable);
+	console.log(state.vegetables.filter);
 	return {
 		vegetables: state.vegetables.vegetables,
 		compare: state.vegetables.compare,
-		sortVariable: state.vegetables.sortVariable
+		filter: state.vegetables.filter
 	};
 };
 
 const mapDispatchToProps = dispatch => ({
-	updateSortVariabel: variabel =>
-		dispatch({ type: "UPDATE_SORT_VARIABLE", payload: variabel })
+	update_filter: variabel =>
+		dispatch({ type: "UPDATE_FILTER_VARIABLE", payload: variabel })
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DropdownSort);
+export default connect(mapStateToProps, mapDispatchToProps)(DropdownFilter);
