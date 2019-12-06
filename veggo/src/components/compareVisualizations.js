@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CompareRadarChart from "./compareRadarChart";
+import CompareBarChart from "./compareBarChart";
 
 class CompareVisualizations extends Component {
 	render() {
@@ -8,6 +9,7 @@ class CompareVisualizations extends Component {
 			<div>
 				<h2>Ranking</h2>
 				<CompareRadarChart data={this.props.compare} vegetables={this.props.vegetables} />
+				<CompareBarChart data={this.props.compare} vegetables={this.props.vegetables} />
 			</div>
 		);
 	}

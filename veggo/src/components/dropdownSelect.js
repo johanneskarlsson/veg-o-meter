@@ -18,6 +18,7 @@ class DropdownSelect extends Component {
 				data: vegetable
 			};
 		});
+		console.log("Options " + options);
 		var selectedOption = this.props.compare.map(vegetable => {
 			return {
 				value: vegetable.name_swe,
