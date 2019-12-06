@@ -39,3 +39,10 @@ export const update_comparelist = (list) => {
         payload: list
     }
 }
+
+export const update_sort_variable = (variable) => {
+    return {
+        type: "UPDATE_SORT_VARIABLE",
+        payload: variable
+    }
+}
