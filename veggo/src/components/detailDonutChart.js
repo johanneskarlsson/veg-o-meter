@@ -21,11 +21,15 @@ export default class DetailDonutChart extends Component {
 
         if (this.props.data.length === 1) {
             var vegetable = this.props.data[0];
+            const total = vegetable.nutrition.carbohydrates.value + vegetable.nutrition.protein.value + vegetable.nutrition.fat.value + vegetable.nutrition.fiber.value + vegetable.nutrition.water.value + vegetable.nutrition.ash.value;
             var data = [
                 
-                    { title: "Kolhydrater", value: vegetable.nutrition.carbohydrates.value, all: vegetable.nutrition.carbohydrates.value + vegetable.nutrition.protein.value + vegetable.nutrition.fat.value },
-                    { title: "Protein", value: vegetable.nutrition.protein.value, all: vegetable.nutrition.carbohydrates.value + vegetable.nutrition.protein.value + vegetable.nutrition.fat.value },
-                    { title: "Fett", value: vegetable.nutrition.fat.value, all: vegetable.nutrition.carbohydrates.value + vegetable.nutrition.protein.value + vegetable.nutrition.fat.value },
+                    { title: "Kolhydrater", value: vegetable.nutrition.carbohydrates.value, all: total },
+                    { title: "Protein", value: vegetable.nutrition.protein.value, all: total },
+                    { title: "Fett", value: vegetable.nutrition.fat.value, all: total },
+                    { title: "Fibrer", value: vegetable.nutrition.fiber.value, all: total },
+                    { title: "Vatten", value: vegetable.nutrition.water.value, all: total },
+                    { title: "Aska", value: vegetable.nutrition.ash.value, all: total }
             ]
 
 			this.DonutChart(".detailDonutChart", data);
@@ -46,7 +50,7 @@ export default class DetailDonutChart extends Component {
     var color = d3.scaleOrdinal()
         .range([
         "green","red",
-        "yellow"]);
+        "yellow", "brown", "blue", "grey"]);
     
 
     d3.select(id).select("svg").remove()

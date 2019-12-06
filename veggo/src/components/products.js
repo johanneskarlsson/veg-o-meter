@@ -13,8 +13,6 @@ class Products extends Component {
     }
 
 	render() {
-
-
 		return (
 			<div className="container-fluid pt-4">
 				<div className="row">

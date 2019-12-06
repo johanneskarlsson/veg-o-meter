@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Fade from 'react-reveal/Fade';
+import Fade from "react-reveal/Fade";
 
 export default class Introduction extends Component {
 	render() {
@@ -9,23 +9,25 @@ export default class Introduction extends Component {
 					<div className="container">
 						<div className="row">
 							<div className="col-md-12 pb-4 mx-auto">
-                                <Fade left duration={1500} delay={150}>
-								    <h1>Vad är Grönsakshjälpen?</h1>
-                                </Fade>
+								<Fade left duration={1500} delay={150}>
+									<h1>Vad är Grönsakshjälpen?</h1>
+								</Fade>
 							</div>
 						</div>
 						<div className="row">
 							<div className="col-md-8 col-10 mx-auto">
-                            <Fade left duration={1500} delay={1150} >
-								<h5 className="text-left introduction-subtitle">
-									Grönsakshjälpen är ett verktyg för att hjälpa dig ta mer
-									hållbara beslut kring köp av grönsaker. Du kan ta reda på
-									olika grönsakers klimatavtryck i form av växthusgasutsläpp,
-									vattenfotavtryck osv. Dessutom kan du jämföra olika grönsaker
-									mot varandra för att på så sätt kunna välja de mest
-									klimatvänliga grönsakerna för dig.
-								</h5>
-                                </Fade>
+								<Fade left duration={1500} delay={1150}>
+									<h5 className="text-left introduction-subtitle">
+										Grönsakshjälpen är ett verktyg för att hjälpa dig ta mer
+										hållbara beslut kring köp av grönsaker. Du kan få
+										information om allt från näringsinnehåll till klimatavtryck
+										i form av växthusgasutsläpp, vattenfotavtryck osv. Med
+										verktyget kan du också jämföra grönsaker mot varandra
+										baserat på de olika parametrarna ex. klimatavtryck per
+										krona, per gram protein osv. detta för att hjälpa dig
+										ta klimatsmarta beslut vid köp av grönsaker.
+									</h5>
+								</Fade>
 							</div>
 						</div>
 					</div>

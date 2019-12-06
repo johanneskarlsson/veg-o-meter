@@ -9,64 +9,67 @@ class Modal extends Component {
 		super(props);
 		this.state = {
 			data: {
-				id: 1,
-				image: "asparagus.jpg",
-				name: "Asparagus",
-				name_swe: "Sparris",
-				nutrition: {
-					energy: {
-						kcal: { value: 270, unit: "kcal/kg" },
-						kj: { value: 1130, unit: "kJ/kg" }
+				"id": 1,
+				"image": "asparagus.jpg",
+				"name": "Asparagus",
+				"name_swe": "Sparris",
+				"nutrition": {
+					"energy": {
+						"kcal": { "value": 270, "unit": "kcal/kg" },
+						"kj": { "value": 1130, "unit": "kJ/kg" }
 					},
-					carbohydrates: { value: 24, unit: "g/kg" },
-					fat: { value: 2, unit: "g/kg" },
-					protein: { value: 31, unit: "g/kg" },
-					fiber: { value: 15, unit: "g/kg" },
-					sugars: { value: 12, unit: "g/kg" },
-					saturated_fat: { value: 0.5, unit: "g/kg" },
-					monounsaturated_fat: { value: 0, unit: "g/kg" },
-					polyunsaturated_fat: { value: 1.1, unit: "g/kg" },
-					vitamin_d: { value: 0, unit: "μg/kg" },
-					vitamin_c: { value: 330, unit: "mg/kg" },
-					folate: { value: 1190, unit: "μg/kg" },
-					iron: { value: 7, unit: "mg/kg" }
+					"carbohydrates": { "value": 24, "unit": "g/kg" },
+					"fat": { "value": 2, "unit": "g/kg" },
+					"protein": { "value": 31, "unit": "g/kg" },
+					"fiber": { "value": 15, "unit": "g/kg" },
+					"water": { "value": 920, "unit": "g/kg" },
+					"ash": { "value": 8, "unit": "g/kg" },
+					"sugars": { "value": 12, "unit": "g/kg" },
+					"saturated_fat": { "value": 0.5, "unit": "g/kg" },
+					"monounsaturated_fat": { "value": 0, "unit": "g/kg" },
+					"polyunsaturated_fat": { "value": 1.1, "unit": "g/kg" },
+					"vitamin_d": { "value": 0, "unit": "μg/kg" },
+					"vitamin_c": { "value": 330, "unit": "mg/kg" },
+					"folate": { "value": 1190, "unit": "μg/kg" },
+					"iron": { "value": 7, "unit": "mg/kg" }
 				},
-				price: { value: 147.6, unit: "kr/kg" },
-				energy: { value: 64.7, unit: "MJ/kg", ranking: 21 },
-				fossil_depletion: {
-					value: 1.4,
-					unit: "kg oil eq./kg",
-					ranking: 21
+				"price": { "value": 147.6, "unit": "kr/kg" },
+				"energy": { "value": 64.7, "unit": "MJ/kg", "ranking": 21 },
+				"fossil_depletion": {
+					"value": 1.4,
+					"unit": "kg oil eq./kg",
+					"ranking": 21
 				},
-				water_volume: { value: 746, unit: "L/kg" },
-				water_footprint: { value: 525, unit: "Leq./kg", ranking: 21 },
-				emissions: { value: 5.3, unit: "kg CO2 eq./kg", ranking: 21 },
-				land_use: { value: 4.1, unit: "m2 a/kg", ranking: 21 },
-				freshwater_toxicity: {
-					value: 99,
-					unit: "g 1,4-DB eq./kg",
-					ranking: 15
+				"water_volume": { "value": 746, "unit": "L/kg" },
+				"water_footprint": { "value": 525, "unit": "Leq./kg", "ranking": 21 },
+				"emissions": { "value": 5.3, "unit": "kg CO2 eq./kg", "ranking": 21 },
+				"land_use": { "value": 4.1, "unit": "m2 a/kg", "ranking": 21 },
+				"freshwater_toxicity": {
+					"value": 99,
+					"unit": "g 1,4-DB eq./kg",
+					"ranking": 15
 				},
-				terrestrial_toxicity: {
-					value: 22.5,
-					unit: "g 1,4-DB eq./kg",
-					ranking: 21
+				"terrestrial_toxicity": {
+					"value": 22.5,
+					"unit": "g 1,4-DB eq./kg",
+					"ranking": 21
 				},
-				freshwater_eutrophication: {
-					value: 0.6,
-					unit: "g P eq./kg",
-					ranking: 20
+				"freshwater_eutrophication": {
+					"value": 0.6,
+					"unit": "g P eq./kg",
+					"ranking": 20
 				},
-				marine_eutrophication: {
-					value: 15.9,
-					unit: "g N eq./kg",
-					ranking: 21
+				"marine_eutrophication": {
+					"value": 15.9,
+					"unit": "g N eq./kg",
+					"ranking": 21
 				},
-				terrestrial_acidification: {
-					value: 27.1,
-					unit: "g SO2 eq./kg",
-					ranking: 21
+				"terrestrial_acidification": {
+					"value": 27.1,
+					"unit": "g SO2 eq./kg",
+					"ranking": 21
 				}
+			
 			}
 		};
 	}
@@ -123,7 +126,6 @@ class Modal extends Component {
 										<h4>{`Pris: ${data.price.value} ${data.price.unit}`}</h4>
 									</div>
 
-
 									<div className="col-12">
 										<div className="row">
 											<div className="col-md-5 pl-md-4 col-11 mx-auto p-0">
@@ -166,10 +168,24 @@ class Modal extends Component {
 															</td>
 														</tr>
 														<tr>
-															<th scope="row">Fiber</th>
+															<th scope="row">Fibrer</th>
 															<td>
 																{data.nutrition.fiber.value}{" "}
 																{data.nutrition.fiber.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Vatten</th>
+															<td>
+																{data.nutrition.water.value}{" "}
+																{data.nutrition.water.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Aska</th>
+															<td>
+																{data.nutrition.ash.value}{" "}
+																{data.nutrition.ash.unit}
 															</td>
 														</tr>
 														<tr>
@@ -234,31 +250,34 @@ class Modal extends Component {
 											<div className="col-md-7 pt-md-0 pt-4 mx-auto p-0">
 												<div className="row">
 													<div className="col-12">
-												<h3 className="text-center">
-													Näringsinnehåll
-													<br />
-													(per kg)
-												</h3>
-												<DetailDonutChart
-													data={this.props.detail}
-													vegetables={this.props.vegetables}
-												/>
-												</div>
+														<h3 className="text-center pb-2">
+															Näringsinnehåll
+															<br />
+															(per kg)
+														</h3>
+														<DetailDonutChart
+															data={this.props.detail}
+															vegetables={this.props.vegetables}
+														/>
+													</div>
 												</div>
 												<div className="row pt-4">
-										<div className="col-12">
-											<h3>Ranking</h3>
-											<DetailRadarChart
-												data={this.props.detail}
-												vegetables={this.props.vegetables}
-											/>
-										</div>
-									</div>
+													<div className="col-12">
+														<h3 className="text-center pb-2">
+															Ranking
+															<br />
+															(klimatavtryck)
+														</h3>
+														<DetailRadarChart
+															data={this.props.detail}
+															vegetables={this.props.vegetables}
+														/>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
-									
-									
+
 									<div className="col-12 pt-4">
 										<div className="row p-2">
 											<div className="col-lg-4 col-6 p-1 pb-0">
