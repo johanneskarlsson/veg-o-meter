@@ -141,7 +141,7 @@ class Modal extends Component {
 															<th scope="row">Energi</th>
 															<td>
 																{data.nutrition.energy.kcal.value}{" "}
-																{data.nutrition.energy.kcal.unit} |{" "}
+																{data.nutrition.energy.kcal.unit}<br />
 																{data.nutrition.energy.kj.value}{" "}
 																{data.nutrition.energy.kj.unit}
 															</td>
