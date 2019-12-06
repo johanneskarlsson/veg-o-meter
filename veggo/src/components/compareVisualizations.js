@@ -9,7 +9,7 @@ class CompareVisualizations extends Component {
 			<div>
 				<h2>Ranking</h2>
 				<CompareRadarChart data={this.props.compare} vegetables={this.props.vegetables} />
-				<CompareBarChart data={this.props.compare} vegetables={this.props.vegetables} />
+				<CompareBarChart data={this.props.compare} vegetables={this.props.vegetables} filter={this.props.filter}/>
 			</div>
 		);
 	}
@@ -19,7 +19,8 @@ const mapStateToProps = state => {
 	console.log(state);
 	return {
 		vegetables: state.vegetables.vegetables,
-		compare: state.vegetables.compare
+		compare: state.vegetables.compare,
+		filter:  state.vegetables.filter
 	};
 };
 

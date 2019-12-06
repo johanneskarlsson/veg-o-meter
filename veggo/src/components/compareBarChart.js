@@ -32,7 +32,7 @@ export default class CompareBarChart extends Component {
 	DrawChart = () => {
 		console.log("BAR DATA")
 		console.log(this.props.data)
-		console.log("props " + this.props.sortVariable);
+		console.log("props " + this.props.filter);
 		// Data
 		var data = this.props.data.map(vegetable => {
 			console.log(Object.keys(vegetable));
