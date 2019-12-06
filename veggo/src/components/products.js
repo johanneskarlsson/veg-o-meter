@@ -50,7 +50,7 @@ class Products extends Component {
 								})}
 							</div>
 						</div>
-                        <Modal detail={this.props.detail} radarChart={this.props.radarChart} vegetables={this.props.vegetables} />
+                        <Modal detail={this.props.detail} vegetables={this.props.vegetables} />
 					</div>
 				</div>
 			</div>
@@ -65,7 +65,6 @@ const mapStateToProps = state => {
 		vegetables: state.vegetables.vegetables,
         search: state.vegetables.search,
         detail: state.vegetables.detail,
-        radarChart: state.vegetables.radarChart
 	};
 };
 

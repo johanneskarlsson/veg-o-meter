@@ -17,11 +17,11 @@ const vegetablesReducer = (state = initState, action) => {
 			if (action.payload === "") {
 				return {
 					...state,
-					search: state.vegetables,
+					search: vegetables,
 					searchText: action.payload
 				};
 			} else {
-				const search = state.vegetables.filter(obj => {
+				const search = vegetables.filter(obj => {
 					return (
 						obj.name_swe.toLowerCase().indexOf(action.payload.toLowerCase()) !==
 						-1

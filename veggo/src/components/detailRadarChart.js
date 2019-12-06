@@ -71,7 +71,7 @@ export default class DetailRadarChart extends Component {
 		if (window.innerWidth < 576) {
 			margin = { top: 50, right: 80, bottom: 70, left: 80 };
 			width =
-				Math.min(600, window.innerWidth - 40) - margin.left - margin.right;
+				Math.min(600, window.innerWidth - 35) - margin.left - margin.right;
 			height = Math.min(
 				width,
 				window.innerHeight - margin.top - margin.bottom - 20
@@ -255,10 +255,10 @@ export default class DetailRadarChart extends Component {
 			.attr("x1", 0)
 			.attr("y1", 0)
 			.attr("x2", function(d, i) {
-				return rScale(maxValue * 1.1) * Math.cos(angleSlice * i - Math.PI / 2);
+				return rScale(maxValue * 1) * Math.cos(angleSlice * i - Math.PI / 2);
 			})
 			.attr("y2", function(d, i) {
-				return rScale(maxValue * 1.1) * Math.sin(angleSlice * i - Math.PI / 2);
+				return rScale(maxValue * 1) * Math.sin(angleSlice * i - Math.PI / 2);
 			})
 			.attr("class", "line")
 			.style("stroke", "white")
