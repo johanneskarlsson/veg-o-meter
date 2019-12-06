@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as d3 from "d3";
 import DetailRadarChart from "./detailRadarChart";
+import DetailDonutChart from "./detailDonutChart";
 
 class ProductDetails extends Component {
 	constructor(props) {
@@ -80,6 +81,7 @@ class ProductDetails extends Component {
 												<div className="col-12 p-0">
 													<DetailRadarChart data={this.props.radarChart} vegetables={this.props.vegetables} />
 												</div>
+												
 										</div>
 									</div>
 								</div>

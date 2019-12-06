@@ -7,7 +7,15 @@
 /* App */
 .App {
 	text-align: center;
+}
+
+
+h1, h2{
 	font-family: "School Book New";
+}
+
+p{
+	font-size: 1.2rem;
 }
 
 /* CSS Transition group */
@@ -102,6 +110,17 @@ section.route-section {
 }
 
 
+/* Donut chart */
+div.donut-tip {	
+
+    font-size: 1.3rem;			
+}
+
+.circle-legend{
+	font-size: 0.9rem;
+}
+
+
 /* Video background */
 .video-bg {
 	position: relative;
@@ -174,6 +193,7 @@ section.route-section {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-family: "School Book New";
 }
 
 .blur {
@@ -187,7 +207,17 @@ section.route-section {
 
 /* Modal */
 .veg-image {
-	height: 40vh;
+	max-height: 35vh;
 	overflow: hidden;
+}
+
+.nutrition {
+	font-size: 1rem;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.modal{
+	
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 

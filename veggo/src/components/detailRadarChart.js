@@ -4,10 +4,6 @@ import * as d3 from "d3";
 // D3-code from Nadieh Bremer at http://bl.ocks.org/nbremer/21746a9668ffdf6d8242
 
 export default class DetailRadarChart extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { legend: null };
-	}
 
 	componentDidUpdate(prevProps) {
 		// If the component receives new props
@@ -75,7 +71,7 @@ export default class DetailRadarChart extends Component {
 		if (window.innerWidth < 576) {
 			margin = { top: 50, right: 80, bottom: 70, left: 80 };
 			width =
-				Math.min(600, window.innerWidth - 20) - margin.left - margin.right;
+				Math.min(650, window.innerWidth - 20) - margin.left - margin.right;
 			height = Math.min(
 				width,
 				window.innerHeight - margin.top - margin.bottom - 20
@@ -84,7 +80,7 @@ export default class DetailRadarChart extends Component {
 			radarChartOptions = {
 				w: width,
 				h: height,
-				labelFactor: 1.4,
+				labelFactor: 1.45,
 				margin: margin,
 				maxValue: maxValue,
 				levels: 7,
@@ -94,7 +90,7 @@ export default class DetailRadarChart extends Component {
 		} else {
 			margin = { top: 80, right: 130, bottom: 100, left: 130 };
 			width =
-				Math.min(450, window.innerWidth - 50) - margin.left - margin.right;
+				Math.min(470, window.innerWidth - 50) - margin.left - margin.right;
 			height = Math.min(
 				width,
 				window.innerHeight - margin.top - margin.bottom - 20
@@ -272,7 +268,7 @@ export default class DetailRadarChart extends Component {
 		axis
 			.append("text")
 			.attr("class", "legend")
-			.style("font-size", "0.7rem")
+			.style("font-size", "0.75rem")
 			.attr("text-anchor", "middle")
 			.attr("dy", "0.35em")
 			.attr("x", function(d, i) {

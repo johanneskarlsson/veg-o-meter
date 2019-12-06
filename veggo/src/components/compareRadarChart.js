@@ -97,7 +97,7 @@ export default class CompareRadarChart extends Component {
 		if (window.innerWidth < 576) {
 			margin = { top: 50, right: 80, bottom: 70, left: 80 };
 			width =
-				Math.min(600, window.innerWidth - 20) - margin.left - margin.right;
+				Math.min(550, window.innerWidth - 20) - margin.left - margin.right;
 			height = Math.min(
 				width,
 				window.innerHeight - margin.top - margin.bottom - 20
@@ -298,7 +298,7 @@ export default class CompareRadarChart extends Component {
 		axis
 			.append("text")
 			.attr("class", "legend")
-			.style("font-size", "0.7rem")
+			.style("font-size", "0.75rem")
 			.attr("text-anchor", "middle")
 			.attr("dy", "0.35em")
 			.attr("x", function(d, i) {

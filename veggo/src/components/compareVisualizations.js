@@ -6,7 +6,7 @@ class CompareVisualizations extends Component {
 	render() {
 		return (
 			<div>
-				<h3>Ranking</h3>
+				<h2>Ranking</h2>
 				<CompareRadarChart data={this.props.compare} vegetables={this.props.vegetables} />
 			</div>
 		);

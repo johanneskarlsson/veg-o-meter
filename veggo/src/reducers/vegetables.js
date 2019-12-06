@@ -4,8 +4,7 @@ const initState = {
 	vegetables: data.vegetables,
 	search: data.vegetables,
 	compare: [],
-	radarChart: [],
-	detail: null
+	detail: []
 };
 
 // Update state based on action
@@ -51,7 +50,7 @@ const vegetablesReducer = (state = initState, action) => {
 			});
 			if (detail.length === 0) {
 				return { ...state, detail: null };
-			} else return { ...state, detail: detail[0], radarChart: detail };
+			} else return { ...state, detail: detail };
 		case "RESET_COMPARELIST":
 				return { ...state, compare: [] };
 		case "UPDATE_COMPARELIST":
