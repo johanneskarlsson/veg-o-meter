@@ -85,7 +85,7 @@ export default class DetailRadarChart extends Component {
 				color: color
 			};
 		} else {
-			margin = { top: 80, right: 130, bottom: 100, left: 130 };
+			margin = { top: 80, right: 150, bottom: 100, left: 130 };
 			width =
 				Math.min(470, window.innerWidth - 50) - margin.left - margin.right;
 			height = Math.min(
@@ -96,7 +96,7 @@ export default class DetailRadarChart extends Component {
 			radarChartOptions = {
 				w: width,
 				h: height,
-				labelFactor: 1.5,
+				labelFactor: 1.6,
 				margin: margin,
 				maxValue: maxValue,
 				levels: 7,
@@ -499,6 +499,6 @@ export default class DetailRadarChart extends Component {
 	}; //RadarChart
 
 	render() {
-		return <div className="detailRadarChart col-12 p-0" />;
+		return <div className="detailRadarChart col-12" />;
 	}
 }

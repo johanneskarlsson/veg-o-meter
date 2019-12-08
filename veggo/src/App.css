@@ -99,12 +99,12 @@ section.route-section {
 	background-color: antiquewhite;
 }
 
-.vh-100 {
+.min-vh-100 {
 	min-height: 100vh;
 }
 
 .introduction-subtitle{
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
   hyphens: auto;

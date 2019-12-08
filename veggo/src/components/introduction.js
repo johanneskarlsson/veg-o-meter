@@ -6,7 +6,7 @@ export default class Introduction extends Component {
 	render() {
 		return (
 			<div className="introduction">
-				<div className="vh-100 w-100 p-5 d-flex justify-content-center align-items-center introduction-bg">
+				<div className="min-vh-100 w-100 p-5 d-flex justify-content-center align-items-center introduction-bg">
 					<div className="container">
 						<div className="row">
 							<div className="col-md-12 mb-4 mx-auto">
@@ -16,7 +16,7 @@ export default class Introduction extends Component {
 							</div>
 						</div>
 						<div className="row">
-							<div className="col-md-8 mx-auto mb-5">
+							<div className="col-md-9 col-lg-7 mx-auto mb-5">
 								<Fade left duration={1500} delay={1150}>
 									<h5 className="text-left introduction-subtitle">
 										Grönsakshjälpen är ett verktyg för att hjälpa dig ta mer
@@ -32,7 +32,7 @@ export default class Introduction extends Component {
 							</div>
 						</div>
 						<div className="row">
-							<div className="col-md-4 col-10 mx-auto">
+							<div className="col-md-6 col-lg-4 col-10 mx-auto">
 					
 								<img className="img-fluid" src={basket} alt="Vegetable basket" />
 								
