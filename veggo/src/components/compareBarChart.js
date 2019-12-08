@@ -10,16 +10,14 @@ export default class CompareBarChart extends Component {
 			legend: null,
 			yAxisAttribute: "axis",
 			xAxisAttribute: "value",
-			selectedData: "",
 			width: 1000,
 			height: 400
 		};
-		this.chartRef = React.createRef();
 	}
 
 	componentDidUpdate(prevProps) {
 		// If the component receives new props
-		if (this.props.data !== prevProps.data) {
+		if (this.props.filter !== prevProps.filter || this.props.data !== prevProps.data ) {
 			this.DrawChart();
 		}
 	}
@@ -29,50 +27,28 @@ export default class CompareBarChart extends Component {
 	};
 
 	DrawChart = () => {
-		console.log("BAR DATA");
-		if (this.props.filter.length === 1) {
-			console.log("FILTER: " + this.props.filter[0].label);
-		}
-
+		d3.select(".compareBarChart")
+				.select("svg")
+				.remove();
 		// Data
-		var data = this.props.data.map(vegetable => {
-			console.log(Object.keys(vegetable));
-			return [
-				{ axis: "Energiförbrukning", value: vegetable.energy.ranking },
-				{ axis: "Växthusgasutsläpp", value: vegetable.emissions.ranking },
-				{ axis: "Fossilutarmning", value: vegetable.fossil_depletion.ranking },
-				{ axis: "Markanvändning", value: vegetable.land_use.ranking },
-				{
-					axis: "Markförsurning",
-					value: vegetable.terrestrial_toxicity.ranking
-				},
-				{
-					axis: "Markförgiftning",
-					value: vegetable.terrestrial_acidification.ranking
-				},
-				{
-					axis: "Sötvattenförgiftning",
-					value: vegetable.freshwater_toxicity.ranking
-				},
-				{
-					axis: "Sötvattenförsurning",
-					value: vegetable.freshwater_eutrophication.ranking
-				},
-				{
-					axis: "Marinförsurning",
-					value: vegetable.marine_eutrophication.ranking
-				},
-				{ axis: "Vattenfotavtryck", value: vegetable.water_footprint.ranking }
-			];
-		});
+		var data = [];
+		if (this.props.filter.length === 1){
+			data = this.props.data.map(vegetable => {
+				return {
+					axis: vegetable.name_swe,
+					filteredData: this.props.filter[0].value,
+					value: vegetable[this.props.filter[0].value].value
+				}
+			})
+		}
 
 		let margin = { top: 20, right: 30, bottom: 40, left: 90 },
 			width = this.state.width - margin.left - margin.right,
 			height = this.state.height - margin.top - margin.bottom;
 
-		// Call function to draw the radar chart
+		// Call function to draw the bar chart
 		if (data.length > 0) {
-			this.BarChart(data, margin, width, height);
+			this.BarChart(".compareBarChart", data, margin, width, height);
 		} else if (data.length === 0) {
 			d3.select(".compareBarChart")
 				.select("svg")
@@ -80,11 +56,14 @@ export default class CompareBarChart extends Component {
 		}
 	};
 
+
+
 	// Bar chart function
-	BarChart = (data, margin, width, height) => {
+	BarChart = (id, data, margin, width, height) => {
+
 		// append the svg object to the body of the page
 		let svg = d3
-			.select(".compareBarChart")
+			.select(id)
 			.append("svg")
 			.attr("width", width + margin.left + margin.right)
 			.attr("height", height + margin.top + margin.bottom)
@@ -93,7 +72,7 @@ export default class CompareBarChart extends Component {
 		// Add X axis
 		let x = d3
 			.scaleLinear()
-			.domain([0, 100])
+			.domain([0, 10])
 			.range([0, width]);
 		svg
 			.append("g")
@@ -141,9 +120,7 @@ export default class CompareBarChart extends Component {
 
 	render() {
 		return (
-			<div>
 				<div className="compareBarChart" />
-			</div>
 		);
 	}
 }

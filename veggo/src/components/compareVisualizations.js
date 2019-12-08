@@ -6,10 +6,14 @@ import CompareBarChart from "./compareBarChart";
 class CompareVisualizations extends Component {
 	render() {
 		return (
-			<div>
-				<h2>Ranking</h2>
-				<CompareRadarChart data={this.props.compare} vegetables={this.props.vegetables} filter={this.props.filter} />
-				<CompareBarChart data={this.props.compare} vegetables={this.props.vegetables} filter={this.props.filter}/>
+			<div className="row">
+				<div className="col-6">
+					<CompareBarChart data={this.props.compare} vegetables={this.props.vegetables} filter={this.props.filter}/>
+				</div>
+				<div className="col-6">
+					<h2>Ranking</h2>
+					<CompareRadarChart data={this.props.compare} vegetables={this.props.vegetables} filter={this.props.filter} />
+				</div>
 			</div>
 		);
 	}
