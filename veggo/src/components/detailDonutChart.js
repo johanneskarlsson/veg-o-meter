@@ -5,14 +5,17 @@ export default class DetailDonutChart extends Component {
 	componentDidUpdate(prevProps) {
 		// If the component receives new props
 		if (this.props.data !== prevProps.data) {
-			this.DrawChart();
-			console.log("updated");
+		
+            console.log("updated");
+
+            // Fix to solve auto resize on initial load
+            setTimeout(() => {
+                this.DrawChart(); 
+            }, 200);
+           
 		}
 	}
 
-	componentDidMount = () => {
-		this.DrawChart();
-	};
 
 	DrawChart = () => {
 		console.log(this.props.data);
@@ -60,9 +63,10 @@ export default class DetailDonutChart extends Component {
 
 		// add viewBox and preserveAspectRatio properties,
 		// and call resize so that svg resizes on inital page load
-		svg
-			.attr("viewBox", "0 0 " + width + " " + height)
-			.attr("perserveAspectRatio", "xMinYMid");
+		svg.attr("viewBox", "0 0 " + width + " " + height)
+        .attr("perserveAspectRatio", "xMinYMid")
+        .call(resize);
+ 
 
 		// to register multiple listeners for same event type,
 		// you need to add namespace, i.e., 'click.foo'
@@ -72,6 +76,7 @@ export default class DetailDonutChart extends Component {
 
 		// get width of container and resize svg to fit it
 		function resize() {
+            console.log("Container: " + container);
 			var targetWidth = parseInt(container.style("width"));
 			console.log("Targetwidth: " + targetWidth);
 			svg.attr("width", targetWidth);

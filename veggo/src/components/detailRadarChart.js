@@ -7,13 +7,13 @@ export default class DetailRadarChart extends Component {
 	componentDidUpdate(prevProps) {
 		// If the component receives new props
 		if (this.props.data !== prevProps.data) {
-			this.DrawChart();
+			console.log("updated");
+			 // Fix to solve auto resize on initial load
+            setTimeout(() => {
+                this.DrawChart(); 
+            }, 200);
 		}
 	}
-
-	componentDidMount = () => {
-		this.DrawChart();
-	};
 
 	DrawChart = () => {
 		console.log("CHART DATA");
@@ -66,9 +66,9 @@ export default class DetailRadarChart extends Component {
 
 		// Settings on mobile and desktop
 		if (window.innerWidth < 576) {
-			margin = { top: 50, right: 80, bottom: 70, left: 80 };
+			margin = { top: 40, right: 90, bottom: 70, left: 90 };
 			width =
-				Math.min(450, window.innerWidth - 35) - margin.left - margin.right;
+				Math.min(450, window.innerWidth) - margin.left - margin.right;
 			height = Math.min(
 				width,
 				window.innerHeight - margin.top - margin.bottom - 20
@@ -77,7 +77,7 @@ export default class DetailRadarChart extends Component {
 			radarChartOptions = {
 				w: width,
 				h: height,
-				labelFactor: 1.3,
+				labelFactor: 1.4,
 				margin: margin,
 				maxValue: maxValue,
 				levels: 7,
@@ -85,9 +85,9 @@ export default class DetailRadarChart extends Component {
 				color: color
 			};
 		} else {
-			margin = { top: 80, right: 150, bottom: 100, left: 130 };
+			margin = { top: 60, right: 110, bottom: 110, left: 110 };
 			width =
-				Math.min(470, window.innerWidth - 50) - margin.left - margin.right;
+				Math.min(470, window.innerWidth) - margin.left - margin.right;
 			height = Math.min(
 				width,
 				window.innerHeight - margin.top - margin.bottom - 20
@@ -96,7 +96,7 @@ export default class DetailRadarChart extends Component {
 			radarChartOptions = {
 				w: width,
 				h: height,
-				labelFactor: 1.6,
+				labelFactor: 1.4,
 				margin: margin,
 				maxValue: maxValue,
 				levels: 7,
@@ -128,7 +128,8 @@ export default class DetailRadarChart extends Component {
 		// and call resize so that svg resizes on inital page load
 		svg
 			.attr("viewBox", "0 0 " + width + " " + height)
-			.attr("perserveAspectRatio", "xMinYMid");
+			.attr("perserveAspectRatio", "xMinYMid")
+			.call(resize);
 
 		// to register multiple listeners for same event type,
 		// you need to add namespace, i.e., 'click.foo'
@@ -499,6 +500,6 @@ export default class DetailRadarChart extends Component {
 	}; //RadarChart
 
 	render() {
-		return <div className="detailRadarChart col-12" />;
+		return <div className="detailRadarChart col-12 p-0" />;
 	}
 }

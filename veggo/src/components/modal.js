@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import * as d3 from "d3";
 import DetailRadarChart from "./detailRadarChart";
 import DetailDonutChart from "./detailDonutChart";
+import Fade from "react-reveal/Fade";
 
 class Modal extends Component {
 	constructor(props) {
@@ -99,7 +100,7 @@ class Modal extends Component {
 		const { data } = this.state;
 		return (
 			<div
-				className="modal fade bd-example-modal-lg"
+				className="modal fade bd-example-modal-lg p-0"
 				tabIndex="-1"
 				role="dialog"
 				aria-labelledby="myLargeModalLabel"
@@ -255,10 +256,12 @@ class Modal extends Component {
 															<br />
 															(per kg)
 														</h3>
+														<Fade delay={200}>
 														<DetailDonutChart
 															data={this.props.detail}
 															vegetables={this.props.vegetables}
 														/>
+														</Fade>
 													</div>
 												</div>
 												<div className="row pt-4">
@@ -268,10 +271,12 @@ class Modal extends Component {
 															<br />
 															(klimatavtryck)
 														</h3>
+														<Fade delay={200}>
 														<DetailRadarChart
 															data={this.props.detail}
 															vegetables={this.props.vegetables}
 														/>
+														</Fade>
 													</div>
 												</div>
 											</div>
