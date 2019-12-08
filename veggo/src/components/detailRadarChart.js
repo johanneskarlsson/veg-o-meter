@@ -4,7 +4,6 @@ import * as d3 from "d3";
 // D3-code from Nadieh Bremer at http://bl.ocks.org/nbremer/21746a9668ffdf6d8242
 
 export default class DetailRadarChart extends Component {
-
 	componentDidUpdate(prevProps) {
 		// If the component receives new props
 		if (this.props.data !== prevProps.data) {
@@ -51,9 +50,7 @@ export default class DetailRadarChart extends Component {
 		});
 
 		// Color list
-		var colorList = [
-			"red",
-		];
+		var colorList = ["red"];
 
 		// Create color range
 		var color = d3.scaleOrdinal().range(colorList);
@@ -71,7 +68,7 @@ export default class DetailRadarChart extends Component {
 		if (window.innerWidth < 576) {
 			margin = { top: 50, right: 80, bottom: 70, left: 80 };
 			width =
-				Math.min(600, window.innerWidth - 35) - margin.left - margin.right;
+				Math.min(450, window.innerWidth - 35) - margin.left - margin.right;
 			height = Math.min(
 				width,
 				window.innerHeight - margin.top - margin.bottom - 20
@@ -80,7 +77,7 @@ export default class DetailRadarChart extends Component {
 			radarChartOptions = {
 				w: width,
 				h: height,
-				labelFactor: 1.45,
+				labelFactor: 1.3,
 				margin: margin,
 				maxValue: maxValue,
 				levels: 7,
@@ -120,35 +117,32 @@ export default class DetailRadarChart extends Component {
 		}
 	};
 
-
 	responsivefy = svg => {
-        // get container + svg aspect ratio
-        var container = d3.select(svg.node().parentNode),
-            width = parseInt(svg.style("width")),
-            height = parseInt(svg.style("height")),
-            aspect = width / height;
-    
-        // add viewBox and preserveAspectRatio properties,
-        // and call resize so that svg resizes on inital page load
-        svg.attr("viewBox", "0 0 " + width + " " + height)
-            .attr("perserveAspectRatio", "xMinYMid")
-            .call(resize);
-	
-			
-        // to register multiple listeners for same event type, 
-        // you need to add namespace, i.e., 'click.foo'
-        // necessary if you call invoke this function for multiple svgs
-        // api docs: https://github.com/mbostock/d3/wiki/Selections#on
-        d3.select(window).on("resize." + container.attr("class"), resize);
-    
-        // get width of container and resize svg to fit it
-        function resize() {
-            var targetWidth = parseInt(container.style("width"));
-            svg.attr("width", targetWidth);
-            svg.attr("height", Math.round(targetWidth / aspect));
-        }
-    }
+		// get container + svg aspect ratio
+		var container = d3.select(svg.node().parentNode),
+			width = parseInt(svg.style("width")),
+			height = parseInt(svg.style("height")),
+			aspect = width / height;
 
+		// add viewBox and preserveAspectRatio properties,
+		// and call resize so that svg resizes on inital page load
+		svg
+			.attr("viewBox", "0 0 " + width + " " + height)
+			.attr("perserveAspectRatio", "xMinYMid");
+
+		// to register multiple listeners for same event type,
+		// you need to add namespace, i.e., 'click.foo'
+		// necessary if you call invoke this function for multiple svgs
+		// api docs: https://github.com/mbostock/d3/wiki/Selections#on
+		d3.select(window).on("resize." + container.attr("class"), resize);
+
+		// get width of container and resize svg to fit it
+		function resize() {
+			var targetWidth = parseInt(container.style("width"));
+			svg.attr("width", targetWidth);
+			svg.attr("height", Math.round(targetWidth / aspect));
+		}
+	};
 
 	// Radar chart function
 	RadarChart = (id, data, options, color) => {
@@ -218,7 +212,7 @@ export default class DetailRadarChart extends Component {
 			.attr("width", cfg.w + cfg.margin.left + cfg.margin.right)
 			.attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
 			.attr("class", "radar" + id)
-			.call(this.responsivefy)
+			.call(this.responsivefy);
 
 		//Append a g element
 		var g = svg
@@ -505,10 +499,6 @@ export default class DetailRadarChart extends Component {
 	}; //RadarChart
 
 	render() {
-		return (
-	
-				<div className="detailRadarChart col-12 p-0" />
-			
-		);
+		return <div className="detailRadarChart col-12 p-0" />;
 	}
 }

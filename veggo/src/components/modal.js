@@ -249,7 +249,7 @@ class Modal extends Component {
 											</div>
 											<div className="col-md-7 pt-md-0 pt-4 mx-auto p-0">
 												<div className="row">
-													<div className="col-12">
+													<div className="col-12 p-0">
 														<h3 className="text-center pb-2">
 															Näringsinnehåll
 															<br />
@@ -262,7 +262,7 @@ class Modal extends Component {
 													</div>
 												</div>
 												<div className="row pt-4">
-													<div className="col-12">
+													<div className="col-12 p-0">
 														<h3 className="text-center pb-2">
 															Ranking
 															<br />
