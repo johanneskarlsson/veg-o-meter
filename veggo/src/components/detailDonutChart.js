@@ -36,17 +36,44 @@ export default class DetailDonutChart extends Component {
 		} 
     }
 
+    responsivefy = svg => {
+        // get container + svg aspect ratio
+        var container = d3.select(svg.node().parentNode),
+            width = parseInt(svg.style("width")),
+            height = parseInt(svg.style("height")),
+            aspect = width / height;
+    
+        // add viewBox and preserveAspectRatio properties,
+        // and call resize so that svg resizes on inital page load
+        svg.attr("viewBox", "0 0 " + width + " " + height)
+            .attr("perserveAspectRatio", "xMinYMid")
+            .call(resize);
+    
 
+            
+        // to register multiple listeners for same event type, 
+        // you need to add namespace, i.e., 'click.foo'
+        // necessary if you call invoke this function for multiple svgs
+        // api docs: https://github.com/mbostock/d3/wiki/Selections#on
+        d3.select(window).on("resize." + container.attr("id"), resize);
+    
+        // get width of container and resize svg to fit it
+        function resize() {
+            var targetWidth = parseInt(container.style("width"));
+            svg.attr("width", targetWidth);
+            svg.attr("height", Math.round(targetWidth / aspect));
+        }
+    }
 
         
     DonutChart = (id, data) => {    
     
     console.log(data)
   
-    var width = 285;
-    var height = 285;
+    var width = 280;
+    var height = 280;
     var radius = Math.min(width, height) / 2;
-    var donutWidth = 50;
+    var donutWidth = 45;
     var color = d3.scaleOrdinal()
         .range([
         "green","red",
@@ -60,9 +87,10 @@ export default class DetailDonutChart extends Component {
         .append('svg')
         .attr('width', width)
         .attr('height', height)
+        .call(this.responsivefy)
         .append('g')
         .attr('transform', 'translate(' + (width / 2) +
-            ',' + (height / 2) + ')');
+            ',' + (height / 2) + ')')
     
     var arc = d3.arc()
         .innerRadius(radius - donutWidth)
@@ -151,7 +179,7 @@ export default class DetailDonutChart extends Component {
 
     render() {
         return (
-            <div className="detailDonutChart mx-0 px-0 col-12 mb-1"></div>
+            <div className="detailDonutChart px-0 col-10 mx-auto mb-1"></div>
         )
     }
 }

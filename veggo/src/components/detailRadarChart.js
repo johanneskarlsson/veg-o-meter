@@ -120,6 +120,36 @@ export default class DetailRadarChart extends Component {
 		}
 	};
 
+
+	responsivefy = svg => {
+        // get container + svg aspect ratio
+        var container = d3.select(svg.node().parentNode),
+            width = parseInt(svg.style("width")),
+            height = parseInt(svg.style("height")),
+            aspect = width / height;
+    
+        // add viewBox and preserveAspectRatio properties,
+        // and call resize so that svg resizes on inital page load
+        svg.attr("viewBox", "0 0 " + width + " " + height)
+            .attr("perserveAspectRatio", "xMinYMid")
+            .call(resize);
+	
+			
+        // to register multiple listeners for same event type, 
+        // you need to add namespace, i.e., 'click.foo'
+        // necessary if you call invoke this function for multiple svgs
+        // api docs: https://github.com/mbostock/d3/wiki/Selections#on
+        d3.select(window).on("resize." + container.attr("class"), resize);
+    
+        // get width of container and resize svg to fit it
+        function resize() {
+            var targetWidth = parseInt(container.style("width"));
+            svg.attr("width", targetWidth);
+            svg.attr("height", Math.round(targetWidth / aspect));
+        }
+    }
+
+
 	// Radar chart function
 	RadarChart = (id, data, options, color) => {
 		var cfg = {
@@ -187,8 +217,8 @@ export default class DetailRadarChart extends Component {
 			.append("svg")
 			.attr("width", cfg.w + cfg.margin.left + cfg.margin.right)
 			.attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
-			.attr("class", "svg-content")
-			.attr("class", "radar" + id);
+			.attr("class", "radar" + id)
+			.call(this.responsivefy)
 
 		//Append a g element
 		var g = svg
@@ -476,9 +506,9 @@ export default class DetailRadarChart extends Component {
 
 	render() {
 		return (
-			<div>
-				<div className="detailRadarChart" />
-			</div>
+	
+				<div className="detailRadarChart col-12 p-0" />
+			
 		);
 	}
 }
