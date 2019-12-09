@@ -256,7 +256,7 @@ class Modal extends Component {
 															<br />
 															(per kg)
 														</h3>
-														<Fade delay={200}>
+														<Fade delay={100}>
 														<DetailDonutChart
 															data={this.props.detail}
 															vegetables={this.props.vegetables}
@@ -265,13 +265,13 @@ class Modal extends Component {
 													</div>
 												</div>
 												<div className="row pt-4">
-													<div className="col-12">
+													<div className="col-11 mx-auto">
 														<h3 className="text-center pb-2">
 															Ranking
 															<br />
 															(klimatavtryck)
 														</h3>
-														<Fade delay={200}>
+														<Fade delay={100}>
 														<DetailRadarChart
 															data={this.props.detail}
 															vegetables={this.props.vegetables}

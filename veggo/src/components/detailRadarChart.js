@@ -8,10 +8,10 @@ export default class DetailRadarChart extends Component {
 		// If the component receives new props
 		if (this.props.data !== prevProps.data) {
 			console.log("updated");
-			 // Fix to solve auto resize on initial load
-            setTimeout(() => {
-                this.DrawChart(); 
-            }, 200);
+			// Fix to solve auto resize on initial load
+			setTimeout(() => {
+				this.DrawChart();
+			}, 200);
 		}
 	}
 
@@ -64,46 +64,23 @@ export default class DetailRadarChart extends Component {
 		var width;
 		var height;
 
-		// Settings on mobile and desktop
-		if (window.innerWidth < 576) {
-			margin = { top: 40, right: 90, bottom: 70, left: 90 };
-			width =
-				Math.min(450, window.innerWidth) - margin.left - margin.right;
-			height = Math.min(
-				width,
-				window.innerHeight - margin.top - margin.bottom - 20
-			);
+		margin = { top: 70, right: 100, bottom: 100, left: 100 };
+		width = Math.min(470, window.innerWidth) - margin.left - margin.right;
+		height = Math.min(
+			width,
+			window.innerHeight - margin.top - margin.bottom - 20
+		);
 
-			radarChartOptions = {
-				w: width,
-				h: height,
-				labelFactor: 1.4,
-				margin: margin,
-				maxValue: maxValue,
-				levels: 7,
-				roundStrokes: true,
-				color: color
-			};
-		} else {
-			margin = { top: 60, right: 110, bottom: 110, left: 110 };
-			width =
-				Math.min(470, window.innerWidth) - margin.left - margin.right;
-			height = Math.min(
-				width,
-				window.innerHeight - margin.top - margin.bottom - 20
-			);
-
-			radarChartOptions = {
-				w: width,
-				h: height,
-				labelFactor: 1.4,
-				margin: margin,
-				maxValue: maxValue,
-				levels: 7,
-				roundStrokes: true,
-				color: color
-			};
-		}
+		radarChartOptions = {
+			w: width,
+			h: height,
+			labelFactor: 1.4,
+			margin: margin,
+			maxValue: maxValue,
+			levels: 7,
+			roundStrokes: true,
+			color: color
+		};
 
 		// Call function to draw the radar chart
 		if (data.length === 1) {
@@ -292,8 +269,7 @@ export default class DetailRadarChart extends Component {
 		//Append the labels at each axis
 		axis
 			.append("text")
-			.attr("class", "legend")
-			.style("font-size", "0.75rem")
+			.attr("class", "axisLabel")
 			.attr("text-anchor", "middle")
 			.attr("dy", "0.35em")
 			.attr("x", function(d, i) {
@@ -430,30 +406,57 @@ export default class DetailRadarChart extends Component {
 			})
 			.style("fill", "none")
 			.style("pointer-events", "all")
-			.on("mouseover", function(d, i) {
-				this.newX = parseFloat(d3.select(this).attr("cx")) - 10;
-				this.newY = parseFloat(d3.select(this).attr("cy")) - 20;
-
-				tooltip
-					.attr("x", this.newX)
-					.attr("y", this.newY)
-					.text(Format(d.value))
+			.on("mouseover", function(d) {
+				div
 					.transition()
 					.duration(200)
 					.style("opacity", 1);
+				div
+					.html(d.value)
+					.style("left", d3.event.pageX - 10 + "px")
+					.style("top", d3.event.pageY - 50 + "px");
 			})
-			.on("mouseout", function() {
-				tooltip
+			.on("mouseout", function(d) {
+				div
 					.transition()
 					.duration(200)
 					.style("opacity", 0);
 			});
 
-		//Set up the small tooltip for when you hover over a circle
-		var tooltip = g
-			.append("text")
+		/* New tooltip */
+		var div = d3
+			.select(".App")
+			.append("div")
 			.attr("class", "tooltip")
 			.style("opacity", 0);
+
+		/* Old tooltip */
+
+		/*.on("mouseover", function(d, i) {
+		this.newX = parseFloat(d3.select(this).attr("cx")) - 10;
+		this.newY = parseFloat(d3.select(this).attr("cy")) - 20;
+
+		tooltip
+			.attr("x", this.newX)
+			.attr("y", this.newY)
+			.text(Format(d.value))
+			.transition()
+			.duration(200)
+			.style("opacity", 1);
+	})
+	.on("mouseout", function() {
+		tooltip
+			.transition()
+			.duration(200)
+			.style("opacity", 0);
+	});
+
+//Set up the small tooltip for when you hover over a circle
+var tooltip = g
+	.append("text")
+	.attr("class", "tooltip")
+	.style("opacity", 0); 
+	*/
 
 		/* Help functions */
 

@@ -116,14 +116,31 @@ section.route-section {
 }
 
 
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: auto;										
+	padding: 2px 6px 2px 6px;			
+	font-weight: bold;
+	font-size: 1rem;			
+    background: white;	
+    pointer-events: none;			
+}
+
 /* Donut chart */
-div.donut-tip {	
+.donut-tip {	
 
     font-size: 1.3rem;			
 }
 
 .circle-legend{
 	font-size: 0.9rem;
+}
+
+/* Radar chart */
+
+.detailRadarChart .axisLabel{
+	font-size: 0.8rem;
 }
 
 
@@ -169,12 +186,6 @@ div.donut-tip {
 	color: rgb(0, 223, 0);
 	transition: color 0.2s ease;
 	text-decoration: none;
-}
-
-@media only screen and (max-width: 600px) {
-	html {
-		font-size: 12px;
-	}
 }
 
 /* Products */
@@ -225,5 +236,16 @@ div.donut-tip {
 .modal{
 	
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+@media only screen and (max-width: 568px) {
+	html {
+		font-size: 12px;
+	}
+	.detailRadarChart .axisLabel{
+		font-size: 1rem;
+	
+	}
 }
 
