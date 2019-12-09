@@ -132,7 +132,7 @@ export default class DetailDonutChart extends Component {
 			.style("opacity", 0);
 		donutTip.html("Placeholder");
 
-		var path = svg
+		svg
 			.selectAll("path")
 			.data(pie(data))
 			.enter()
@@ -158,7 +158,7 @@ export default class DetailDonutChart extends Component {
 							(parseFloat(d.value) / parseFloat(d.data.all)) * 100 * 10
 						) / 10
 					).toString() + "%";
-				let value = d.value.toString() + " gram " + "(" + num + ")";
+				let value = d.value.toString() + " gram (" + num + ")";
 				donutTip
 					.html(value)
 					.style("left", d3.event.pageX + 10 + "px")

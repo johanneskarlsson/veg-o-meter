@@ -54,7 +54,7 @@ section.route-section {
 
 /* Home */
 .image-bg {
-	background: url("./images/countryside.jpg");
+	background: url("./images/home_bg.jpg");
 	background-size: cover;
 }
 
@@ -76,6 +76,104 @@ section.route-section {
 .bg-video video {
 	width: 3840px;
 }
+
+/* Scroll icon animation from https://codepen.io/Hoebink/pen/YwpxMW by Jermaine */
+.arrow-container{
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	position: absolute;
+	bottom: 100px;
+	left: 0;
+	right: 0;
+  }
+  
+  .arrow-1{
+	width: 100px;
+	height: 100px;
+	background:yellowgreen;
+	opacity: 0.5;
+	border-radius: 50%;
+	position: absolute;
+  }
+  
+  .arrow-2{
+	width: 60px;
+	height: 60px;
+	background: rgb(133, 209, 20);
+	border-radius: 50%;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	z-index: 1;
+	display: table;
+	transition: 0.2s;
+  }
+
+  .arrow-2:hover{
+	  background: rgb(1, 192, 1);
+	  transition: 0.2s;
+	  cursor: pointer;
+  }
+
+  .arrow-2:before{
+	width: 52px;
+	height: 52px;
+	content: "";
+	border: 2px solid darkgreen;
+	border-radius: 50%;
+	position: absolute;
+	top: 4px;
+	left: 4px;
+  }
+  
+  .arrow-2 img{
+	width:30px;
+	height:30px;
+	margin-top: 17px;
+  }
+ 
+  
+  /* Custom Animate.css */
+  
+
+  
+  @-webkit-keyframes zoomIn {
+	0% {
+	  opacity: 0;
+	  -webkit-transform: scale3d(.4, .4, .4);
+			  transform: scale3d(.4, .4, .4);
+	}
+  
+	50% {
+	  opacity: 0.5;
+	}
+	
+	100% {
+	  opacity: 0;
+	}
+  }
+  
+  @keyframes zoomIn {
+	0% {
+	  opacity: 0;
+	  -webkit-transform: scale3d(.4, .4, .4);
+			  transform: scale3d(.4, .4, .4);
+	}
+  
+	50% {
+	  opacity: 0.5;
+	}
+	
+	100% {
+	  opacity: 0;
+	}
+  }
+  
+  .zoomIn {
+	-webkit-animation: zoomIn 2s infinite;
+			animation: zoomIn 2s infinite;
+  }
 
 /* Header */
 .header-bg {
@@ -202,6 +300,7 @@ div.tooltip {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 
 .vegetable_name {
@@ -238,6 +337,15 @@ div.tooltip {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.close-button{
+	fill: black;
+	width: 20px;
+}
+
+.close:focus{
+	outline: 0;
+}
+
 
 @media only screen and (max-width: 568px) {
 	html {
@@ -246,6 +354,9 @@ div.tooltip {
 	.detailRadarChart .axisLabel{
 		font-size: 1rem;
 	
+	}
+	.close-button{
+		width: 15px;
 	}
 }
 

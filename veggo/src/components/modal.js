@@ -1,76 +1,75 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import * as d3 from "d3";
 import DetailRadarChart from "./detailRadarChart";
 import DetailDonutChart from "./detailDonutChart";
 import Fade from "react-reveal/Fade";
+import { ReactComponent as Close } from "../images/close.svg";
 
 class Modal extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			data: {
-				"id": 1,
-				"image": "asparagus.jpg",
-				"name": "Asparagus",
-				"name_swe": "Sparris",
-				"nutrition": {
-					"energy": {
-						"kcal": { "value": 270, "unit": "kcal/kg" },
-						"kj": { "value": 1130, "unit": "kJ/kg" }
+				id: 1,
+				image: "asparagus.jpg",
+				name: "Asparagus",
+				name_swe: "Sparris",
+				nutrition: {
+					energy: {
+						kcal: { value: 270, unit: "kcal/kg" },
+						kj: { value: 1130, unit: "kJ/kg" }
 					},
-					"carbohydrates": { "value": 24, "unit": "g/kg" },
-					"fat": { "value": 2, "unit": "g/kg" },
-					"protein": { "value": 31, "unit": "g/kg" },
-					"fiber": { "value": 15, "unit": "g/kg" },
-					"water": { "value": 920, "unit": "g/kg" },
-					"ash": { "value": 8, "unit": "g/kg" },
-					"sugars": { "value": 12, "unit": "g/kg" },
-					"saturated_fat": { "value": 0.5, "unit": "g/kg" },
-					"monounsaturated_fat": { "value": 0, "unit": "g/kg" },
-					"polyunsaturated_fat": { "value": 1.1, "unit": "g/kg" },
-					"vitamin_d": { "value": 0, "unit": "μg/kg" },
-					"vitamin_c": { "value": 330, "unit": "mg/kg" },
-					"folate": { "value": 1190, "unit": "μg/kg" },
-					"iron": { "value": 7, "unit": "mg/kg" }
+					carbohydrates: { value: 24, unit: "g/kg" },
+					fat: { value: 2, unit: "g/kg" },
+					protein: { value: 31, unit: "g/kg" },
+					fiber: { value: 15, unit: "g/kg" },
+					water: { value: 920, unit: "g/kg" },
+					ash: { value: 8, unit: "g/kg" },
+					sugars: { value: 12, unit: "g/kg" },
+					saturated_fat: { value: 0.5, unit: "g/kg" },
+					monounsaturated_fat: { value: 0, unit: "g/kg" },
+					polyunsaturated_fat: { value: 1.1, unit: "g/kg" },
+					vitamin_d: { value: 0, unit: "μg/kg" },
+					vitamin_c: { value: 330, unit: "mg/kg" },
+					folate: { value: 1190, unit: "μg/kg" },
+					iron: { value: 7, unit: "mg/kg" }
 				},
-				"price": { "value": 147.6, "unit": "kr/kg" },
-				"energy": { "value": 64.7, "unit": "MJ/kg", "ranking": 21 },
-				"fossil_depletion": {
-					"value": 1.4,
-					"unit": "kg oil eq./kg",
-					"ranking": 21
+				price: { value: 147.6, unit: "kr/kg" },
+				energy: { value: 64.7, unit: "MJ/kg", ranking: 21 },
+				fossil_depletion: {
+					value: 1.4,
+					unit: "kg oil eq./kg",
+					ranking: 21
 				},
-				"water_volume": { "value": 746, "unit": "L/kg" },
-				"water_footprint": { "value": 525, "unit": "Leq./kg", "ranking": 21 },
-				"emissions": { "value": 5.3, "unit": "kg CO2 eq./kg", "ranking": 21 },
-				"land_use": { "value": 4.1, "unit": "m2 a/kg", "ranking": 21 },
-				"freshwater_toxicity": {
-					"value": 99,
-					"unit": "g 1,4-DB eq./kg",
-					"ranking": 15
+				water_volume: { value: 746, unit: "L/kg" },
+				water_footprint: { value: 525, unit: "Leq./kg", ranking: 21 },
+				emissions: { value: 5.3, unit: "kg CO2 eq./kg", ranking: 21 },
+				land_use: { value: 4.1, unit: "m2 a/kg", ranking: 21 },
+				freshwater_toxicity: {
+					value: 99,
+					unit: "g 1,4-DB eq./kg",
+					ranking: 15
 				},
-				"terrestrial_toxicity": {
-					"value": 22.5,
-					"unit": "g 1,4-DB eq./kg",
-					"ranking": 21
+				terrestrial_toxicity: {
+					value: 22.5,
+					unit: "g 1,4-DB eq./kg",
+					ranking: 21
 				},
-				"freshwater_eutrophication": {
-					"value": 0.6,
-					"unit": "g P eq./kg",
-					"ranking": 20
+				freshwater_eutrophication: {
+					value: 0.6,
+					unit: "g P eq./kg",
+					ranking: 20
 				},
-				"marine_eutrophication": {
-					"value": 15.9,
-					"unit": "g N eq./kg",
-					"ranking": 21
+				marine_eutrophication: {
+					value: 15.9,
+					unit: "g N eq./kg",
+					ranking: 21
 				},
-				"terrestrial_acidification": {
-					"value": 27.1,
-					"unit": "g SO2 eq./kg",
-					"ranking": 21
+				terrestrial_acidification: {
+					value: 27.1,
+					unit: "g SO2 eq./kg",
+					ranking: 21
 				}
-			
 			}
 		};
 	}
@@ -110,11 +109,20 @@ class Modal extends Component {
 					<div className="modal-content">
 						<div className="compare-vegetables">
 							<div className="modal-body">
+								<div className="modal-header mb-2">
+									<h2 className="modal-title w-100 text-center">
+										{data.name_swe}
+									</h2>
+									<button
+										type="button"
+										className="close p-0"
+										data-dismiss="modal"
+										aria-label="Close"
+									>
+										<Close className="close-button" />
+									</button>
+								</div>
 								<div className="row">
-									<div className="col-12 p-3">
-										<h2 className="text-center">{data.name_swe}</h2>
-									</div>
-
 									<div className="veg-image col-12">
 										<img
 											src={require("../images/" + data.image)}
@@ -142,7 +150,8 @@ class Modal extends Component {
 															<th scope="row">Energi</th>
 															<td>
 																{data.nutrition.energy.kcal.value}{" "}
-																{data.nutrition.energy.kcal.unit}<br />
+																{data.nutrition.energy.kcal.unit}
+																<br />
 																{data.nutrition.energy.kj.value}{" "}
 																{data.nutrition.energy.kj.unit}
 															</td>
@@ -257,10 +266,10 @@ class Modal extends Component {
 															(per kg)
 														</h3>
 														<Fade delay={100}>
-														<DetailDonutChart
-															data={this.props.detail}
-															vegetables={this.props.vegetables}
-														/>
+															<DetailDonutChart
+																data={this.props.detail}
+																vegetables={this.props.vegetables}
+															/>
 														</Fade>
 													</div>
 												</div>
@@ -272,10 +281,10 @@ class Modal extends Component {
 															(klimatavtryck)
 														</h3>
 														<Fade delay={100}>
-														<DetailRadarChart
-															data={this.props.detail}
-															vegetables={this.props.vegetables}
-														/>
+															<DetailRadarChart
+																data={this.props.detail}
+																vegetables={this.props.vegetables}
+															/>
 														</Fade>
 													</div>
 												</div>
