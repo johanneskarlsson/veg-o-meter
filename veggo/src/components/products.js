@@ -41,7 +41,7 @@ class Products extends Component {
 														name={vegetable.id}
 														onClick={this.updateModal}
 														data-toggle="modal"
-														data-target=".bd-example-modal-lg"
+														data-target=".productDetails-modal"
 													/>
 													<h3 className="vegetable_name">
 														{vegetable.name_swe}

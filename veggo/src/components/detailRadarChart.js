@@ -64,7 +64,7 @@ export default class DetailRadarChart extends Component {
 		var width;
 		var height;
 
-		margin = { top: 70, right: 100, bottom: 100, left: 100 };
+		margin = { top: 70, right: 100, bottom: 80, left: 100 };
 		width = Math.min(470, window.innerWidth) - margin.left - margin.right;
 		height = Math.min(
 			width,

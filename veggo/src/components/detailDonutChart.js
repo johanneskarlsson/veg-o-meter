@@ -210,6 +210,6 @@ export default class DetailDonutChart extends Component {
 
 	render() {
 		console.log("RENDERED");
-		return <div className="detailDonutChart px-0 col-8 mx-auto mb-1" />;
+		return <div className="detailDonutChart px-0 col-9 mx-auto mb-3" />;
 	}
 }

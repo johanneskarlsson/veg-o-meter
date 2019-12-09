@@ -80,17 +80,26 @@ class Modal extends Component {
 		}
 	};
 
-	colorRanking = ranking => {
-		var length = this.props.vegetables.length;
-		var middlePoint = Math.round(length / 2);
+	colorRanking = (data, key) => {
+		var values = this.props.vegetables.map(vegetable => {
+			return vegetable[key].value;
+		});
+		var maxValue = d3.max(values);
+		console.log(
+			this.props.vegetables[0][key].value +
+				" " +
+				this.props.vegetables[0][key].unit
+		);
+
+		var middlePoint = Math.round(maxValue / 2);
 
 		var i = d3
 			.scaleLinear()
-			.domain([1, middlePoint, length])
+			.domain([0, middlePoint, maxValue])
 			.range(["#1a9850", "#fee08b", "#d73027"]) // Green, yellow, red
 			.interpolate(d3.interpolateHcl);
 
-		var color = i(ranking);
+		var color = i(data.value);
 
 		return color;
 	};
@@ -99,10 +108,10 @@ class Modal extends Component {
 		const { data } = this.state;
 		return (
 			<div
-				className="modal fade bd-example-modal-lg p-0"
+				className="modal fade productDetails-modal p-0"
 				tabIndex="-1"
 				role="dialog"
-				aria-labelledby="myLargeModalLabel"
+				aria-labelledby="productDetails-modal"
 				aria-hidden="true"
 			>
 				<div className="modal-dialog modal-lg">
@@ -122,30 +131,43 @@ class Modal extends Component {
 										<Close className="close-button" />
 									</button>
 								</div>
-								<div className="row">
-									<div className="veg-image col-12">
-										<img
-											src={require("../images/" + data.image)}
-											alt={data.name}
-											className="img-fluid"
-										/>
-									</div>
+								<div className="container p-0">
+									<div className="row">
+										<div className="veg-image col-12">
+											<img
+												src={require("../images/" + data.image)}
+												alt={data.name}
+												className="img-fluid"
+											/>
+										</div>
 
-									<div className="col-12 p-3">
-										<h4>{`Pris: ${data.price.value} ${data.price.unit}`}</h4>
-									</div>
+										<div className="row p-0 mx-auto col-12">
+											<div className="col-md-6 mx-auto">
+												<div className="row pt-3">
+													<div className="col-12 p-0">
+														<h3 className="text-center pb-2">
+															Näringsinnehåll
+															<br />
+															(per kg)
+														</h3>
+														<Fade>
+															<DetailDonutChart
+																data={this.props.detail}
+																vegetables={this.props.vegetables}
+															/>
+														</Fade>
+													</div>
+												</div>
 
-									<div className="col-12">
-										<div className="row">
-											<div className="col-md-5 pl-md-4 col-11 mx-auto p-0">
 												<table className="table nutrition p-0 m-0">
 													<thead className="thead-dark">
 														<tr>
-															<th scope="col-6">Näringsämne</th>
-															<th scope="col-6">Värde</th>
+															<th scope="row" colSpan="2">
+																Näringsämnen
+															</th>
 														</tr>
 													</thead>
-													<tbody>
+													<tbody className="border">
 														<tr>
 															<th scope="row">Energi</th>
 															<td>
@@ -257,30 +279,15 @@ class Modal extends Component {
 													</tbody>
 												</table>
 											</div>
-											<div className="col-md-7 pt-md-0 pt-4 mx-auto p-0">
-												<div className="row">
-													<div className="col-12 p-0">
+											<div className="col-md-6 mx-auto">
+												<div className="row pt-3">
+													<div className="col-12 mx-auto">
 														<h3 className="text-center pb-2">
-															Näringsinnehåll
+															Klimatavtryck
 															<br />
-															(per kg)
+															(ranking)
 														</h3>
-														<Fade delay={100}>
-															<DetailDonutChart
-																data={this.props.detail}
-																vegetables={this.props.vegetables}
-															/>
-														</Fade>
-													</div>
-												</div>
-												<div className="row pt-4">
-													<div className="col-11 mx-auto">
-														<h3 className="text-center pb-2">
-															Ranking
-															<br />
-															(klimatavtryck)
-														</h3>
-														<Fade delay={100}>
+														<Fade>
 															<DetailRadarChart
 																data={this.props.detail}
 																vegetables={this.props.vegetables}
@@ -288,111 +295,162 @@ class Modal extends Component {
 														</Fade>
 													</div>
 												</div>
-											</div>
-										</div>
-									</div>
+												<div className="col-12 pt-3">
+													<div className="row">
+														<table className="table climate p-0 m-0">
+															<thead className="thead-dark">
+																<tr>
+																	<th scope="row" colSpan="2">
+																		Klimatavtryck
+																	</th>
+																</tr>
+															</thead>
+															<tbody className="border">
+																<tr>
+																	<th scope="row">Växthusgasutsläpp</th>
+																	<td
+																		style={{
+																			backgroundColor: this.colorRanking(
+																				data.emissions,
+																				"emissions"
+																			)
+																		}}
+																		className="m-0"
+																	>
+																		{`${data.emissions.value} ${data.emissions.unit}`}
+																	</td>
+																</tr>
+																<tr>
+																	<th scope="row">Vattenfotavtryck</th>
+																	<td
+																		style={{
+																			backgroundColor: this.colorRanking(
+																				data.water_footprint,
+																				"water_footprint"
+																			)
+																		}}
+																		className="m-0"
+																	>
+																		{`${data.water_footprint.value} ${data.water_footprint.unit}`}
+																	</td>
+																</tr>
+																<tr>
+																	<th scope="row">Energiförbrukning</th>
+																	<td
+																		style={{
+																			backgroundColor: this.colorRanking(
+																				data.energy,
+																				"energy"
+																			)
+																		}}
+																		className="m-0"
+																	>
+																		{`${data.energy.value} ${data.energy.unit}`}
+																	</td>
+																</tr>
+																<tr>
+																	<th scope="row">Markanvändning</th>
+																	<td
+																		style={{
+																			backgroundColor: this.colorRanking(
+																				data.land_use,
+																				"land_use"
+																			)
+																		}}
+																		className="m-0"
+																	>
+																		{`${data.land_use.value} ${data.land_use.unit}`}
+																	</td>
+																</tr>
+																<tr>
+																	<th scope="row">Fossil utarmning</th>
+																	<td
+																		style={{
+																			backgroundColor: this.colorRanking(
+																				data.fossil_depletion,
+																				"fossil_depletion"
+																			)
+																		}}
+																		className="m-0"
+																	>
+																		{`${data.fossil_depletion.value} ${data.fossil_depletion.unit}`}
+																	</td>
+																</tr>
 
-									<div className="col-12 pt-4">
-										<div className="row p-2">
-											<div className="col-lg-4 col-6 p-1 pb-0">
-												<p
-													style={{
-														backgroundColor: this.colorRanking(
-															data.water_footprint.ranking
-														)
-													}}
-													className="m-0"
-												>{`Vattenfotavtryck: ${data.water_footprint.value} ${data.water_footprint.unit}`}</p>
-											</div>
-											<div className="col-lg-4 col-6 p-1 pb-0">
-												<p
-													style={{
-														backgroundColor: this.colorRanking(
-															data.emissions.ranking
-														)
-													}}
-													className="m-0"
-												>{`Växthusgasutsläpp: ${data.emissions.value} ${data.emissions.unit}`}</p>
-											</div>
-											<div className="col-lg-4 col-6 p-1 pb-0">
-												<p
-													style={{
-														backgroundColor: this.colorRanking(
-															data.land_use.ranking
-														)
-													}}
-													className="m-0"
-												>{`Markanvändning: ${data.land_use.value} ${data.land_use.unit}`}</p>
-											</div>
-											<div className="col-lg-4 col-6 p-1 pb-0">
-												<p
-													style={{
-														backgroundColor: this.colorRanking(
-															data.energy.ranking
-														)
-													}}
-													className="m-0"
-												>{`Energiförbrukning: ${data.energy.value} ${data.energy.unit}`}</p>
-											</div>
-											<div className="col-lg-4 col-6 p-1 pb-0">
-												<p
-													style={{
-														backgroundColor: this.colorRanking(
-															data.freshwater_toxicity.ranking
-														)
-													}}
-													className="m-0"
-												>{`Sötvattenförgiftning: ${data.freshwater_toxicity.value} ${data.freshwater_toxicity.unit}`}</p>
-											</div>
-											<div className="col-lg-4 col-6 p-1 pb-0">
-												<p
-													style={{
-														backgroundColor: this.colorRanking(
-															data.fossil_depletion.ranking
-														)
-													}}
-													className="m-0"
-												>{`Fossil utarmning: ${data.fossil_depletion.value} ${data.fossil_depletion.unit}`}</p>
-											</div>
-											<div className="col-lg-4 col-6 p-1 pb-0">
-												<p
-													style={{
-														backgroundColor: this.colorRanking(
-															data.freshwater_eutrophication.ranking
-														)
-													}}
-													className="m-0"
-												>{`Sötvattenförsurning: ${data.freshwater_eutrophication.value} ${data.freshwater_eutrophication.unit}`}</p>
-											</div>
-											<div className="col-lg-4 col-6 p-1 pb-0">
-												<p
-													style={{
-														backgroundColor: this.colorRanking(
-															data.marine_eutrophication.ranking
-														)
-													}}
-													className="m-0"
-												>{`Marinförsurning: ${data.marine_eutrophication.value} ${data.marine_eutrophication.unit}`}</p>
-											</div>
-											<div className="col-lg-4 col-6 p-1 pb-0">
-												<p
-													style={{
-														backgroundColor: this.colorRanking(
-															data.terrestrial_acidification.ranking
-														)
-													}}
-													className="m-0"
-												>{`Markförsurning: ${data.terrestrial_acidification.value} ${data.terrestrial_acidification.unit}`}</p>
-											</div>
-											<div className="col-lg-4 col-6 p-1 pb-0">
-												<p
-													style={{
-														backgroundColor: this.colorRanking(
-															data.terrestrial_toxicity.ranking
-														)
-													}}
-													className="m-0"
-												>{`Markförgiftning: ${data.terrestrial_toxicity.value} ${data.terrestrial_toxicity.unit}`}</p>
+																<tr>
+																	<th scope="row">Sötvattenförgiftning</th>
+																	<td
+																		style={{
+																			backgroundColor: this.colorRanking(
+																				data.freshwater_toxicity,
+																				"freshwater_toxicity"
+																			)
+																		}}
+																		className="m-0"
+																	>
+																		{`${data.freshwater_toxicity.value} ${data.freshwater_toxicity.unit}`}
+																	</td>
+																</tr>
+																<tr>
+																	<th scope="row">Sötvattenförsurning</th>
+																	<td
+																		style={{
+																			backgroundColor: this.colorRanking(
+																				data.freshwater_eutrophication,
+																				"freshwater_eutrophication"
+																			)
+																		}}
+																		className="m-0"
+																	>
+																		{`${data.freshwater_eutrophication.value} ${data.freshwater_eutrophication.unit}`}
+																	</td>
+																</tr>
+																<tr>
+																	<th scope="row">Marinförsurning</th>
+																	<td
+																		style={{
+																			backgroundColor: this.colorRanking(
+																				data.marine_eutrophication,
+																				"marine_eutrophication"
+																			)
+																		}}
+																		className="m-0"
+																	>
+																		{`${data.marine_eutrophication.value} ${data.marine_eutrophication.unit}`}
+																	</td>
+																</tr>
+																<tr>
+																	<th scope="row">Markförsurning</th>
+																	<td
+																		style={{
+																			backgroundColor: this.colorRanking(
+																				data.terrestrial_acidification,
+																				"terrestrial_acidification"
+																			)
+																		}}
+																		className="m-0"
+																	>
+																		{`${data.terrestrial_acidification.value} ${data.terrestrial_acidification.unit}`}
+																	</td>
+																</tr>
+																<tr>
+																	<th scope="row">Markförgiftning</th>
+																	<td
+																		style={{
+																			backgroundColor: this.colorRanking(
+																				data.terrestrial_toxicity,
+																				"terrestrial_toxicity"
+																			)
+																		}}
+																		className="m-0 text-border"
+																	>
+																		{`${data.terrestrial_toxicity.value} ${data.terrestrial_toxicity.unit}`}
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
