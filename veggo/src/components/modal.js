@@ -133,14 +133,6 @@ class Modal extends Component {
 								</div>
 								<div className="container p-0">
 									<div className="row">
-										<div className="veg-image col-12">
-											<img
-												src={require("../images/" + data.image)}
-												alt={data.name}
-												className="img-fluid"
-											/>
-										</div>
-
 										<div className="row p-0 mx-auto col-12">
 											<div className="col-md-6 mx-auto">
 												<div className="row pt-3">
