@@ -6,11 +6,7 @@ export default class DetailDonutChart extends Component {
 		// If the component receives new props
 		if (this.props !== prevProps) {
 			//console.log("updated");
-
-			// Fix to solve auto resize on initial load
-			setTimeout(() => {
-				this.DrawChart();
-			}, 200);
+			this.DrawChart();	
 		}
 	}
 
@@ -269,8 +265,8 @@ export default class DetailDonutChart extends Component {
 	render() {
 		console.log("RENDERED");
 		return (
-			<div className="detailDonutChartContainer col-12">
-				<div className="detailDonutChart p-0 col-9 mx-auto mb-3" />
+			<div className="detailDonutChartContainer p-0">
+				<div className="detailDonutChart p-0 mb-3" />
 			</div>
 		);
 	}

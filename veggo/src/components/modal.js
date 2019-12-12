@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import * as d3 from "d3";
 import DetailRadarChart from "./detailRadarChart";
 import DetailDonutChart from "./detailDonutChart";
-import Fade from "react-reveal/Fade";
 import { ReactComponent as Close } from "../images/close.svg";
+import {ReactComponent as Willys} from "../images/willys_logo.svg";
 import Select from "react-select";
 
 class Modal extends Component {
@@ -156,7 +156,7 @@ class Modal extends Component {
 			.interpolate(d3.interpolateHcl);
 
 		var color;
-		console.log(colorScale)
+		console.log(colorScale);
 		var newValue = this.newValueFilter(object, data);
 		if (newValue === 0) {
 			color = "rgb(255, 255, 255)";
@@ -224,220 +224,45 @@ class Modal extends Component {
 										<Close className="close-button" />
 									</button>
 								</div>
-								<div className="col-md-4 mx-auto">
-									<Select
-										isSearchable={false}
-										value={this.state.selectedOption}
-										onChange={this.handleChange}
-										options={this.state.key}
-										placeholder={"Välj filter..."}
-										noOptionsMessage={() => {
-											return "Ingen träff";
-										}}
-									/>
+								<div className="row">
+									<div className="col-md-4 mx-auto">
+										<Select
+											isSearchable={false}
+											value={this.state.selectedOption}
+											onChange={this.handleChange}
+											options={this.state.key}
+											placeholder={"Välj filter..."}
+											noOptionsMessage={() => {
+												return "Ingen träff";
+											}}
+										/>
+									</div>
+									<div className="col-md-6 pt-3 pt-md-0">
+										<div className="row mx-auto">
+										<h3 className="mx-auto">
+											Pris: {this.newValueFilter(data, data.price.value)}{" "}
+											{data.price.unit} 
+											<Willys className="col-4 img-fluid pb-1" />
+										</h3>
+										
+										</div>
+									</div>
 								</div>
 								<div className="container p-0">
 									<div className="row">
 										<div className="row p-0 mx-auto col-12">
 											<div className="col-md-6 mx-auto">
 												<div className="row pt-3">
-													<div className="col-12 p-0">
-														<h3 className="text-center pb-2">
-															Näringsinnehåll
-															<br />
-														</h3>
-														<Fade>
-															<DetailDonutChart
-																data={this.props.detail}
-																vegetables={this.props.vegetables}
-																filteredValue={this.state.filteredValue}
-															/>
-														</Fade>
-													</div>
-												</div>
-
-												<table className="table nutrition p-0 m-0">
-													<thead className="thead-dark">
-														<tr>
-															<th scope="row" colSpan="2">
-																Näringsämnen
-															</th>
-														</tr>
-													</thead>
-													<tbody className="border">
-														<tr>
-															<th scope="row">Energi</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.energy.kcal.value
-																)}{" "}
-																{data.nutrition.energy.kcal.unit}
-																<br />
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.energy.kj.value
-																)}{" "}
-																{data.nutrition.energy.kj.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Kolhydrater</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.carbohydrates.value
-																)}{" "}
-																{data.nutrition.carbohydrates.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Protein</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.protein.value
-																)}{" "}
-																{data.nutrition.protein.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Fett</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.fat.value
-																)}{" "}
-																{data.nutrition.fat.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Fibrer</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.fiber.value
-																)}{" "}
-																{data.nutrition.fiber.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Vatten</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.water.value
-																)}{" "}
-																{data.nutrition.water.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Aska</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.ash.value
-																)}{" "}
-																{data.nutrition.ash.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Sockerarter</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.sugars.value
-																)}{" "}
-																{data.nutrition.sugars.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Mättat fett</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.saturated_fat.value
-																)}{" "}
-																{data.nutrition.saturated_fat.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Enkelomättat fett</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.monounsaturated_fat.value
-																)}{" "}
-																{data.nutrition.monounsaturated_fat.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Fleromättat fett</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.polyunsaturated_fat.value
-																)}{" "}
-																{data.nutrition.polyunsaturated_fat.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Vitamin D</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.vitamin_d.value
-																)}{" "}
-																{data.nutrition.vitamin_d.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Vitamin C</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.vitamin_c.value
-																)}{" "}
-																{data.nutrition.vitamin_c.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Folat</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.folate.value
-																)}{" "}
-																{data.nutrition.folate.unit}
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">Järn</th>
-															<td>
-																{this.newValueFilter(
-																	data,
-																	data.nutrition.iron.value
-																)}{" "}
-																{data.nutrition.iron.unit}
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-											<div className="col-md-6 mx-auto">
-												<div className="row pt-3">
-													<div className="col-12 mx-auto">
+													<div className="col-md-11 mx-auto">
 														<h3 className="text-center pb-2">
 															Grönsaksranking
 														</h3>
-														<Fade>
-															<DetailRadarChart
-																data={this.props.detail}
-																vegetables={this.props.vegetables}
-																filteredValue={this.state.filteredValue}
-																selectedOption={this.state.selectedOption}
-															/>
-														</Fade>
+														<DetailRadarChart
+															data={[this.state.data]}
+															vegetables={this.props.vegetables}
+															filteredValue={this.state.filteredValue}
+															selectedOption={this.state.selectedOption}
+														/>
 													</div>
 												</div>
 												<div className="col-12 pt-3">
@@ -636,6 +461,190 @@ class Modal extends Component {
 														</table>
 													</div>
 												</div>
+											</div>
+											<div className="col-md-6 mx-auto">
+												<div className="row pt-3">
+													<div className="col-md-8 col-9 mx-auto p-0">
+														<h3 className="text-center pb-2">
+															Näringsinnehåll
+															<br />
+														</h3>
+
+														<DetailDonutChart
+															data={[this.state.data]}
+															vegetables={this.props.vegetables}
+															filteredValue={this.state.filteredValue}
+														/>
+													</div>
+												</div>
+
+												<table className="table nutrition p-0 m-0">
+													<thead className="thead-dark">
+														<tr>
+															<th scope="row" colSpan="2">
+																Näringsämnen
+															</th>
+														</tr>
+													</thead>
+													<tbody className="border">
+														<tr>
+															<th scope="row">Energi</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.energy.kcal.value
+																)}{" "}
+																{data.nutrition.energy.kcal.unit}
+																<br />
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.energy.kj.value
+																)}{" "}
+																{data.nutrition.energy.kj.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Kolhydrater</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.carbohydrates.value
+																)}{" "}
+																{data.nutrition.carbohydrates.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Protein</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.protein.value
+																)}{" "}
+																{data.nutrition.protein.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Fett</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.fat.value
+																)}{" "}
+																{data.nutrition.fat.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Fibrer</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.fiber.value
+																)}{" "}
+																{data.nutrition.fiber.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Vatten</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.water.value
+																)}{" "}
+																{data.nutrition.water.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Aska</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.ash.value
+																)}{" "}
+																{data.nutrition.ash.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Sockerarter</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.sugars.value
+																)}{" "}
+																{data.nutrition.sugars.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Mättat fett</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.saturated_fat.value
+																)}{" "}
+																{data.nutrition.saturated_fat.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Enkelomättat fett</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.monounsaturated_fat.value
+																)}{" "}
+																{data.nutrition.monounsaturated_fat.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Fleromättat fett</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.polyunsaturated_fat.value
+																)}{" "}
+																{data.nutrition.polyunsaturated_fat.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Vitamin D</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.vitamin_d.value
+																)}{" "}
+																{data.nutrition.vitamin_d.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Vitamin C</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.vitamin_c.value
+																)}{" "}
+																{data.nutrition.vitamin_c.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Folat</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.folate.value
+																)}{" "}
+																{data.nutrition.folate.unit}
+															</td>
+														</tr>
+														<tr>
+															<th scope="row">Järn</th>
+															<td>
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.iron.value
+																)}{" "}
+																{data.nutrition.iron.unit}
+															</td>
+														</tr>
+													</tbody>
+												</table>
 											</div>
 										</div>
 									</div>

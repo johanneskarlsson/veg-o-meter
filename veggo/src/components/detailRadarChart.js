@@ -4,6 +4,13 @@ import * as d3 from "d3";
 // D3-code from Nadieh Bremer at http://bl.ocks.org/nbremer/21746a9668ffdf6d8242
 
 export default class DetailRadarChart extends Component {
+
+	constructor(props){
+		super(props);
+		this.state={
+			loaded:false
+		}
+	}
 	componentDidUpdate(prevProps) {
 		// If the component receives new props
 		if (
@@ -12,11 +19,11 @@ export default class DetailRadarChart extends Component {
 		) {
 			console.log("updated");
 			// Fix to solve auto resize on initial load
-			setTimeout(() => {
-				this.DrawChart();
-			}, 200);
+		
+			this.DrawChart();
 		}
 	}
+
 
 	
 
@@ -195,18 +202,24 @@ export default class DetailRadarChart extends Component {
 			var margin;
 			var width;
 			var height;
-
+			var labelFactor;
+			if(window.innerWidth < 568){
+				margin = { top: 70, right: 90, bottom: 80, left: 90 };
+				labelFactor = 1.5;
+			}else{
 			margin = { top: 70, right: 100, bottom: 80, left: 100 };
+			labelFactor = 1.4;
+			
+		}
 			width = Math.min(470, window.innerWidth) - margin.left - margin.right;
 			height = Math.min(
 				width,
 				window.innerHeight - margin.top - margin.bottom - 20
 			);
-
 			radarChartOptions = {
 				w: width,
 				h: height,
-				labelFactor: 1.4,
+				labelFactor: labelFactor,
 				margin: margin,
 				maxValue: maxValue,
 				levels: 7,
@@ -321,6 +334,8 @@ export default class DetailRadarChart extends Component {
 		d3.select(id)
 			.select("svg")
 			.remove();
+
+		d3.select(".tooltip").remove();
 
 		//Initiate the radar chart SVG
 		var svg = d3
@@ -643,8 +658,8 @@ var tooltip = g
 
 	render() {
 		return (
-			<div className="detailRadarChartContainer col-12 p-0">
-				<div className="detailRadarChart col-12 p-0" />
+			<div className="detailRadarChartContainer p-0">
+				<div className="detailRadarChart p-0" />
 			</div>
 		);
 	}
