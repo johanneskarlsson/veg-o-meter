@@ -53,11 +53,11 @@ const vegetablesReducer = (state = initState, action) => {
 				return { ...state, detail: null };
 			} else return { ...state, detail: detail };
 		case "RESET_COMPARELIST":
-				return { ...state, compare: [] };
+			return { ...state, compare: [] };
 		case "UPDATE_COMPARELIST":
-				return { ...state, compare: action.payload };
+			return { ...state, compare: action.payload };
 		case "UPDATE_FILTER_VARIABLE":
-				return { ...state, filter: [action.payload] };
+			return { ...state, filter: [action.payload] };
 		default:
 			return state;
 	}

@@ -4,6 +4,7 @@ import DetailRadarChart from "./detailRadarChart";
 import DetailDonutChart from "./detailDonutChart";
 import Fade from "react-reveal/Fade";
 import { ReactComponent as Close } from "../images/close.svg";
+import Select from "react-select";
 
 class Modal extends Component {
 	constructor(props) {
@@ -14,6 +15,7 @@ class Modal extends Component {
 				image: "asparagus.jpg",
 				name: "Asparagus",
 				name_swe: "Sparris",
+				weigth: { value: 1, unit: "kg" },
 				nutrition: {
 					energy: {
 						kcal: { value: 270, unit: "kcal/kg" },
@@ -70,7 +72,33 @@ class Modal extends Component {
 					unit: "g SO2 eq./kg",
 					ranking: 21
 				}
-			}
+			},
+
+			selectedOption: {
+				label: "Per kg",
+				value: "kg",
+				index: ["weigth", "value"]
+			},
+			key: [
+				{ label: "Per kg", value: "kg", index: ["weigth", "value"] },
+				{
+					label: "Per gram kolhydrater",
+					value: "carbohydrates",
+					index: ["nutrition", "carbohydrates", "value"]
+				},
+				{
+					label: "Per gram protein",
+					value: "protein",
+					index: ["nutrition", "protein", "value"]
+				},
+				{
+					label: "Per gram fett",
+					value: "fat",
+					index: ["nutrition", "fat", "value"]
+				},
+				{ label: "Per krona", value: "price", index: ["price", "value"] }
+			],
+			filteredValue: 1
 		};
 	}
 
@@ -80,28 +108,93 @@ class Modal extends Component {
 		}
 	};
 
-	colorRanking = (data, key) => {
-		var values = this.props.vegetables.map(vegetable => {
-			return vegetable[key].value;
+	handleChange = selectedOption => {
+		console.log(`Option selected:`, selectedOption);
+		var option = selectedOption;
+		console.log(option);
+		var lengthKey = option.index.length;
+		console.log(option.index.length);
+		var filteredValue;
+		if (lengthKey === 2) {
+			filteredValue = this.state.data[option.index[0]][option.index[1]];
+		} else if (lengthKey === 3) {
+			filteredValue = this.state.data[option.index[0]][option.index[1]][
+				option.index[2]
+			];
+		}
+
+		this.setState({
+			selectedOption: selectedOption,
+			filteredValue: filteredValue
 		});
+	};
+
+	colorRanking = (object, data, key) => {
+		console.log("COLOR RANKING");
+		console.log("Vegetable values");
+
+		var values = this.props.vegetables.map(vegetable => {
+			return this.newValueFilter(vegetable, vegetable[key].value);
+		});
+		console.log(values);
 		var maxValue = d3.max(values);
+		var minValue = d3.min(values);
 		console.log(
 			this.props.vegetables[0][key].value +
 				" " +
 				this.props.vegetables[0][key].unit
 		);
 
-		var middlePoint = Math.round(maxValue / 2);
-
-		var i = d3
+		var middlePoint = (maxValue - minValue) / 2;
+		console.log(maxValue);
+		console.log(middlePoint);
+		console.log(minValue);
+		var colorScale = d3
 			.scaleLinear()
-			.domain([0, middlePoint, maxValue])
+			.domain([minValue, middlePoint, maxValue])
 			.range(["#1a9850", "#fee08b", "#d73027"]) // Green, yellow, red
 			.interpolate(d3.interpolateHcl);
 
-		var color = i(data.value);
+		var color;
+		console.log(colorScale)
+		var newValue = this.newValueFilter(object, data);
+		if (newValue === 0) {
+			color = "rgb(255, 255, 255)";
+		} else {
+			color = colorScale(newValue);
+		}
+
+		console.log(color);
 
 		return color;
+	};
+
+	newValueFilter = (object, value) => {
+		//console.log("NEW VALUE FILTER");
+		var option = this.state.selectedOption;
+		//console.log(option);
+		var lengthKey = option.index.length;
+		//console.log(option.index.length);
+		var newValue;
+		var filteredValue;
+		if (lengthKey === 2) {
+			filteredValue = object[option.index[0]][option.index[1]];
+			if (filteredValue === 0) {
+				newValue = 0;
+			} else {
+				newValue = Math.round((value / filteredValue) * 10000) / 10000;
+			}
+		} else if (lengthKey === 3) {
+			filteredValue = object[option.index[0]][option.index[1]][option.index[2]];
+			if (filteredValue === 0) {
+				newValue = 0;
+			} else {
+				newValue = Math.round((value / filteredValue) * 10000) / 10000;
+			}
+		} else {
+			console.log("Key index out of range");
+		}
+		return newValue;
 	};
 
 	render() {
@@ -131,6 +224,18 @@ class Modal extends Component {
 										<Close className="close-button" />
 									</button>
 								</div>
+								<div className="col-md-4 mx-auto">
+									<Select
+										isSearchable={false}
+										value={this.state.selectedOption}
+										onChange={this.handleChange}
+										options={this.state.key}
+										placeholder={"Välj filter..."}
+										noOptionsMessage={() => {
+											return "Ingen träff";
+										}}
+									/>
+								</div>
 								<div className="container p-0">
 									<div className="row">
 										<div className="row p-0 mx-auto col-12">
@@ -140,12 +245,12 @@ class Modal extends Component {
 														<h3 className="text-center pb-2">
 															Näringsinnehåll
 															<br />
-															(per kg)
 														</h3>
 														<Fade>
 															<DetailDonutChart
 																data={this.props.detail}
 																vegetables={this.props.vegetables}
+																filteredValue={this.state.filteredValue}
 															/>
 														</Fade>
 													</div>
@@ -163,108 +268,156 @@ class Modal extends Component {
 														<tr>
 															<th scope="row">Energi</th>
 															<td>
-																{data.nutrition.energy.kcal.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.energy.kcal.value
+																)}{" "}
 																{data.nutrition.energy.kcal.unit}
 																<br />
-																{data.nutrition.energy.kj.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.energy.kj.value
+																)}{" "}
 																{data.nutrition.energy.kj.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Kolhydrater</th>
 															<td>
-																{data.nutrition.carbohydrates.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.carbohydrates.value
+																)}{" "}
 																{data.nutrition.carbohydrates.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Protein</th>
 															<td>
-																{data.nutrition.protein.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.protein.value
+																)}{" "}
 																{data.nutrition.protein.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Fett</th>
 															<td>
-																{data.nutrition.fat.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.fat.value
+																)}{" "}
 																{data.nutrition.fat.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Fibrer</th>
 															<td>
-																{data.nutrition.fiber.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.fiber.value
+																)}{" "}
 																{data.nutrition.fiber.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Vatten</th>
 															<td>
-																{data.nutrition.water.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.water.value
+																)}{" "}
 																{data.nutrition.water.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Aska</th>
 															<td>
-																{data.nutrition.ash.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.ash.value
+																)}{" "}
 																{data.nutrition.ash.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Sockerarter</th>
 															<td>
-																{data.nutrition.sugars.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.sugars.value
+																)}{" "}
 																{data.nutrition.sugars.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Mättat fett</th>
 															<td>
-																{data.nutrition.saturated_fat.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.saturated_fat.value
+																)}{" "}
 																{data.nutrition.saturated_fat.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Enkelomättat fett</th>
 															<td>
-																{data.nutrition.monounsaturated_fat.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.monounsaturated_fat.value
+																)}{" "}
 																{data.nutrition.monounsaturated_fat.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Fleromättat fett</th>
 															<td>
-																{data.nutrition.polyunsaturated_fat.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.polyunsaturated_fat.value
+																)}{" "}
 																{data.nutrition.polyunsaturated_fat.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Vitamin D</th>
 															<td>
-																{data.nutrition.vitamin_d.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.vitamin_d.value
+																)}{" "}
 																{data.nutrition.vitamin_d.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Vitamin C</th>
 															<td>
-																{data.nutrition.vitamin_c.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.vitamin_c.value
+																)}{" "}
 																{data.nutrition.vitamin_c.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Folat</th>
 															<td>
-																{data.nutrition.folate.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.folate.value
+																)}{" "}
 																{data.nutrition.folate.unit}
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">Järn</th>
 															<td>
-																{data.nutrition.iron.value}{" "}
+																{this.newValueFilter(
+																	data,
+																	data.nutrition.iron.value
+																)}{" "}
 																{data.nutrition.iron.unit}
 															</td>
 														</tr>
@@ -275,14 +428,14 @@ class Modal extends Component {
 												<div className="row pt-3">
 													<div className="col-12 mx-auto">
 														<h3 className="text-center pb-2">
-															Klimatavtryck
-															<br />
-															(ranking)
+															Grönsaksranking
 														</h3>
 														<Fade>
 															<DetailRadarChart
 																data={this.props.detail}
 																vegetables={this.props.vegetables}
+																filteredValue={this.state.filteredValue}
+																selectedOption={this.state.selectedOption}
 															/>
 														</Fade>
 													</div>
@@ -303,13 +456,17 @@ class Modal extends Component {
 																	<td
 																		style={{
 																			backgroundColor: this.colorRanking(
-																				data.emissions,
+																				data,
+																				data.emissions.value,
 																				"emissions"
 																			)
 																		}}
 																		className="m-0"
 																	>
-																		{`${data.emissions.value} ${data.emissions.unit}`}
+																		{`${this.newValueFilter(
+																			data,
+																			data.emissions.value
+																		)} ${data.emissions.unit}`}
 																	</td>
 																</tr>
 																<tr>
@@ -317,13 +474,17 @@ class Modal extends Component {
 																	<td
 																		style={{
 																			backgroundColor: this.colorRanking(
-																				data.water_footprint,
+																				data,
+																				data.water_footprint.value,
 																				"water_footprint"
 																			)
 																		}}
 																		className="m-0"
 																	>
-																		{`${data.water_footprint.value} ${data.water_footprint.unit}`}
+																		{`${this.newValueFilter(
+																			data,
+																			data.water_footprint.value
+																		)} ${data.water_footprint.unit}`}
 																	</td>
 																</tr>
 																<tr>
@@ -331,13 +492,17 @@ class Modal extends Component {
 																	<td
 																		style={{
 																			backgroundColor: this.colorRanking(
-																				data.energy,
+																				data,
+																				data.energy.value,
 																				"energy"
 																			)
 																		}}
 																		className="m-0"
 																	>
-																		{`${data.energy.value} ${data.energy.unit}`}
+																		{`${this.newValueFilter(
+																			data,
+																			data.energy.value
+																		)} ${data.energy.unit}`}
 																	</td>
 																</tr>
 																<tr>
@@ -345,13 +510,17 @@ class Modal extends Component {
 																	<td
 																		style={{
 																			backgroundColor: this.colorRanking(
-																				data.land_use,
+																				data,
+																				data.land_use.value,
 																				"land_use"
 																			)
 																		}}
 																		className="m-0"
 																	>
-																		{`${data.land_use.value} ${data.land_use.unit}`}
+																		{`${this.newValueFilter(
+																			data,
+																			data.land_use.value
+																		)} ${data.land_use.unit}`}
 																	</td>
 																</tr>
 																<tr>
@@ -359,13 +528,17 @@ class Modal extends Component {
 																	<td
 																		style={{
 																			backgroundColor: this.colorRanking(
-																				data.fossil_depletion,
+																				data,
+																				data.fossil_depletion.value,
 																				"fossil_depletion"
 																			)
 																		}}
 																		className="m-0"
 																	>
-																		{`${data.fossil_depletion.value} ${data.fossil_depletion.unit}`}
+																		{`${this.newValueFilter(
+																			data,
+																			data.fossil_depletion.value
+																		)} ${data.fossil_depletion.unit}`}
 																	</td>
 																</tr>
 
@@ -374,13 +547,17 @@ class Modal extends Component {
 																	<td
 																		style={{
 																			backgroundColor: this.colorRanking(
-																				data.freshwater_toxicity,
+																				data,
+																				data.freshwater_toxicity.value,
 																				"freshwater_toxicity"
 																			)
 																		}}
 																		className="m-0"
 																	>
-																		{`${data.freshwater_toxicity.value} ${data.freshwater_toxicity.unit}`}
+																		{`${this.newValueFilter(
+																			data,
+																			data.freshwater_toxicity.value
+																		)} ${data.freshwater_toxicity.unit}`}
 																	</td>
 																</tr>
 																<tr>
@@ -388,13 +565,17 @@ class Modal extends Component {
 																	<td
 																		style={{
 																			backgroundColor: this.colorRanking(
-																				data.freshwater_eutrophication,
+																				data,
+																				data.freshwater_eutrophication.value,
 																				"freshwater_eutrophication"
 																			)
 																		}}
 																		className="m-0"
 																	>
-																		{`${data.freshwater_eutrophication.value} ${data.freshwater_eutrophication.unit}`}
+																		{`${this.newValueFilter(
+																			data,
+																			data.freshwater_eutrophication.value
+																		)} ${data.freshwater_eutrophication.unit}`}
 																	</td>
 																</tr>
 																<tr>
@@ -402,13 +583,17 @@ class Modal extends Component {
 																	<td
 																		style={{
 																			backgroundColor: this.colorRanking(
-																				data.marine_eutrophication,
+																				data,
+																				data.marine_eutrophication.value,
 																				"marine_eutrophication"
 																			)
 																		}}
 																		className="m-0"
 																	>
-																		{`${data.marine_eutrophication.value} ${data.marine_eutrophication.unit}`}
+																		{`${this.newValueFilter(
+																			data,
+																			data.marine_eutrophication.value
+																		)} ${data.marine_eutrophication.unit}`}
 																	</td>
 																</tr>
 																<tr>
@@ -416,13 +601,17 @@ class Modal extends Component {
 																	<td
 																		style={{
 																			backgroundColor: this.colorRanking(
-																				data.terrestrial_acidification,
+																				data,
+																				data.terrestrial_acidification.value,
 																				"terrestrial_acidification"
 																			)
 																		}}
 																		className="m-0"
 																	>
-																		{`${data.terrestrial_acidification.value} ${data.terrestrial_acidification.unit}`}
+																		{`${this.newValueFilter(
+																			data,
+																			data.terrestrial_acidification.value
+																		)} ${data.terrestrial_acidification.unit}`}
 																	</td>
 																</tr>
 																<tr>
@@ -430,13 +619,17 @@ class Modal extends Component {
 																	<td
 																		style={{
 																			backgroundColor: this.colorRanking(
-																				data.terrestrial_toxicity,
+																				data,
+																				data.terrestrial_toxicity.value,
 																				"terrestrial_toxicity"
 																			)
 																		}}
 																		className="m-0 text-border"
 																	>
-																		{`${data.terrestrial_toxicity.value} ${data.terrestrial_toxicity.unit}`}
+																		{`${this.newValueFilter(
+																			data,
+																			data.terrestrial_toxicity.value
+																		)} ${data.terrestrial_toxicity.unit}`}
 																	</td>
 																</tr>
 															</tbody>

@@ -4,18 +4,20 @@ import * as d3 from "d3";
 export default class DetailDonutChart extends Component {
 	componentDidUpdate(prevProps) {
 		// If the component receives new props
-		if (this.props.data !== prevProps.data) {
-		
-            console.log("updated");
+		if (this.props !== prevProps) {
+			//console.log("updated");
 
-            // Fix to solve auto resize on initial load
-            setTimeout(() => {
-                this.DrawChart(); 
-            }, 200);
-           
+			// Fix to solve auto resize on initial load
+			setTimeout(() => {
+				this.DrawChart();
+			}, 200);
 		}
 	}
 
+	newValueFiltered = (value, filteredValue) => {
+		var newValue = Math.round((value / filteredValue) * 10000) / 10000;
+		return newValue;
+	};
 
 	DrawChart = () => {
 		console.log(this.props.data);
@@ -23,30 +25,86 @@ export default class DetailDonutChart extends Component {
 		if (this.props.data.length === 1) {
 			var vegetable = this.props.data[0];
 			const total =
-				vegetable.nutrition.carbohydrates.value +
-				vegetable.nutrition.protein.value +
-				vegetable.nutrition.fat.value +
-				vegetable.nutrition.fiber.value +
-				vegetable.nutrition.water.value +
-				vegetable.nutrition.ash.value;
+				Math.round(
+					((vegetable.nutrition.carbohydrates.value +
+						vegetable.nutrition.protein.value +
+						vegetable.nutrition.fat.value +
+						vegetable.nutrition.fiber.value +
+						vegetable.nutrition.water.value +
+						vegetable.nutrition.ash.value) /
+						this.props.filteredValue) *
+						10000
+				) / 10000;
 			var data = [
 				{
 					title: "Kolhydrater",
-					value: vegetable.nutrition.carbohydrates.value,
+					value: this.newValueFiltered(
+						vegetable.nutrition.carbohydrates.value,
+						this.props.filteredValue
+					),
 					all: total
 				},
 				{
 					title: "Protein",
-					value: vegetable.nutrition.protein.value,
+					value: this.newValueFiltered(
+						vegetable.nutrition.protein.value,
+						this.props.filteredValue
+					),
 					all: total
 				},
-				{ title: "Fett", value: vegetable.nutrition.fat.value, all: total },
-				{ title: "Fibrer", value: vegetable.nutrition.fiber.value, all: total },
-				{ title: "Vatten", value: vegetable.nutrition.water.value, all: total },
-				{ title: "Aska", value: vegetable.nutrition.ash.value, all: total }
+				{
+					title: "Fett",
+					value: this.newValueFiltered(
+						vegetable.nutrition.fat.value,
+						this.props.filteredValue
+					),
+					all: total
+				},
+				{
+					title: "Fibrer",
+					value: this.newValueFiltered(
+						vegetable.nutrition.fiber.value,
+						this.props.filteredValue
+					),
+					all: total
+				},
+				{
+					title: "Vatten",
+					value: this.newValueFiltered(
+						vegetable.nutrition.water.value,
+						this.props.filteredValue
+					),
+					all: total
+				},
+				{
+					title: "Aska",
+					value: this.newValueFiltered(
+						vegetable.nutrition.ash.value,
+						this.props.filteredValue
+					),
+					all: total
+				}
 			];
-
-			this.DonutChart(".detailDonutChart", data);
+			if (this.props.filteredValue !== 0) {
+				//Remove no data text
+				d3.select(".detailDonutChartContainer")
+					.select(".no-data-donut")
+					.remove();
+				this.DonutChart(".detailDonutChart", data);
+			} else {
+				console.log("NO DATA");
+				d3.select(".detailDonutChartContainer")
+					.select(".no-data-donut")
+					.remove();
+				d3.select(".detailDonutChart")
+					.select("svg")
+					.remove();
+				d3.select(".donut-tip").remove();
+				d3.select(".detailDonutChartContainer")
+					.append("h2")
+					.attr("class", "p-3 no-data-donut")
+					.text("Näringsämnet saknas i grönsaken");
+			}
 		}
 	};
 
@@ -63,10 +121,10 @@ export default class DetailDonutChart extends Component {
 
 		// add viewBox and preserveAspectRatio properties,
 		// and call resize so that svg resizes on inital page load
-		svg.attr("viewBox", "0 0 " + width + " " + height)
-        .attr("perserveAspectRatio", "xMinYMid")
-        .call(resize);
- 
+		svg
+			.attr("viewBox", "0 0 " + width + " " + height)
+			.attr("perserveAspectRatio", "xMinYMid")
+			.call(resize);
 
 		// to register multiple listeners for same event type,
 		// you need to add namespace, i.e., 'click.foo'
@@ -76,9 +134,9 @@ export default class DetailDonutChart extends Component {
 
 		// get width of container and resize svg to fit it
 		function resize() {
-            console.log("Container: " + container);
+			//console.log("Container: " + container);
 			var targetWidth = parseInt(container.style("width"));
-			console.log("Targetwidth: " + targetWidth);
+			//console.log("Targetwidth: " + targetWidth);
 			svg.attr("width", targetWidth);
 			svg.attr("height", Math.round(targetWidth / aspect));
 
@@ -87,7 +145,7 @@ export default class DetailDonutChart extends Component {
 	};
 
 	DonutChart = (id, data) => {
-		console.log(data);
+		//console.log(data);
 		var width = 280;
 		var height = 280;
 		var radius = Math.min(width, height) / 2;
@@ -210,6 +268,10 @@ export default class DetailDonutChart extends Component {
 
 	render() {
 		console.log("RENDERED");
-		return <div className="detailDonutChart px-0 col-9 mx-auto mb-3" />;
+		return (
+			<div className="detailDonutChartContainer col-12">
+				<div className="detailDonutChart p-0 col-9 mx-auto mb-3" />
+			</div>
+		);
 	}
 }

@@ -6,7 +6,10 @@ import * as d3 from "d3";
 export default class DetailRadarChart extends Component {
 	componentDidUpdate(prevProps) {
 		// If the component receives new props
-		if (this.props.data !== prevProps.data) {
+		if (
+			this.props.data !== prevProps.data ||
+			this.props.selectedOption !== prevProps.selectedOption
+		) {
 			console.log("updated");
 			// Fix to solve auto resize on initial load
 			setTimeout(() => {
@@ -15,82 +18,218 @@ export default class DetailRadarChart extends Component {
 		}
 	}
 
+	
+
+	calculateRanking = (vegetables, vegetable, index, selectedOption) => {
+		// Pick out relevant data
+		var data = vegetables.map(vegetableItem => {
+			var filterIndex = selectedOption.index;
+			var value;
+			if (filterIndex.length === 2) {
+				value =
+					vegetableItem[index[0]][index[1]] /
+					vegetableItem[filterIndex[0]][filterIndex[1]];
+			} else if (filterIndex.length === 3) {
+				value =
+					vegetableItem[index[0]][index[1]] /
+					vegetableItem[filterIndex[0]][filterIndex[1]][filterIndex[2]];
+			}
+			//console.log(value)
+			return {
+				id: vegetableItem.id,
+				key: vegetableItem[index[0]],
+				value: value
+			};
+		});
+		//console.log(data)
+
+		// Sort in descending order
+		data.sort(function(a, b) {
+			if (a.value > b.value) {
+				return 1;
+			}
+			if (b.value > a.value) {
+				return -1;
+			}
+			return 0;
+		});
+
+		var ranking;
+		// Assign ranking
+		var ranked = data.map(function(item, i) {
+			if (i > 0) {
+				var prevItem = data[i - 1];
+				if (prevItem.value === item.value) {
+					item.rank = prevItem.rank;
+				} else {
+					item.rank = i + 1;
+				}
+			} else {
+				item.rank = 1;
+			}
+			if (vegetable.id === item.id) {
+				ranking = item.rank;
+			}
+			return item;
+		});
+		console.log(ranked);
+		return ranking;
+	};
+
 	DrawChart = () => {
 		console.log("CHART DATA");
 		console.log(this.props.data);
+		console.log(this.props.filteredValue);
+		console.log(this.props.selectedOption);
 		// Data
-		var data = this.props.data.map(vegetable => {
-			return [
-				{ axis: "Energiförbrukning", value: vegetable.energy.ranking },
-				{ axis: "Växthusgasutsläpp", value: vegetable.emissions.ranking },
-				{ axis: "Fossilutarmning", value: vegetable.fossil_depletion.ranking },
-				{ axis: "Markanvändning", value: vegetable.land_use.ranking },
-				{
-					axis: "Markförsurning",
-					value: vegetable.terrestrial_toxicity.ranking
-				},
-				{
-					axis: "Markförgiftning",
-					value: vegetable.terrestrial_acidification.ranking
-				},
-				{
-					axis: "Sötvattenförgiftning",
-					value: vegetable.freshwater_toxicity.ranking
-				},
-				{
-					axis: "Sötvattenförsurning",
-					value: vegetable.freshwater_eutrophication.ranking
-				},
-				{
-					axis: "Marinförsurning",
-					value: vegetable.marine_eutrophication.ranking
-				},
-				{ axis: "Vattenfotavtryck", value: vegetable.water_footprint.ranking }
-			];
-		});
 
-		// Color list
-		var colorList = ["red"];
+		if (this.props.filteredValue !== 0 && this.props.data.length === 1) {
+			var data = this.props.data.map(vegetable => {
+				return [
+					{
+						axis: "Energiförbrukning",
+						value: this.calculateRanking(
+							this.props.vegetables,
+							vegetable,
+							["energy", "value"],
+							this.props.selectedOption
+						)
+					},
+					{
+						axis: "Växthusgasutsläpp",
+						value: this.calculateRanking(
+							this.props.vegetables,
+							vegetable,
+							["emissions", "value"],
+							this.props.selectedOption
+						)
+					},
+					{
+						axis: "Fossilutarmning",
+						value: this.calculateRanking(
+							this.props.vegetables,
+							vegetable,
+							["fossil_depletion", "value"],
+							this.props.selectedOption
+						)
+					},
+					{
+						axis: "Markanvändning",
+						value: this.calculateRanking(
+							this.props.vegetables,
+							vegetable,
+							["land_use", "value"],
+							this.props.selectedOption
+						)
+					},
+					{
+						axis: "Markförgiftning",
+						value: this.calculateRanking(
+							this.props.vegetables,
+							vegetable,
+							["terrestrial_toxicity", "value"],
+							this.props.selectedOption
+						)
+					},
+					{
+						axis: "Markförsurning",
+						value: this.calculateRanking(
+							this.props.vegetables,
+							vegetable,
+							["terrestrial_acidification", "value"],
+							this.props.selectedOption
+						)
+					},
+					{
+						axis: "Sötvattenförgiftning",
+						value: this.calculateRanking(
+							this.props.vegetables,
+							vegetable,
+							["freshwater_toxicity", "value"],
+							this.props.selectedOption
+						)
+					},
+					{
+						axis: "Sötvattenförsurning",
+						value: this.calculateRanking(
+							this.props.vegetables,
+							vegetable,
+							["freshwater_eutrophication", "value"],
+							this.props.selectedOption
+						)
+					},
+					{
+						axis: "Marinförsurning",
+						value: this.calculateRanking(
+							this.props.vegetables,
+							vegetable,
+							["marine_eutrophication", "value"],
+							this.props.selectedOption
+						)
+					},
+					{
+						axis: "Vattenfotavtryck",
+						value: this.calculateRanking(
+							this.props.vegetables,
+							vegetable,
+							["water_footprint", "value"],
+							this.props.selectedOption
+						)
+					}
+				];
+			});
 
-		// Create color range
-		var color = d3.scaleOrdinal().range(colorList);
+			console.log(data);
 
-		// Max value
-		var maxValue = this.props.vegetables.length;
+			// Color list
+			var colorList = ["red"];
 
-		// Init chart options
-		var radarChartOptions;
-		var margin;
-		var width;
-		var height;
+			// Create color range
+			var color = d3.scaleOrdinal().range(colorList);
 
-		margin = { top: 70, right: 100, bottom: 80, left: 100 };
-		width = Math.min(470, window.innerWidth) - margin.left - margin.right;
-		height = Math.min(
-			width,
-			window.innerHeight - margin.top - margin.bottom - 20
-		);
+			// Max value
+			var maxValue = this.props.vegetables.length;
 
-		radarChartOptions = {
-			w: width,
-			h: height,
-			labelFactor: 1.4,
-			margin: margin,
-			maxValue: maxValue,
-			levels: 7,
-			roundStrokes: true,
-			color: color
-		};
+			// Init chart options
+			var radarChartOptions;
+			var margin;
+			var width;
+			var height;
 
-		// Call function to draw the radar chart
-		if (data.length === 1) {
+			margin = { top: 70, right: 100, bottom: 80, left: 100 };
+			width = Math.min(470, window.innerWidth) - margin.left - margin.right;
+			height = Math.min(
+				width,
+				window.innerHeight - margin.top - margin.bottom - 20
+			);
+
+			radarChartOptions = {
+				w: width,
+				h: height,
+				labelFactor: 1.4,
+				margin: margin,
+				maxValue: maxValue,
+				levels: 7,
+				roundStrokes: true,
+				color: color
+			};
+
+			d3.select(".detailRadarChartContainer")
+				.select(".no-data-radar")
+				.remove();
 			this.RadarChart(".detailRadarChart", data, radarChartOptions, color);
-		} else if (data.length === 0) {
+		} else {
+			console.log("NO DATA RADAR");
+			d3.select(".detailRadarChartContainer")
+				.select(".no-data-radar")
+				.remove();
 			d3.select(".detailRadarChart")
 				.select("svg")
 				.remove();
-
-			d3.select(".legendList").html("");
+			d3.select(".detailRadarChartContainer")
+				.append("h2")
+				.attr("class", "p-3 no-data-radar")
+				.text("Näringsämnet saknas i grönsaken");
 		}
 	};
 
@@ -503,6 +642,10 @@ var tooltip = g
 	}; //RadarChart
 
 	render() {
-		return <div className="detailRadarChart col-12 p-0" />;
+		return (
+			<div className="detailRadarChartContainer col-12 p-0">
+				<div className="detailRadarChart col-12 p-0" />
+			</div>
+		);
 	}
 }

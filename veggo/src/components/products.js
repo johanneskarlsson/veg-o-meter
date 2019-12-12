@@ -70,7 +70,7 @@ const mapStateToProps = state => {
 	return {
 		vegetables: state.vegetables.vegetables,
 		search: state.vegetables.search,
-		detail: state.vegetables.detail
+		detail: state.vegetables.detail,
 	};
 };
 
