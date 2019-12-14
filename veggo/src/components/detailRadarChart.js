@@ -4,12 +4,11 @@ import * as d3 from "d3";
 // D3-code from Nadieh Bremer at http://bl.ocks.org/nbremer/21746a9668ffdf6d8242
 
 export default class DetailRadarChart extends Component {
-
-	constructor(props){
+	constructor(props) {
 		super(props);
-		this.state={
-			loaded:false
-		}
+		this.state = {
+			loaded: false
+		};
 	}
 	componentDidUpdate(prevProps) {
 		// If the component receives new props
@@ -17,15 +16,11 @@ export default class DetailRadarChart extends Component {
 			this.props.data !== prevProps.data ||
 			this.props.selectedOption !== prevProps.selectedOption
 		) {
+			console.log(this.props.data);
 			console.log("updated");
-			// Fix to solve auto resize on initial load
-		
 			this.DrawChart();
 		}
 	}
-
-
-	
 
 	calculateRanking = (vegetables, vegetable, index, selectedOption) => {
 		// Pick out relevant data
@@ -86,11 +81,21 @@ export default class DetailRadarChart extends Component {
 	DrawChart = () => {
 		console.log("CHART DATA");
 		console.log(this.props.data);
-		console.log(this.props.filteredValue);
 		console.log(this.props.selectedOption);
+
+		var vegetable = this.props.data[0];
+		var option = this.props.selectedOption;
+		var lengthKey = option.index.length;
+		var filteredValue;
+		if (lengthKey === 2) {
+			filteredValue = vegetable[option.index[0]][option.index[1]];
+		} else if (lengthKey === 3) {
+			filteredValue =
+				vegetable[option.index[0]][option.index[1]][option.index[2]];
+		}
 		// Data
 
-		if (this.props.filteredValue !== 0 && this.props.data.length === 1) {
+		if (filteredValue !== 0 && this.props.data.length === 1) {
 			var data = this.props.data.map(vegetable => {
 				return [
 					{
@@ -203,14 +208,13 @@ export default class DetailRadarChart extends Component {
 			var width;
 			var height;
 			var labelFactor;
-			if(window.innerWidth < 568){
+			if (window.innerWidth < 568) {
 				margin = { top: 70, right: 90, bottom: 80, left: 90 };
 				labelFactor = 1.5;
-			}else{
-			margin = { top: 70, right: 100, bottom: 80, left: 100 };
-			labelFactor = 1.4;
-			
-		}
+			} else {
+				margin = { top: 70, right: 100, bottom: 80, left: 100 };
+				labelFactor = 1.4;
+			}
 			width = Math.min(470, window.innerWidth) - margin.left - margin.right;
 			height = Math.min(
 				width,
@@ -516,7 +520,7 @@ export default class DetailRadarChart extends Component {
 		blobWrapper
 			.selectAll(".radarCircle")
 			.data(function(d, i, j) {
-				console.log(i);
+				//console.log(i);
 				return d;
 			})
 			.enter()

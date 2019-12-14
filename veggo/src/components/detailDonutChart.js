@@ -17,9 +17,20 @@ export default class DetailDonutChart extends Component {
 
 	DrawChart = () => {
 		console.log(this.props.data);
+		var vegetable = this.props.data[0];
+			var option = this.props.selectedOption;
+			var lengthKey = option.index.length;
+			var filteredValue;
+		if (lengthKey === 2) {
+			filteredValue = vegetable[option.index[0]][option.index[1]];
+		} else if (lengthKey === 3) {
+			filteredValue = vegetable[option.index[0]][option.index[1]][
+				option.index[2]
+			];
+		}
 
-		if (this.props.data.length === 1) {
-			var vegetable = this.props.data[0];
+		if (this.props.data.length === 1 && filteredValue !== 0) {
+		
 			const total =
 				Math.round(
 					((vegetable.nutrition.carbohydrates.value +
@@ -28,7 +39,7 @@ export default class DetailDonutChart extends Component {
 						vegetable.nutrition.fiber.value +
 						vegetable.nutrition.water.value +
 						vegetable.nutrition.ash.value) /
-						this.props.filteredValue) *
+						filteredValue) *
 						10000
 				) / 10000;
 			var data = [
@@ -36,7 +47,7 @@ export default class DetailDonutChart extends Component {
 					title: "Kolhydrater",
 					value: this.newValueFiltered(
 						vegetable.nutrition.carbohydrates.value,
-						this.props.filteredValue
+						filteredValue
 					),
 					all: total
 				},
@@ -44,7 +55,7 @@ export default class DetailDonutChart extends Component {
 					title: "Protein",
 					value: this.newValueFiltered(
 						vegetable.nutrition.protein.value,
-						this.props.filteredValue
+						filteredValue
 					),
 					all: total
 				},
@@ -52,7 +63,7 @@ export default class DetailDonutChart extends Component {
 					title: "Fett",
 					value: this.newValueFiltered(
 						vegetable.nutrition.fat.value,
-						this.props.filteredValue
+						filteredValue
 					),
 					all: total
 				},
@@ -60,7 +71,7 @@ export default class DetailDonutChart extends Component {
 					title: "Fibrer",
 					value: this.newValueFiltered(
 						vegetable.nutrition.fiber.value,
-						this.props.filteredValue
+						filteredValue
 					),
 					all: total
 				},
@@ -68,7 +79,7 @@ export default class DetailDonutChart extends Component {
 					title: "Vatten",
 					value: this.newValueFiltered(
 						vegetable.nutrition.water.value,
-						this.props.filteredValue
+						filteredValue
 					),
 					all: total
 				},
@@ -76,12 +87,12 @@ export default class DetailDonutChart extends Component {
 					title: "Aska",
 					value: this.newValueFiltered(
 						vegetable.nutrition.ash.value,
-						this.props.filteredValue
+						filteredValue
 					),
 					all: total
 				}
 			];
-			if (this.props.filteredValue !== 0) {
+			
 				//Remove no data text
 				d3.select(".detailDonutChartContainer")
 					.select(".no-data-donut")
@@ -101,7 +112,7 @@ export default class DetailDonutChart extends Component {
 					.attr("class", "p-3 no-data-donut")
 					.text("Näringsämnet saknas i grönsaken");
 			}
-		}
+		
 	};
 
 	responsivefy = svg => {

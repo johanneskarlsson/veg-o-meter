@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import DetailRadarChart from "./detailRadarChart";
 import DetailDonutChart from "./detailDonutChart";
 import { ReactComponent as Close } from "../images/close.svg";
-import {ReactComponent as Willys} from "../images/willys_logo.svg";
+import { ReactComponent as Willys } from "../images/willys_logo.svg";
 import Select from "react-select";
 
 class Modal extends Component {
@@ -98,13 +98,13 @@ class Modal extends Component {
 				},
 				{ label: "Per krona", value: "price", index: ["price", "value"] }
 			],
-			filteredValue: 1
 		};
 	}
 
 	componentDidUpdate = prevProps => {
 		if (this.props !== prevProps) {
 			this.setState({ data: this.props.detail[0] });
+			this.handleChange(this.state.selectedOption);
 		}
 	};
 
@@ -113,19 +113,10 @@ class Modal extends Component {
 		var option = selectedOption;
 		console.log(option);
 		var lengthKey = option.index.length;
-		console.log(option.index.length);
-		var filteredValue;
-		if (lengthKey === 2) {
-			filteredValue = this.state.data[option.index[0]][option.index[1]];
-		} else if (lengthKey === 3) {
-			filteredValue = this.state.data[option.index[0]][option.index[1]][
-				option.index[2]
-			];
-		}
+		console.log(lengthKey);
 
 		this.setState({
 			selectedOption: selectedOption,
-			filteredValue: filteredValue
 		});
 	};
 
@@ -239,12 +230,11 @@ class Modal extends Component {
 									</div>
 									<div className="col-md-6 pt-3 pt-md-0">
 										<div className="row mx-auto">
-										<h3 className="mx-auto">
-											Pris: {this.newValueFilter(data, data.price.value)}{" "}
-											{data.price.unit} 
-											<Willys className="col-4 img-fluid pb-1" />
-										</h3>
-										
+											<h3 className="mx-auto">
+												Pris: {this.newValueFilter(data, data.price.value)}{" "}
+												{data.price.unit}
+												<Willys className="col-4 img-fluid pb-1" />
+											</h3>
 										</div>
 									</div>
 								</div>
@@ -260,7 +250,7 @@ class Modal extends Component {
 														<DetailRadarChart
 															data={[this.state.data]}
 															vegetables={this.props.vegetables}
-															filteredValue={this.state.filteredValue}
+														
 															selectedOption={this.state.selectedOption}
 														/>
 													</div>
@@ -473,7 +463,7 @@ class Modal extends Component {
 														<DetailDonutChart
 															data={[this.state.data]}
 															vegetables={this.props.vegetables}
-															filteredValue={this.state.filteredValue}
+															selectedOption={this.state.selectedOption}
 														/>
 													</div>
 												</div>

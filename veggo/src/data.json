@@ -34,7 +34,7 @@
 				"ranking": 21
 			},
 			"water_volume": { "value": 746, "unit": "L" },
-			"water_footprint": { "value": 525, "unit": "Leq.", "ranking": 21 },
+			"water_footprint": { "value": 525, "unit": "L eq.", "ranking": 21 },
 			"emissions": { "value": 5.3, "unit": "kg CO2 eq.", "ranking": 21 },
 			"land_use": { "value": 4.1, "unit": "m2 a", "ranking": 21 },
 			"freshwater_toxicity": {
@@ -97,7 +97,7 @@
 				"ranking": 20
 			},
 			"water_volume": { "value": 41, "unit": "L" },
-			"water_footprint": { "value": 19, "unit": "Leq.", "ranking": 7 },
+			"water_footprint": { "value": 19, "unit": "L eq.", "ranking": 7 },
 			"emissions": { "value": 3.1, "unit": "kg CO2 eq.", "ranking": 20 },
 			"land_use": { "value": 0.2, "unit": "m2 a", "ranking": 4 },
 			"freshwater_toxicity": {
@@ -160,7 +160,7 @@
 				"ranking": 4
 			},
 			"water_volume": { "value": 39, "unit": "L" },
-			"water_footprint": { "value": 19, "unit": "Leq.", "ranking": 7 },
+			"water_footprint": { "value": 19, "unit": "L eq.", "ranking": 7 },
 			"emissions": { "value": 1.0, "unit": "kg CO2 eq.", "ranking": 4 },
 			"land_use": { "value": 0.2, "unit": "m2 a", "ranking": 3 },
 			"freshwater_toxicity": {
@@ -223,7 +223,7 @@
 				"ranking": 1
 			},
 			"water_volume": { "value": 20, "unit": "L" },
-			"water_footprint": { "value": 8, "unit": "Leq.", "ranking": 4 },
+			"water_footprint": { "value": 8, "unit": "L eq.", "ranking": 4 },
 			"emissions": { "value": 0.9, "unit": "kg CO2 eq.", "ranking": 1 },
 			"land_use": { "value": 0.2, "unit": "m2 a", "ranking": 5 },
 			"freshwater_toxicity": {
@@ -286,7 +286,7 @@
 				"ranking": 6
 			},
 			"water_volume": { "value": 17, "unit": "L" },
-			"water_footprint": { "value": 7, "unit": "Leq.", "ranking": 2 },
+			"water_footprint": { "value": 7, "unit": "L eq.", "ranking": 2 },
 			"emissions": { "value": 1.3, "unit": "kg CO2 eq.", "ranking": 9 },
 			"land_use": { "value": 0.4, "unit": "m2 a", "ranking": 14 },
 			"freshwater_toxicity": {
@@ -349,7 +349,7 @@
 				"ranking": 4
 			},
 			"water_volume": { "value": 46, "unit": "L" },
-			"water_footprint": { "value": 26, "unit": "Leq.", "ranking": 11 },
+			"water_footprint": { "value": 26, "unit": "L eq.", "ranking": 11 },
 			"emissions": { "value": 1.1, "unit": "kg CO2 eq.", "ranking": 4 },
 			"land_use": { "value": 0.2, "unit": "m2 a", "ranking": 5 },
 			"freshwater_toxicity": {
@@ -412,7 +412,7 @@
 				"ranking": 15
 			},
 			"water_volume": { "value": 16, "unit": "L" },
-			"water_footprint": { "value": 7, "unit": "Leq.", "ranking": 2 },
+			"water_footprint": { "value": 7, "unit": "L eq.", "ranking": 2 },
 			"emissions": { "value": 2.1, "unit": "kg CO2 eq.", "ranking": 13 },
 			"land_use": { "value": 0.1, "unit": "m2 a", "ranking": 1 },
 			"freshwater_toxicity": {
@@ -475,7 +475,7 @@
 				"ranking": 10
 			},
 			"water_volume": { "value": 46, "unit": "L" },
-			"water_footprint": { "value": 27, "unit": "Leq.", "ranking": 11 },
+			"water_footprint": { "value": 27, "unit": "L eq.", "ranking": 11 },
 			"emissions": { "value": 1.8, "unit": "kg CO2 eq.", "ranking": 11 },
 			"land_use": { "value": 0.1, "unit": "m2 a", "ranking": 2 },
 			"freshwater_toxicity": {
@@ -538,7 +538,7 @@
 				"ranking": 6
 			},
 			"water_volume": { "value": 61, "unit": "L" },
-			"water_footprint": { "value": 27, "unit": "Leq.", "ranking": 11 },
+			"water_footprint": { "value": 27, "unit": "L eq.", "ranking": 11 },
 			"emissions": { "value": 1.2, "unit": "kg CO2 eq.", "ranking": 6 },
 			"land_use": { "value": 0.3, "unit": "m2 a", "ranking": 13 },
 			"freshwater_toxicity": {
@@ -601,7 +601,7 @@
 				"ranking": 15
 			},
 			"water_volume": { "value": 58, "unit": "L" },
-			"water_footprint": { "value": 24, "unit": "Leq.", "ranking": 11 },
+			"water_footprint": { "value": 24, "unit": "L eq.", "ranking": 11 },
 			"emissions": { "value": 2.7, "unit": "kg CO2 eq.", "ranking": 18 },
 			"land_use": { "value": 3.3, "unit": "m2 a", "ranking": 20 },
 			"freshwater_toxicity": {
@@ -664,7 +664,7 @@
 				"ranking": 15
 			},
 			"water_volume": { "value": 8, "unit": "L" },
-			"water_footprint": { "value": 4, "unit": "Leq.", "ranking": 1 },
+			"water_footprint": { "value": 4, "unit": "L eq.", "ranking": 1 },
 			"emissions": { "value": 2.2, "unit": "kg CO2 eq.", "ranking": 15 },
 			"land_use": { "value": 0.2, "unit": "m2 a", "ranking": 5 },
 			"freshwater_toxicity": {
@@ -727,7 +727,7 @@
 				"ranking": 12
 			},
 			"water_volume": { "value": 81, "unit": "L" },
-			"water_footprint": { "value": 51, "unit": "Leq.", "ranking": 17 },
+			"water_footprint": { "value": 51, "unit": "L eq.", "ranking": 17 },
 			"emissions": { "value": 1.7, "unit": "kg CO2 eq.", "ranking": 10 },
 			"land_use": { "value": 0.2, "unit": "m2 a", "ranking": 5 },
 			"freshwater_toxicity": {
@@ -790,7 +790,7 @@
 				"ranking": 5
 			},
 			"water_volume": { "value": 38, "unit": "L", "ranking": 6 },
-			"water_footprint": { "value": 21, "unit": "Leq.", "ranking": 10 },
+			"water_footprint": { "value": 21, "unit": "L eq.", "ranking": 10 },
 			"emissions": { "value": 1.2, "unit": "kg CO2 eq.", "ranking": 6 },
 			"land_use": { "value": 0.2, "unit": "m2 a", "ranking": 5 },
 			"freshwater_toxicity": {
@@ -853,7 +853,7 @@
 				"ranking": 13
 			},
 			"water_volume": { "value": 97, "unit": "L" },
-			"water_footprint": { "value": 25, "unit": "Leq.", "ranking": 11 },
+			"water_footprint": { "value": 25, "unit": "L eq.", "ranking": 11 },
 			"emissions": { "value": 2.2, "unit": "kg CO2 eq.", "ranking": 15 },
 			"land_use": { "value": 0.6, "unit": "m2 a", "ranking": 17 },
 			"freshwater_toxicity": {
@@ -916,7 +916,7 @@
 				"ranking": 19
 			},
 			"water_volume": { "value": 95, "unit": "L" },
-			"water_footprint": { "value": 40, "unit": "Leq.", "ranking": 16 },
+			"water_footprint": { "value": 40, "unit": "L eq.", "ranking": 16 },
 			"emissions": { "value": 2.4, "unit": "kg CO2 eq.", "ranking": 17 },
 			"land_use": { "value": 0.5, "unit": "m2 a", "ranking": 16 },
 			"freshwater_toxicity": {
@@ -979,7 +979,7 @@
 				"ranking": 2
 			},
 			"water_volume": { "value": 27, "unit": "L" },
-			"water_footprint": { "value": 18, "unit": "Leq.", "ranking": 6 },
+			"water_footprint": { "value": 18, "unit": "L eq.", "ranking": 6 },
 			"emissions": { "value": 0.9, "unit": "kg CO2 eq.", "ranking": 1 },
 			"land_use": { "value": 0.2, "unit": "m2 a", "ranking": 5 },
 			"freshwater_toxicity": {
@@ -1042,7 +1042,7 @@
 				"ranking": 18
 			},
 			"water_volume": { "value": 221, "unit": "L" },
-			"water_footprint": { "value": 65, "unit": "Leq.", "ranking": 20 },
+			"water_footprint": { "value": 65, "unit": "L eq.", "ranking": 20 },
 			"emissions": { "value": 2.8, "unit": "kg CO2 eq.", "ranking": 18 },
 			"land_use": { "value": 1.7, "unit": "m2 a", "ranking": 19 },
 			"freshwater_toxicity": {
@@ -1105,7 +1105,7 @@
 				"ranking": 10
 			},
 			"water_volume": { "value": 92, "unit": "L" },
-			"water_footprint": { "value": 56, "unit": "Leq.", "ranking": 18 },
+			"water_footprint": { "value": 56, "unit": "L eq.", "ranking": 18 },
 			"emissions": { "value": 1.8, "unit": "kg CO2 eq.", "ranking": 11 },
 			"land_use": { "value": 0.2, "unit": "m2 a", "ranking": 5 },
 			"freshwater_toxicity": {
@@ -1168,7 +1168,7 @@
 				"ranking": 13
 			},
 			"water_volume": { "value": 47, "unit": "L" },
-			"water_footprint": { "value": 19, "unit": "Leq.", "ranking": 7 },
+			"water_footprint": { "value": 19, "unit": "L eq.", "ranking": 7 },
 			"emissions": { "value": 2.0, "unit": "kg CO2 eq.", "ranking": 13 },
 			"land_use": { "value": 1.0, "unit": "m2 a", "ranking": 18 },
 			"freshwater_toxicity": {
@@ -1231,7 +1231,7 @@
 				"ranking": 2
 			},
 			"water_volume": { "value": 77, "unit": "L" },
-			"water_footprint": { "value": 54, "unit": "Leq.", "ranking": 18 },
+			"water_footprint": { "value": 54, "unit": "L eq.", "ranking": 18 },
 			"emissions": { "value": 0.8, "unit": "kg CO2 eq.", "ranking": 1 },
 			"land_use": { "value": 0.2, "unit": "m2 a", "ranking": 5 },
 			"freshwater_toxicity": {
@@ -1294,7 +1294,7 @@
 				"ranking": 6
 			},
 			"water_volume": { "value": 32, "unit": "L" },
-			"water_footprint": { "value": 14, "unit": "Leq.", "ranking": 5 },
+			"water_footprint": { "value": 14, "unit": "L eq.", "ranking": 5 },
 			"emissions": { "value": 1.2, "unit": "kg CO2 eq.", "ranking": 6 },
 			"land_use": { "value": 0.4, "unit": "m2 a", "ranking": 15 },
 			"freshwater_toxicity": {

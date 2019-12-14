@@ -13,7 +13,7 @@ class Products extends Component {
 	render() {
 		return (
 			<div className="products">
-				<div className="container-fluid pt-4">
+				<div className="container pt-4">
 					<div className="row">
 						<div className="col-12">
 							<div className="products">
@@ -70,7 +70,7 @@ const mapStateToProps = state => {
 	return {
 		vegetables: state.vegetables.vegetables,
 		search: state.vegetables.search,
-		detail: state.vegetables.detail,
+		detail: state.vegetables.detail
 	};
 };
 
