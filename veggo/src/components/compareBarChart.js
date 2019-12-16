@@ -242,7 +242,7 @@ export default class CompareBarChart extends Component {
 			<div className="compareBarChartContainer p-0">
 				{this.state.dataLength > 0 ? (
 					<div className="chartHeader">
-						<h2>Klimatavtryck</h2>
+						<h3>Klimatavtryck</h3>
 					<Select
 						className="m-3 col-md-8 mx-auto"
 						value={this.state.selectedOption}

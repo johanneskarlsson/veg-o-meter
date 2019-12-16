@@ -654,7 +654,7 @@ export default class CompareRadarChart extends Component {
 		return (
 			<div className="compareRadarChartContainer p-0">
 				{this.state.dataLength > 0 ? 
-				<h2>Grönsaksranking</h2> : null}
+				<h3>Grönsaksranking</h3> : null}
 				<div className="compareRadarChart p-0" />
 			</div>
 		);
