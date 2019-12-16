@@ -121,25 +121,25 @@ class Modal extends Component {
 	};
 
 	colorRanking = (object, data, key) => {
-		console.log("COLOR RANKING");
-		console.log("Vegetable values");
+		//console.log("COLOR RANKING");
+		//console.log("Vegetable values");
 
 		var values = this.props.vegetables.map(vegetable => {
 			return this.newValueFilter(vegetable, vegetable[key].value);
 		});
-		console.log(values);
+		//console.log(values);
 		var maxValue = d3.max(values);
 		var minValue = d3.min(values);
-		console.log(
+		/*console.log(
 			this.props.vegetables[0][key].value +
 				" " +
 				this.props.vegetables[0][key].unit
 		);
-
+*/
 		var middlePoint = (maxValue - minValue) / 2;
-		console.log(maxValue);
-		console.log(middlePoint);
-		console.log(minValue);
+		//console.log(maxValue);
+		//console.log(middlePoint);
+		//console.log(minValue);
 		var colorScale = d3
 			.scaleLinear()
 			.domain([minValue, middlePoint, maxValue])
@@ -147,7 +147,7 @@ class Modal extends Component {
 			.interpolate(d3.interpolateHcl);
 
 		var color;
-		console.log(colorScale);
+		//console.log(colorScale);
 		var newValue = this.newValueFilter(object, data);
 		if (newValue === 0) {
 			color = "rgb(255, 255, 255)";
@@ -155,7 +155,7 @@ class Modal extends Component {
 			color = colorScale(newValue);
 		}
 
-		console.log(color);
+		//console.log(color);
 
 		return color;
 	};
@@ -454,7 +454,7 @@ class Modal extends Component {
 											</div>
 											<div className="col-md-6 mx-auto">
 												<div className="row pt-3">
-													<div className="col-md-8 col-9 mx-auto p-0">
+													<div className="col-9 mx-auto p-2">
 														<h3 className="text-center pb-2">
 															Näringsinnehåll
 															<br />

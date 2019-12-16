@@ -6,26 +6,40 @@ class DropdownFilter extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedOption: null
+			selectedOption: {
+				label: "Per kg",
+				value: "kg",
+				index: ["weigth", "value"]
+			},
+			key: [
+				{ label: "Per kg", value: "kg", index: ["weigth", "value"] },
+				{
+					label: "Per gram kolhydrater",
+					value: "carbohydrates",
+					index: ["nutrition", "carbohydrates", "value"]
+				},
+				{
+					label: "Per gram protein",
+					value: "protein",
+					index: ["nutrition", "protein", "value"]
+				},
+				{
+					label: "Per gram fett",
+					value: "fat",
+					index: ["nutrition", "fat", "value"]
+				},
+				{ label: "Per krona", value: "price", index: ["price", "value"] }
+			]
 		};
 	}
 
 	componentDidMount = () => {
-		var key = [
-			{ label: "Energiförbrukning", value: "energy" },
-			{ label: "Växthusgasutsläpp", value: "emissions" },
-			{ label: "Fossilutarmning", value: "fossil_depletion" },
-			{ label: "Markanvändning", value: "land_use" },
-			{ label: "Markförsurning", value: "terrestrial_toxicity" },
-			{ label: "Markförgiftning", value: "terrestrial_acidification" },
-			{ label: "Sötvattenförgiftning", value: "freshwater_toxicity" },
-			{ label: "Sötvattenförsurning", value: "freshwater_eutrophication" },
-			{ label: "Marinförsurning", value: "marine_eutrophication" },
-			{ label: "Vattenfotavtryck", value: "water_footprint" }
-		];
+		
 
-		var selectedKey = [{ label: "Energiförbrukning", value: "energy" }];
-		this.setState({ key: key, selectedKey: selectedKey });
+		var selectedOption = 	{ label: "Per kg", value: "kg", index: ["weigth", "value"] };
+		this.props.update_filter(selectedOption);
+		this.setState({ selectedOption: selectedOption });
+	
 	};
 
 	handleChange = selectedOption => {
@@ -42,7 +56,7 @@ class DropdownFilter extends Component {
 				value={selectedOption}
 				onChange={this.handleChange}
 				options={this.state.key}
-				placeholder={"Välj filter..."}
+				placeholder={"Filtrera efter..."}
 				noOptionsMessage={() => {
 					return "Ingen träff";
 				}}
@@ -52,7 +66,7 @@ class DropdownFilter extends Component {
 }
 
 const mapStateToProps = state => {
-	console.log(state.vegetables.filter);
+	
 	return {
 		vegetables: state.vegetables.vegetables,
 		compare: state.vegetables.compare,

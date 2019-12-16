@@ -5,7 +5,8 @@ import Modal from "./modal";
 
 class Products extends Component {
 	updateModal = event => {
-		var productId = event.target.name;
+		console.log(event);
+		var productId = event.target.getAttribute("data-id");
 		console.log("this is a " + productId);
 		this.props.get_details(productId);
 	};
@@ -13,11 +14,11 @@ class Products extends Component {
 	render() {
 		return (
 			<div className="products">
-				<div className="container pt-4">
+				<div className="container p-md-4 pt-4">
 					<div className="row">
 						<div className="col-12">
 							<div className="products">
-								<div className="row justify-content-center ">
+								<div className="row justify-content-center">
 									<h2>Produkter</h2>
 								</div>
 								<div className="row pt-4">
@@ -33,20 +34,22 @@ class Products extends Component {
 													className="img-fluid p-0"
 												/>
 
-												<span className="hover--on">
+												<div
+													className="hover--on"
+													onClick={this.updateModal}
+													data-toggle="modal"
+													data-target=".productDetails-modal"
+												>
 													<img
 														src={require("../images/" + vegetable.image)}
 														alt={vegetable.name}
 														className="blur img-fluid p-0"
-														name={vegetable.id}
-														onClick={this.updateModal}
-														data-toggle="modal"
-														data-target=".productDetails-modal"
+														data-id={vegetable.id}
 													/>
-													<h3 className="vegetable_name">
+													<h3 className="vegetable_name" data-id={vegetable.id}>
 														{vegetable.name_swe}
 													</h3>
-												</span>
+												</div>
 											</div>
 										);
 									})}

@@ -20,6 +20,7 @@ class App extends Component {
 				<Compare />
 				<AboutUs />
 			</div>
+			<div className="tooltip" style={{opacity:0}}/>
 		</div>
 	);
 }

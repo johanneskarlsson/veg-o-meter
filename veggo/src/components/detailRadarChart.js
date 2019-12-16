@@ -58,7 +58,7 @@ export default class DetailRadarChart extends Component {
 
 		var ranking;
 		// Assign ranking
-		var ranked = data.map(function(item, i) {
+		data.map(function(item, i) {
 			if (i > 0) {
 				var prevItem = data[i - 1];
 				if (prevItem.value === item.value) {
@@ -74,7 +74,7 @@ export default class DetailRadarChart extends Component {
 			}
 			return item;
 		});
-		console.log(ranked);
+		//console.log(ranked);
 		return ranking;
 	};
 
@@ -191,7 +191,7 @@ export default class DetailRadarChart extends Component {
 				];
 			});
 
-			console.log(data);
+			//console.log(data);
 
 			// Color list
 			var colorList = ["red"];
@@ -339,8 +339,6 @@ export default class DetailRadarChart extends Component {
 			.select("svg")
 			.remove();
 
-		d3.select(".tooltip").remove();
-
 		//Initiate the radar chart SVG
 		var svg = d3
 			.select(id)
@@ -487,7 +485,7 @@ export default class DetailRadarChart extends Component {
 				//Dim all blobs
 				d3.selectAll(".radarArea")
 					.transition()
-					.duration(200)
+					.duration(50)
 					.style("fill-opacity", 0.1);
 				//Bring back the hovered over blob
 				d3.select(this)
@@ -499,7 +497,7 @@ export default class DetailRadarChart extends Component {
 				//Bring back all blobs
 				d3.selectAll(".radarArea")
 					.transition()
-					.duration(200)
+					.duration(50)
 					.style("fill-opacity", cfg.opacityArea);
 			});
 
@@ -565,28 +563,24 @@ export default class DetailRadarChart extends Component {
 			.style("fill", "none")
 			.style("pointer-events", "all")
 			.on("mouseover", function(d) {
-				div
+				tooltip
 					.transition()
-					.duration(200)
+					.duration(50)
 					.style("opacity", 1);
-				div
+				tooltip
 					.html(d.value)
-					.style("left", d3.event.pageX - 10 + "px")
+					.style("left", d3.event.pageX - 15 + "px")
 					.style("top", d3.event.pageY - 50 + "px");
 			})
 			.on("mouseout", function(d) {
-				div
+				tooltip
 					.transition()
-					.duration(200)
+					.duration(50)
 					.style("opacity", 0);
 			});
 
 		/* New tooltip */
-		var div = d3
-			.select(".App")
-			.append("div")
-			.attr("class", "tooltip")
-			.style("opacity", 0);
+		var tooltip = d3.select(".App").select(".tooltip");
 
 		/* Old tooltip */
 

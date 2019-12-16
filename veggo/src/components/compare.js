@@ -9,23 +9,20 @@ export default class Compare extends Component {
 		return (
 			<div className="compare">
 				<div className="compare-bg">
-					<div className="container pt-4 vh-100 w-100 compare-bg">
-						<div className="row">
+					<div className="container py-4 min-vh-100 w-100 compare-bg">
+					<div className="row">
 							<div className="col-md-4">
-								<div className="col-12">
-									<h2>Jämför grönsaker</h2>
-								</div>
-								<div className="col-12 pt-3">
-									<DropdownSelect />
-									<DropdownFilter />
-								</div>
+								<h2>Jämför grönsaker</h2>
 							</div>
-							<div className="col-md-8 p-0">
-								<div className="col-12 pt-md-0 pt-4 p-0">
-									<CompareVisualizations />
-								</div>
+							<div className="col-md-5 pt-4 pt-md-0">
+								<DropdownSelect />
 							</div>
-						</div>
+							<div className="col-md-3 pt-md-0 pt-2">
+								<DropdownFilter />
+							</div>
+					</div>
+				
+					<CompareVisualizations />
 					</div>
 				</div>
 			</div>

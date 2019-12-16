@@ -32,6 +32,7 @@ export const reset_comparelist = () => {
         type: "RESET_COMPARELIST"
     }
 }
+UPDATE_FILTER_VARIABLE
 
 export const update_comparelist = (list) => {
     return {

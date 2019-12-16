@@ -17,11 +17,11 @@ const vegetablesReducer = (state = initState, action) => {
 			if (action.payload === "") {
 				return {
 					...state,
-					search: vegetables,
+					search: state.vegetables,
 					searchText: action.payload
 				};
 			} else {
-				const search = vegetables.filter(obj => {
+				const search = state.vegetables.filter(obj => {
 					return (
 						obj.name_swe.toLowerCase().indexOf(action.payload.toLowerCase()) !==
 						-1
@@ -53,11 +53,11 @@ const vegetablesReducer = (state = initState, action) => {
 				return { ...state, detail: null };
 			} else return { ...state, detail: detail };
 		case "RESET_COMPARELIST":
-			return { ...state, compare: [] };
+				return { ...state, compare: [] };
 		case "UPDATE_COMPARELIST":
-			return { ...state, compare: action.payload };
+				return { ...state, compare: action.payload };
 		case "UPDATE_FILTER_VARIABLE":
-			return { ...state, filter: [action.payload] };
+				return { ...state, filter: [action.payload] };
 		default:
 			return state;
 	}

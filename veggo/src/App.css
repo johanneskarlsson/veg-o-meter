@@ -112,11 +112,12 @@ section.route-section {
 	transition: 0.2s;
   }
 
+  @media only screen and (min-width: 567px) {
   .arrow-2:hover{
 	  background: rgb(1, 192, 1);
 	  transition: 0.2s;
 	  cursor: pointer;
-  }
+  }}
 
   .arrow-2:before{
 	width: 52px;
@@ -216,23 +217,29 @@ section.route-section {
 }
 
 
-div.tooltip {	
+
+.tooltip {	
     position: absolute;			
     text-align: center;			
     width: auto;										
-	padding: 2px 6px 2px 6px;			
-	font-weight: bold;
-	font-size: 1rem;			
+	padding: 2px 8px 4px 8px;			
+	font-weight: bold !important;
+	font-size: 1.1rem !important;			
     background: greenyellow;	
 	pointer-events: none;		
-	border-radius: 25%;	
+}
+
+.barChart-XAxis{
+	font-size: 3rem;
+}
+
+
+.legendColor{
+	width: 20px;
+	height: 20px;
 }
 
 /* Donut chart */
-.donut-tip {	
-
-    font-size: 1.3rem;			
-}
 
 .circle-legend{
 	font-size: 0.9rem;
@@ -240,8 +247,34 @@ div.tooltip {
 
 /* Radar chart */
 
-.detailRadarChart .axisLabel{
+.axisLabel {
 	font-size: 0.8rem;
+}
+
+.compareRadarChart .axisLabel{
+
+	font-size: 0.7rem;
+}
+
+/* Bar chart */
+.compareBarChart .axisLabel{
+	font-size: 1.2rem;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.barChart-XAxis{
+	font-size: 1.4rem;
+}
+
+
+.compare{
+	
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.about-us{
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 
@@ -296,7 +329,7 @@ div.tooltip {
 }
 
 .hover:hover .hover--on {
-  display: inline;
+  display: block;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -340,6 +373,7 @@ div.tooltip {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+
 .close-button{
 	fill: black;
 	width: 20px;
@@ -354,10 +388,20 @@ div.tooltip {
 	html {
 		font-size: 12px;
 	}
-	.detailRadarChart .axisLabel{
-		font-size: 1rem;
-	
+	.axisLabel{
+		font-size: 0.9rem;
 	}
+
+	.compareRadarChart .axisLabel{
+		font-size: 1rem;
+	}
+	.compareBarChart .axisLabel{
+		font-size: 1.6rem;
+	}
+	.barChart-XAxis{
+		font-size: 2rem;
+	}
+
 	.close-button{
 		width: 15px;
 	}

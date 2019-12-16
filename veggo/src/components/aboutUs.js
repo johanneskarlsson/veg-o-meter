@@ -6,11 +6,11 @@ export default class AboutUs extends Component {
 	render() {
 		return (
 			<div className="about-us">
-				<div className="container p-4">
+				<div className="container pt-4">
 					<h2>Om oss</h2>
 					<div className="row mx-auto justify-content-center">
 						<div className="col-lg-3 col-md-4 col-10 p-2 mb-3">
-							<div className="col-12">
+							<div className="col-10 mx-auto">
 								<img
 									className="rounded mx-auto d-block img-fluid"
 									src={lucas}
@@ -24,7 +24,7 @@ export default class AboutUs extends Component {
 							</div>
 						</div>
 						<div className="col-lg-3 col-md-4 col-10 p-2 mb-3">
-							<div className="col-12">
+							<div className="col-10 mx-auto">
 								<img
 									className="rounded mx-auto d-block img-fluid"
 									src={johannes}

@@ -6,83 +6,181 @@ import * as d3 from "d3";
 export default class CompareRadarChart extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { legend: null };
+		this.state = { dataLength: 0 };
 	}
 
 	componentDidUpdate(prevProps) {
 		// If the component receives new props
-		if (this.props.data !== prevProps.data) {
+		if (this.props.data !== prevProps.data ||
+		this.props.selectedOption !== prevProps.selectedOption) {
 			this.DrawChart();
 		}
 	}
 
-	componentDidMount = () => {
-		this.DrawChart();
+
+	calculateRanking = (vegetables, vegetable, index, selectedOption) => {
+		// Pick out relevant data
+		var data = vegetables.map(vegetableItem => {
+			var filterIndex = selectedOption.index;
+			var value;
+			if (filterIndex.length === 2) {
+				value =
+					vegetableItem[index[0]][index[1]] /
+					vegetableItem[filterIndex[0]][filterIndex[1]];
+			} else if (filterIndex.length === 3) {
+				value =
+					vegetableItem[index[0]][index[1]] /
+					vegetableItem[filterIndex[0]][filterIndex[1]][filterIndex[2]];
+			}
+			//console.log(value)
+			return {
+				id: vegetableItem.id,
+				key: vegetableItem[index[0]],
+				value: value
+			};
+		});
+		//console.log(data)
+
+		// Sort in descending order
+		data.sort(function(a, b) {
+			if (a.value > b.value) {
+				return 1;
+			}
+			if (b.value > a.value) {
+				return -1;
+			}
+			return 0;
+		});
+
+		var ranking;
+		// Assign ranking
+		var ranked = data.map(function(item, i) {
+			if (i > 0) {
+				var prevItem = data[i - 1];
+				if (prevItem.value === item.value) {
+					item.rank = prevItem.rank;
+				} else {
+					item.rank = i + 1;
+				}
+			} else {
+				item.rank = 1;
+			}
+			if (vegetable.id === item.id) {
+				ranking = item.rank;
+			}
+			return item;
+		});
+		console.log(ranked);
+		return ranking;
 	};
 
 	DrawChart = () => {
-	
+
+		this.setState({dataLength: this.props.data.length})
+		if (this.props.data.length > 0) {
 		console.log("CHART DATA")
 		console.log(this.props.data)
 		// Data
 		var data = this.props.data.map(vegetable => {
 			return [
-				{ axis: "Energiförbrukning", value: vegetable.energy.ranking },
-				{ axis: "Växthusgasutsläpp", value: vegetable.emissions.ranking },
-				{ axis: "Fossilutarmning", value: vegetable.fossil_depletion.ranking },
-				{ axis: "Markanvändning", value: vegetable.land_use.ranking },
 				{
-					axis: "Markförsurning",
-					value: vegetable.terrestrial_toxicity.ranking
+					axis: "Energiförbrukning",
+					value: this.calculateRanking(
+						this.props.vegetables,
+						vegetable,
+						["energy", "value"],
+						this.props.selectedOption
+					)
+				},
+				{
+					axis: "Växthusgasutsläpp",
+					value: this.calculateRanking(
+						this.props.vegetables,
+						vegetable,
+						["emissions", "value"],
+						this.props.selectedOption
+					)
+				},
+				{
+					axis: "Fossilutarmning",
+					value: this.calculateRanking(
+						this.props.vegetables,
+						vegetable,
+						["fossil_depletion", "value"],
+						this.props.selectedOption
+					)
+				},
+				{
+					axis: "Markanvändning",
+					value: this.calculateRanking(
+						this.props.vegetables,
+						vegetable,
+						["land_use", "value"],
+						this.props.selectedOption
+					)
 				},
 				{
 					axis: "Markförgiftning",
-					value: vegetable.terrestrial_acidification.ranking
+					value: this.calculateRanking(
+						this.props.vegetables,
+						vegetable,
+						["terrestrial_toxicity", "value"],
+						this.props.selectedOption
+					)
+				},
+				{
+					axis: "Markförsurning",
+					value: this.calculateRanking(
+						this.props.vegetables,
+						vegetable,
+						["terrestrial_acidification", "value"],
+						this.props.selectedOption
+					)
 				},
 				{
 					axis: "Sötvattenförgiftning",
-					value: vegetable.freshwater_toxicity.ranking
+					value: this.calculateRanking(
+						this.props.vegetables,
+						vegetable,
+						["freshwater_toxicity", "value"],
+						this.props.selectedOption
+					)
 				},
 				{
 					axis: "Sötvattenförsurning",
-					value: vegetable.freshwater_eutrophication.ranking
+					value: this.calculateRanking(
+						this.props.vegetables,
+						vegetable,
+						["freshwater_eutrophication", "value"],
+						this.props.selectedOption
+					)
 				},
 				{
 					axis: "Marinförsurning",
-					value: vegetable.marine_eutrophication.ranking
+					value: this.calculateRanking(
+						this.props.vegetables,
+						vegetable,
+						["marine_eutrophication", "value"],
+						this.props.selectedOption
+					)
 				},
-				{ axis: "Vattenfotavtryck", value: vegetable.water_footprint.ranking }
+				{
+					axis: "Vattenfotavtryck",
+					value: this.calculateRanking(
+						this.props.vegetables,
+						vegetable,
+						["water_footprint", "value"],
+						this.props.selectedOption
+					)
+				}
 			];
 		});
 
-		
-		// Color list
-		var colorList = [
-			"red",
-			"green",
-			"yellow",
-			"blue",
-			"purple",
-			"lightblue",
-			"pink",
-			"brown",
-			"grey",
-			"magenta",
-			"teal",
-			"navy",
-			"olive",
-			"beige",
-			"darkgoldenrod",
-			"darksalmon",
-			"ghostwhite",
-			"indigo",
-			"lavenderbrush",
-			"lightseagreen",
-			"sandybrown"
-		];
+		console.log(data)
+	
 
 		// Create color range
-		var color = d3.scaleOrdinal().range(colorList);
+		var color = d3.scaleOrdinal().range(this.props.color);
 
 		// Max value
 		var maxValue = this.props.vegetables.length;
@@ -92,59 +190,75 @@ export default class CompareRadarChart extends Component {
 		var margin;
 		var width;
 		var height;
-
-		// Settings on mobile and desktop
-		if (window.innerWidth < 576) {
-			margin = { top: 50, right: 80, bottom: 70, left: 80 };
-			width =
-				Math.min(600, window.innerWidth - 20) - margin.left - margin.right;
-			height = Math.min(
-				width,
-				window.innerHeight - margin.top - margin.bottom - 20
-			);
-
-			radarChartOptions = {
-				w: width,
-				h: height,
-				labelFactor: 1.5,
-				margin: margin,
-				maxValue: maxValue,
-				levels: 7,
-				roundStrokes: true,
-				color: color
-			};
+		var labelFactor;
+		if (window.innerWidth < 568) {
+			margin = { top: 70, right: 90, bottom: 80, left: 90 };
+			labelFactor = 1.5;
 		} else {
-			margin = { top: 80, right: 130, bottom: 100, left: 130 };
-			width =
-				Math.min(530, window.innerWidth - 30) - margin.left - margin.right;
-			height = Math.min(
-				width,
-				window.innerHeight - margin.top - margin.bottom - 20
-			);
-
-			radarChartOptions = {
-				w: width,
-				h: height,
-				labelFactor: 1.5,
-				margin: margin,
-				maxValue: maxValue,
-				levels: 7,
-				roundStrokes: true,
-				color: color
-			};
+			margin = { top: 70, right: 110, bottom: 80, left: 110 };
+			labelFactor = 1.45;
 		}
+		width = Math.min(470, window.innerWidth) - margin.left - margin.right;
+		height = Math.min(
+			width,
+			window.innerHeight - margin.top - margin.bottom - 20
+		);
+		radarChartOptions = {
+			w: width,
+			h: height,
+			labelFactor: labelFactor,
+			margin: margin,
+			maxValue: maxValue,
+			levels: 7,
+			roundStrokes: true,
+			color: color
+		};
+
+			
 
 		// Call function to draw the radar chart 
-		if (data.length > 0) {
+	
 			this.RadarChart(".compareRadarChart", data, radarChartOptions, color);
-		} else if (data.length === 0) {
+		} else if (this.props.data.length === 0) {
 			d3.select(".compareRadarChart")
 				.select("svg")
 				.remove();
 
-			d3.select(".legendList").html("");
+
 		}
 	};
+
+	
+
+	responsivefy = svg => {
+		// get container + svg aspect ratio
+		var container = d3.select(svg.node().parentNode),
+			width = parseInt(svg.style("width")),
+			height = parseInt(svg.style("height")),
+			aspect = width / height;
+
+		// add viewBox and preserveAspectRatio properties,
+		// and call resize so that svg resizes on inital page load
+		svg
+			.attr("viewBox", "0 0 " + width + " " + height)
+			.attr("perserveAspectRatio", "xMinYMid")
+			.call(resize);
+
+		// to register multiple listeners for same event type,
+		// you need to add namespace, i.e., 'click.foo'
+		// necessary if you call invoke this function for multiple svgs
+		// api docs: https://github.com/mbostock/d3/wiki/Selections#on
+		d3.select(window).on("resize." + container.attr("class"), resize);
+
+		// get width of container and resize svg to fit it
+		function resize() {
+			var targetWidth = parseInt(container.style("width"));
+			svg.attr("width", targetWidth);
+			svg.attr("height", Math.round(targetWidth / aspect));
+		}
+	};
+
+
 
 	// Radar chart function
 	RadarChart = (id, data, options, color) => {
@@ -164,8 +278,7 @@ export default class CompareRadarChart extends Component {
 			color: d3.scaleOrdinal(d3.schemeCategory10) //Color function
 		};
 
-		// Update legend with colors
-		this.updateLegend(color);
+
 
 		//Put all of the options into a variable called cfg
 		if ("undefined" !== typeof options) {
@@ -216,8 +329,8 @@ export default class CompareRadarChart extends Component {
 			.append("svg")
 			.attr("width", cfg.w + cfg.margin.left + cfg.margin.right)
 			.attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
-			.attr("class", "svg-content")
-			.attr("class", "radar" + id);
+			.attr("class", "radar" + id)
+			.call(this.responsivefy);
 
 		//Append a g element
 		var g = svg
@@ -297,8 +410,7 @@ export default class CompareRadarChart extends Component {
 		//Append the labels at each axis
 		axis
 			.append("text")
-			.attr("class", "legend")
-			.style("font-size", "0.75rem")
+			.attr("class", "axisLabel")
 			.attr("text-anchor", "middle")
 			.attr("dy", "0.35em")
 			.attr("x", function(d, i) {
@@ -435,30 +547,28 @@ export default class CompareRadarChart extends Component {
 			})
 			.style("fill", "none")
 			.style("pointer-events", "all")
-			.on("mouseover", function(d, i) {
-				this.newX = parseFloat(d3.select(this).attr("cx")) - 10;
-				this.newY = parseFloat(d3.select(this).attr("cy")) - 20;
-
+			.on("mouseover", function(d) {
 				tooltip
-					.attr("x", this.newX)
-					.attr("y", this.newY)
-					.text(Format(d.value))
 					.transition()
-					.duration(200)
+					.duration(100)
 					.style("opacity", 1);
+				tooltip
+					.html(d.value)
+					.style("left", d3.event.pageX - 15 + "px")
+					.style("top", d3.event.pageY - 50 + "px");
 			})
-			.on("mouseout", function() {
+			.on("mouseout", function(d) {
 				tooltip
 					.transition()
-					.duration(200)
+					.duration(100)
 					.style("opacity", 0);
 			});
 
-		//Set up the small tooltip for when you hover over a circle
-		var tooltip = g
-			.append("text")
-			.attr("class", "tooltip")
-			.style("opacity", 0);
+	/* New tooltip */
+	var tooltip = d3
+	.select(".App")
+.select(".tooltip")
+
 
 		/* Help functions */
 
@@ -512,7 +622,7 @@ export default class CompareRadarChart extends Component {
 			var legendDiv = d3
 				.select(".legendList")
 				.append("div")
-				.attr("class", "row col-md-8 mx-auto")
+				.attr("class", "row col-md-12 mx-auto")
 				.selectAll("div")
 				.data(this.props.data)
 				.enter()
@@ -534,7 +644,7 @@ export default class CompareRadarChart extends Component {
 				.text(function(d) {
 					return d.name_swe;
 				})
-				.style("font-size", "0.7rem");
+				.style("font-size", "0.8rem");
 		} else {
 			d3.select(".legendList").html("");
 		}
@@ -542,9 +652,10 @@ export default class CompareRadarChart extends Component {
 
 	render() {
 		return (
-			<div>
-				<div className="compareRadarChart" />
-				<div className="legendList" />
+			<div className="compareRadarChartContainer p-0">
+				{this.state.dataLength > 0 ? 
+				<h2>Grönsaksranking</h2> : null}
+				<div className="compareRadarChart p-0" />
 			</div>
 		);
 	}
