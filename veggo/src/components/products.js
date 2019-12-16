@@ -19,7 +19,7 @@ class Products extends Component {
 						<div className="col-12">
 							<div className="products">
 								<div className="row justify-content-center">
-									<h2>Produkter</h2>
+									<h2>Grönsaker</h2>
 								</div>
 								<div className="row pt-4">
 									{this.props.vegetables.map(vegetable => {
