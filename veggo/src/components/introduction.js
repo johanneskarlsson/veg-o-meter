@@ -20,13 +20,13 @@ export default class Introduction extends Component {
 								<Fade left duration={1500} delay={1200}>
 									<h5 className="text-left introduction-subtitle">
 										Grönsakshjälpen är ett verktyg för att hjälpa dig ta mer
-										hållbara beslut kring köp av grönsaker. Du kan få
+										hållbara beslut kring konsumtion av grönsaker. Du kan få
 										information om allt från näringsinnehåll till klimatavtryck
 										i form av växthusgasutsläpp, vattenfotavtryck osv. Med
 										verktyget kan du också jämföra grönsaker mot varandra
-										baserat på de olika parametrarna ex. klimatavtryck per
+										baserat på olika parametrarna ex. klimatavtryck per
 										krona, per gram protein osv. detta för att hjälpa dig
-										ta klimatsmarta beslut vid köp av grönsaker.
+										som konsument att ta klimatsmarta beslut vid köp av grönsaker.
 									</h5>
 								</Fade>
 							</div>

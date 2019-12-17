@@ -33,7 +33,7 @@ var colorList = [
 class CompareVisualizations extends Component {
 	render() {
 		return (
-			<div className="container">
+			<div className="container p-0">
 				<div className="row mx-auto pt-md-5 pt-4">
 					<div className="col-md-5 col-12 mx-auto p-0">
 						<CompareBarChart

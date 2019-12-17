@@ -244,6 +244,7 @@ export default class CompareBarChart extends Component {
 					<div className="chartHeader">
 						<h3>Klimatavtryck</h3>
 					<Select
+						isSearchable={false}
 						className="m-3 col-md-8 mx-auto"
 						value={this.state.selectedOption}
 						onChange={this.handleChange}

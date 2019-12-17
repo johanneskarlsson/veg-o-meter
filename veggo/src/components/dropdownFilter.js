@@ -53,6 +53,7 @@ class DropdownFilter extends Component {
 
 		return (
 			<Select
+				isSearchable={false}
 				value={selectedOption}
 				onChange={this.handleChange}
 				options={this.state.key}
